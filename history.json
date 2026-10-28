@@ -1383,8 +1383,9 @@
         },
         "reposInSync": {
           "weight": 20,
-          "active": false,
-          "score": null
+          "active": true,
+          "score": 100,
+          "vacuous": true
         },
         "selfTested": {
           "weight": 15,
@@ -1397,7 +1398,7 @@
           "score": null
         }
       },
-      "note": "re-run of the scorecard at that Monday's harness commit in today's environment; drift was not measured (scored 100 on zero consumers in the as-run number, shown here as inactive → 79)"
+      "note": "as the scorecard printed it at that commit: drift scored 100 on zero consumers (vacuous, corrected at marker 3); the three measured dimensions alone give 79"
     },
     {
       "date": "2026-10-13",
@@ -1417,8 +1418,9 @@
         },
         "reposInSync": {
           "weight": 20,
-          "active": false,
-          "score": null
+          "active": true,
+          "score": 100,
+          "vacuous": true
         },
         "selfTested": {
           "weight": 15,
@@ -1431,7 +1433,7 @@
           "score": null
         }
       },
-      "note": "flat from 08-25 through 10-13"
+      "note": "as the scorecard printed it at that commit: drift scored 100 on zero consumers (vacuous, corrected at marker 3); the three measured dimensions alone give 79"
     },
     {
       "date": "2026-10-20",
@@ -1451,8 +1453,9 @@
         },
         "reposInSync": {
           "weight": 20,
-          "active": false,
-          "score": null
+          "active": true,
+          "score": 100,
+          "vacuous": true
         },
         "selfTested": {
           "weight": 15,
@@ -1465,7 +1468,7 @@
           "score": null
         }
       },
-      "note": "the jump is a validator fix (#82), not a better harness"
+      "note": "as the scorecard printed it at that commit: drift scored 100 on zero consumers (vacuous, corrected at marker 3); the three measured dimensions alone give 93"
     },
     {
       "date": "2026-10-28",
