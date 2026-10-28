@@ -100,7 +100,7 @@ scheduled loops and waits, the verify-gate agent, other agents (reviewers, explo
 
 - One developer, one harness, a few months of rows. No control arm: nothing here says what the numbers would be without the harness.
 - The three linked repos are public snapshots of work built through the harness; most merges counted here happened in repos that stay private.
-- Before the harness went live, the same repos had 1609 merges over 25 weeks (2026-01-19 to 2026-07-13): 93% green at merge, 110 merged on red. No agents, no gate, partly different repos — not a control arm, shown so the cut at 2026-07-20 is visible rather than hidden.
+- Before the harness went live, the same repos had 1609 merges over 25 weeks (2026-01-19 to 2026-07-13): 93% green at merge, 110 merged on red. No build lane, no gate, partly different repos — not a control arm, shown so the cut at 2026-07-20 is visible rather than hidden.
 - The badge and the latest score point are the last published run. The number can move between runs (it did on 2026-10-28, see TRACE.md); the next Monday run publishes the new one.
 - The score measures structure, not outcomes. The outcome numbers stop at merge time.
 - Token history begins when transcript mining started; earlier sessions are gone.
