@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harness Receipts</title>
+<meta name="description" content="A weekly, reproducible readout of one AI-dev harness: what it shipped, what it cost, what it measured about itself, and where the measuring stick changed.">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #fcfcfb; --surface: #ffffff; --line: #e4e3df; --grid: #eeede9;
+    --ink: #0b0b0b; --ink-2: #52514e; --ink-3: #807f7a;
+    --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948;
+    --good: #008300; --warn: #c98500; --bad: #c2362f; --muted-fill: #d9d8d3;
+    --node: #f3f2ee; --node-ink: #0b0b0b; --node-ghost: #faf9f6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #141413; --surface: #1a1a19; --line: #2d2d2b; --grid: #262624;
+      --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #8f8e87;
+      --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+      --good: #3fb950; --warn: #d29922; --bad: #f85149; --muted-fill: #3a3a37;
+      --node: #222220; --node-ink: #f0efec; --node-ghost: #1a1a19;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #141413; --surface: #1a1a19; --line: #2d2d2b; --grid: #262624;
+    --ink: #f0efec; --ink-2: #c3c2b7; --ink-3: #8f8e87;
+    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+    --good: #3fb950; --warn: #d29922; --bad: #f85149; --muted-fill: #3a3a37;
+    --node: #222220; --node-ink: #f0efec; --node-ghost: #1a1a19;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font: 15px/1.5 -apple-system, "Segoe UI", Inter, Roboto, sans-serif; }
+  main { max-width: 1040px; margin: 0 auto; padding: 24px 16px 64px; }
+  h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  h2 { font-size: 18px; margin: 0 0 4px; }
+  h2 a { color: inherit; text-decoration: none; }
+  .sub { color: var(--ink-2); margin: 0 0 8px; }
+  .meta { color: var(--ink-3); font-size: 13px; }
+  header { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-end; justify-content: space-between; margin-bottom: 20px; }
+  .badge { display: inline-flex; align-items: stretch; border-radius: 4px; overflow: hidden; font: 600 12px/1 -apple-system, sans-serif; }
+  .badge span { padding: 6px 8px; }
+  .badge .l { background: #555; color: #fff; }
+  .badge .m { color: #fff; }
+  section { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px 18px 14px; margin: 16px 0; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 12px 0 4px; }
+  .tile { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; background: var(--bg); }
+  .tile .k { font-size: 12px; color: var(--ink-3); }
+  .tile .v { font-size: 24px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+  .tile .d { font-size: 12px; color: var(--ink-2); }
+  .chart { position: relative; height: 280px; margin-top: 10px; }
+  .chart.tall { height: 320px; }
+  details { margin-top: 8px; font-size: 13px; color: var(--ink-2); }
+  summary { cursor: pointer; }
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; margin-top: 6px; }
+  th, td { text-align: right; padding: 3px 6px; border-bottom: 1px solid var(--grid); white-space: nowrap; }
+  th:first-child, td:first-child { text-align: left; }
+  .note { font-size: 13px; color: var(--ink-2); margin: 8px 0 0; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-2); margin-top: 8px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+  .flow { width: 100%; height: auto; display: block; }
+  .flow text { font: 12.5px -apple-system, "Segoe UI", Inter, sans-serif; fill: var(--node-ink); }
+  .flow .t { font-size: 11px; fill: var(--ink-3); }
+  .flow .p { font-weight: 600; fill: var(--ink-2); }
+  .flow rect.n { fill: var(--node); stroke: var(--line); rx: 6; }
+  .flow rect.g { fill: var(--node-ghost); stroke: var(--line); stroke-dasharray: 4 3; rx: 6; }
+  .flow path, .flow line { stroke: var(--ink-3); fill: none; stroke-width: 1.4; }
+  .flow a:hover rect { stroke: var(--s1); }
+  .flow .lane { font-size: 11px; fill: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; }
+  footer { color: var(--ink-3); font-size: 13px; margin-top: 24px; }
+  footer a, .note a, .sub a { color: var(--s1); }
+  #err { display: none; border-color: var(--bad); }
+  @media (max-width: 600px) { .chart { height: 240px; } h1 { font-size: 22px; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Harness Receipts</h1>
+      <p class="sub">One developer's AI-dev harness, measured by itself every Monday. Every number here is a count or a sum over rows the harness already writes, regenerated from the repo. No prompts, repos or files are named.</p>
+      <div class="meta" id="meta">loading history.json …</div>
+    </div>
+    <div class="badge" id="badge"><span class="l">harness</span><span class="m" style="background:#9f9f9f">…</span></div>
+  </header>
+
+  <section id="err"><strong>history.json could not be loaded.</strong> If you opened this file directly, serve the folder over HTTP (for example <code>python3 -m http.server</code>) — browsers block <code>fetch</code> from <code>file://</code>.</section>
+
+  <section id="flow">
+    <h2>What runs, and what each stage writes down</h2>
+    <p class="sub">Two loops. The top one runs once per change; the bottom one measures the harness itself. Each node names the rows it produces. Token shares are this history's totals and annotate the stage that spent them.</p>
+    <svg class="flow" viewBox="0 0 960 330" role="img" aria-labelledby="flowtitle">
+      <title id="flowtitle">Build loop and measurement loop of the harness</title>
+      <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" style="fill:var(--ink-3);stroke:none"/></marker></defs>
+      <text class="lane" x="12" y="22">Loop 1 · one change</text>
+      <!-- row 1 -->
+      <rect class="n" x="12" y="34" width="150" height="58"/><text x="24" y="56">stub + prediction</text><text class="t" x="24" y="74">review-by date</text><text class="t" x="24" y="86">graded on that date</text>
+      <line x1="162" y1="63" x2="192" y2="63" marker-end="url(#ah)"/>
+      <a href="#parts"><rect class="n" x="194" y="34" width="150" height="58"/><text x="206" y="56">build</text><text class="t" x="206" y="74">session rows: edits, tests,</text><text class="t" x="206" y="86">PR opened or abandoned</text><text class="p" x="296" y="56" id="p-build"></text></a>
+      <line x1="344" y1="63" x2="374" y2="63" marker-end="url(#ah)"/>
+      <a href="#parts"><rect class="n" x="376" y="34" width="150" height="58"/><text x="388" y="56">review</text><text class="t" x="388" y="74">criterion-review rows:</text><text class="t" x="388" y="86">sound / not sound</text><text class="p" x="478" y="56" id="p-review"></text></a>
+      <line x1="526" y1="63" x2="556" y2="63" marker-end="url(#ah)"/>
+      <a href="#parts"><rect class="n" x="558" y="34" width="150" height="58"/><text x="570" y="56">verify</text><text class="t" x="570" y="74">refuter verdicts:</text><text class="t" x="570" y="86">refuted / held, confidence</text><text class="p" x="660" y="56" id="p-verify"></text></a>
+      <line x1="708" y1="63" x2="738" y2="63" marker-end="url(#ah)"/>
+      <a href="#outcomes"><rect class="n" x="740" y="34" width="208" height="58"/><text x="752" y="56">CI → merge (by hand)</text><text class="t" x="752" y="74">merge rows: merged / rejected,</text><text class="t" x="752" y="86">CI colour, code vs docs</text></a>
+      <!-- loop back: merge → stub grade -->
+      <path d="M844 92 V118 H87 V92" marker-end="url(#ah)"/>
+      <text class="t" x="400" y="132" text-anchor="middle">the prediction binds on what shipped · graded on its date · the grade is struck into the stub</text>
+
+      <text class="lane" x="12" y="176">Loop 2 · the harness measuring itself (nightly + Monday)</text>
+      <!-- row 2 -->
+      <rect class="n" x="12" y="188" width="170" height="58"/><text x="24" y="210">transcripts + GitHub</text><text class="t" x="24" y="228">every turn carries token usage;</text><text class="t" x="24" y="240">every PR has a CI colour</text>
+      <line x1="182" y1="217" x2="212" y2="217" marker-end="url(#ah)"/>
+      <rect class="n" x="214" y="188" width="150" height="58"/><text x="226" y="210">4 miners (nightly)</text><text class="t" x="226" y="228">merges · sessions · gate</text><text class="t" x="226" y="240">verdicts · tokens per part</text>
+      <line x1="364" y1="217" x2="394" y2="217" marker-end="url(#ah)"/>
+      <rect class="n" x="396" y="188" width="130" height="58"/><text x="408" y="210">run ledger</text><text class="t" x="408" y="228">append-only JSONL</text><text class="t" x="408" y="240" id="ledger-rows"></text>
+      <line x1="526" y1="217" x2="556" y2="217" marker-end="url(#ah)"/>
+      <a href="#score"><rect class="n" x="558" y="188" width="150" height="58"/><text x="570" y="210">scorecard (Monday)</text><text class="t" x="570" y="228">skills · routing · pin drift</text><text class="t" x="570" y="240">· self-tests</text></a>
+      <line x1="708" y1="217" x2="738" y2="217" marker-end="url(#ah)"/>
+      <rect class="n" x="740" y="188" width="208" height="58"/><text x="752" y="210">weekly digest line + this page</text><text class="t" x="752" y="228">counts only leave the writer;</text><text class="t" x="752" y="240">instrument changes are dated</text>
+      <!-- ghost node: declared, not measured -->
+      <rect class="g" x="558" y="262" width="150" height="40"/><text class="t" x="570" y="279">MCP surface — declared,</text><text class="t" x="570" y="293">not measured (drawn as such)</text>
+      <rect class="g" x="740" y="262" width="208" height="40"/><text class="t" x="752" y="279">post-merge reverts / fix-forwards —</text><text class="t" x="752" y="293">not tracked yet (next stub)</text>
+      <text class="t" x="12" y="322">Arrows are data flow. A stage without a row kind is a stage this page cannot vouch for.</text>
+    </svg>
+  </section>
+
+  <section id="outcomes">
+    <h2><a href="#outcomes">Outcomes</a></h2>
+    <p class="sub">Last 4 complete weeks against the 4 before. A merge is <em>credited</em> only when it is code-class and CI was green at merge time. Nothing here knows what happened after the merge.</p>
+    <div class="tiles" id="tiles"></div>
+    <div class="chart"><canvas id="c-outcomes" aria-label="Merges per week: credited, other merged, rejected" role="img"></canvas></div>
+    <div class="legend" id="lg-outcomes"></div>
+    <details><summary>Table</summary><div id="t-outcomes"></div></details>
+    <p class="note" id="pred"></p>
+  </section>
+
+  <section id="score">
+    <h2><a href="#score">Harness score over time</a></h2>
+    <p class="sub">A weighted roll-up over four structural checks. Hollow points were reconstructed by re-running the scorecard at past commits; filled points are live Monday runs. Dashed lines mark changes to the measuring stick itself: a drop at a mark is a correction, not decay.</p>
+    <div class="chart"><canvas id="c-score" aria-label="Harness score per run with instrument-change markers" role="img"></canvas></div>
+    <div class="legend" id="lg-score"></div>
+    <details><summary>Table</summary><div id="t-score"></div></details>
+    <p class="note" id="score-note"></p>
+  </section>
+
+  <section id="cost">
+    <h2><a href="#cost">Cost per credited merge</a></h2>
+    <p class="sub">Dollars from the CLI's own cost line, summed per week, divided by credited merges that week. Sessions without a cost line are counted but not priced.</p>
+    <div class="chart"><canvas id="c-cost" aria-label="Dollars per credited merge per week" role="img"></canvas></div>
+    <details><summary>Table</summary><div id="t-cost"></div></details>
+    <p class="note" id="cost-note"></p>
+  </section>
+
+  <section id="parts">
+    <h2><a href="#parts">Tokens per harness part</a></h2>
+    <p class="sub">Share of all tokens each week by what the turn was doing. A turn is charged to its first tool call, and most tokens are cache reads, so this is the cost of <em>carrying context</em> through a stage, not of generating output there.</p>
+    <div class="chart tall"><canvas id="c-parts" aria-label="Token share per harness part per week" role="img"></canvas></div>
+    <div class="legend" id="lg-parts"></div>
+    <details><summary>Table</summary><div id="t-parts"></div></details>
+  </section>
+
+  <footer>
+    <p><strong>Limits, stated.</strong> One developer, one harness, a few months of rows. The score measures structure, not outcomes; the outcome numbers stop at merge time. There is no control arm, so nothing here says what the numbers would be without the harness. Token history begins when transcript mining started; earlier sessions are gone.</p>
+    <p>Generated by <code>scoreboard_writer.js</code> from the harness repo; the page reads <code>history.json</code> beside it. Badge endpoint: <code>badge.json</code>.</p>
+  </footer>
+</main>
+
+<script>
+(async function () {
+  const $ = id => document.getElementById(id);
+  const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const fmtK = n => n >= 1e9 ? (n / 1e9).toFixed(2) + 'B' : n >= 1e6 ? (n / 1e6).toFixed(1) + 'M' : n >= 1e3 ? (n / 1e3).toFixed(0) + 'k' : String(n);
+  const usd = n => '$' + Math.round(n).toLocaleString('en-US');
+  const pct = (a, b) => b ? Math.round(100 * a / b) + '%' : '—';
+  const short = w => w.slice(5);
+
+  let H;
+  try { H = await (await fetch('history.json', { cache: 'no-store' })).json(); }
+  catch (e) { $('err').style.display = 'block'; $('meta').textContent = 'no data'; return; }
+
+  // ── header ────────────────────────────────────────────────────────────────
+  const latest = H.scores.length ? H.scores[H.scores.length - 1] : null;
+  $('meta').textContent = `generated ${H.generated} · ${H.weeks.length} weeks of rows · ${H.totals.merges.toLocaleString('en-US')} merges · ${fmtK(H.totals.tokens)} tokens · ${usd(H.totals.cost_usd)} priced`;
+  if (latest) {
+    const m = $('badge').querySelector('.m');
+    m.textContent = `${latest.score}/100 ${latest.grade}`;
+    m.style.background = { A: '#2ea043', B: '#2a8a3a', C: '#b58900', F: '#c2362f' }[latest.grade] || '#777';
+  }
+
+  // ── flowchart annotations ─────────────────────────────────────────────────
+  const partTot = {}; let allTok = 0;
+  for (const w of H.weeks) { allTok += w.tokens; for (const [k, v] of Object.entries(w.parts || {})) partTot[k] = (partTot[k] || 0) + v; }
+  const share = k => allTok ? Math.round(100 * (partTot[k] || 0) / allTok) + '%' : '';
+  $('p-build').textContent = allTok ? `${share('shell')} shell + ${share('edits')} edits` : '';
+  $('p-review').textContent = allTok ? `${share('agents')} agents` : '';
+  $('p-verify').textContent = allTok ? `${share('verify')} verify-gate` : '';
+  const rows = H.weeks.reduce((n, w) => n + w.merges + w.rejected + w.superseded + w.sessions + w.verdicts + w.reviews + w.token_sessions, 0);
+  $('ledger-rows').textContent = `${rows.toLocaleString('en-US')} rows summarised here`;
+
+  // ── chart defaults ────────────────────────────────────────────────────────
+  Chart.defaults.color = css('--ink-2');
+  Chart.defaults.borderColor = css('--grid');
+  Chart.defaults.font.family = getComputedStyle(document.body).fontFamily;
+  Chart.defaults.font.size = 12;
+  Chart.defaults.plugins.legend.display = false;
+  Chart.defaults.plugins.tooltip.backgroundColor = css('--surface');
+  Chart.defaults.plugins.tooltip.titleColor = css('--ink');
+  Chart.defaults.plugins.tooltip.bodyColor = css('--ink-2');
+  Chart.defaults.plugins.tooltip.borderColor = css('--line');
+  Chart.defaults.plugins.tooltip.borderWidth = 1;
+  Chart.defaults.elements.bar.borderRadius = 3;
+  const S = ['--s1', '--s2', '--s3', '--s4', '--s5', '--s6', '--s7', '--s8'].map(css);
+  const legend = (el, items) => { el.innerHTML = items.map(([c, t]) => `<span><i style="background:${c}"></i>${t}</span>`).join(''); };
+  const table = (el, head, body) => { el.innerHTML = `<table><thead><tr>${head.map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>${body.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('')}</tbody></table>`; };
+  const grid = { color: css('--grid') };
+
+  // ── outcomes ──────────────────────────────────────────────────────────────
+  // "complete" weeks: drop the current (partial) week if generated falls inside it.
+  const curWeek = (d => { const t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() - ((t.getUTCDay() + 6) % 7)); return t.toISOString().slice(0, 10); })(H.generated);
+  const complete = H.weeks.filter(w => w.week < curWeek);
+  const last4 = complete.slice(-4), prev4 = complete.slice(-8, -4);
+  const sum = (ws, k) => ws.reduce((n, w) => n + (w[k] || 0), 0);
+  const tile = (k, v, d) => `<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`;
+  const kill = ws => pct(sum(ws, 'refuted'), sum(ws, 'verdicts'));
+  $('tiles').innerHTML = [
+    tile('credited merges', sum(last4, 'credited'), `prev ${sum(prev4, 'credited')} · of ${sum(last4, 'merges')} merged`),
+    tile('CI green at merge', pct(sum(last4, 'green'), sum(last4, 'merges')), `prev ${pct(sum(prev4, 'green'), sum(prev4, 'merges'))}`),
+    tile('merged on red', sum(last4, 'merged_on_red'), `prev ${sum(prev4, 'merged_on_red')} · ship-gate violations or broken-CI windows`),
+    tile('rejected / superseded', `${sum(last4, 'rejected')} / ${sum(last4, 'superseded')}`, `prev ${sum(prev4, 'rejected')} / ${sum(prev4, 'superseded')}`),
+    tile('sessions abandoned', pct(sum(last4, 'abandoned'), sum(last4, 'sessions')), `edits but no PR · ${sum(last4, 'sessions')} sessions · prev ${pct(sum(prev4, 'abandoned'), sum(prev4, 'sessions'))}`),
+    tile('refuter kill rate', kill(last4), `${sum(last4, 'refuted')} of ${sum(last4, 'verdicts')} verdicts refuted · prev ${kill(prev4)}`),
+  ].join('');
+  const ow = complete.slice(-16);
+  new Chart($('c-outcomes'), {
+    type: 'bar',
+    data: { labels: ow.map(w => short(w.week)), datasets: [
+      { label: 'credited', data: ow.map(w => w.credited), backgroundColor: S[0], stack: 'm', borderColor: css('--surface'), borderWidth: 1 },
+      { label: 'merged, not credited', data: ow.map(w => w.merges - w.credited), backgroundColor: css('--muted-fill'), stack: 'm', borderColor: css('--surface'), borderWidth: 1 },
+      { label: 'rejected', data: ow.map(w => -w.rejected), backgroundColor: S[7], stack: 'm', borderColor: css('--surface'), borderWidth: 1 },
+    ] },
+    options: { maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+      scales: { x: { grid: { display: false }, title: { display: true, text: 'week of' } }, y: { grid, ticks: { callback: v => Math.abs(v) }, title: { display: true, text: 'merges (rejected below the line)' } } },
+      plugins: { tooltip: { callbacks: { label: c => `${c.dataset.label}: ${Math.abs(c.parsed.y)}` } } } }
+  });
+  legend($('lg-outcomes'), [[S[0], 'credited (code + green CI)'], [css('--muted-fill'), 'merged, not credited (docs, or CI not green)'], [S[7], 'rejected']]);
+  table($('t-outcomes'), ['week', 'merges', 'credited', 'green', 'on red', 'rejected', 'sessions', 'abandoned', 'verdicts', 'refuted'],
+    ow.map(w => [w.week, w.merges, w.credited, w.green, w.merged_on_red, w.rejected, w.sessions, w.abandoned, w.verdicts, w.refuted]));
+  if (H.predictions) {
+    const p = H.predictions;
+    $('pred').innerHTML = `<strong>Predictions on the harness itself:</strong> every behavioural change carries a pre-registered prediction with a date. Graded so far: <strong>${p.pass}</strong> pass · <strong>${p.partial}</strong> partial · <strong>${p.fail}</strong> fail · <strong>${p.ungradeable}</strong> ungradeable (${p.graded} of ${p.stubs} stubs; ${p.open_dated} dated and open, ${p.event_gated} event-gated).`;
+  }
+
+  // ── score over time ───────────────────────────────────────────────────────
+  const dates = [...new Set([...H.scores.map(s => s.date), ...H.instrument_changes.map(m => m.date)])].sort();
+  const markerPlugin = { id: 'markers', afterDatasetsDraw(chart) {
+    const { ctx, scales: { x, y } } = chart;
+    ctx.save(); ctx.setLineDash([4, 3]); ctx.strokeStyle = css('--ink-3'); ctx.fillStyle = css('--ink-3'); ctx.font = '11px ' + Chart.defaults.font.family;
+    H.instrument_changes.forEach((m, i) => {
+      const px = x.getPixelForValue(m.date); if (isNaN(px)) return;
+      ctx.beginPath(); ctx.moveTo(px, y.top); ctx.lineTo(px, y.bottom); ctx.stroke();
+      ctx.textAlign = 'left'; ctx.fillText(`▲ ${i + 1}`, px + 4, y.top + 12);
+    });
+    ctx.restore();
+  } };
+  new Chart($('c-score'), {
+    type: 'line',
+    data: { labels: dates, datasets: [{
+      label: 'score', data: H.scores.map(s => ({ x: s.date, y: s.score })), borderColor: S[0], borderWidth: 2, tension: 0,
+      pointRadius: 5, pointHoverRadius: 7, pointBorderWidth: 2, pointBorderColor: S[0],
+      pointBackgroundColor: H.scores.map(s => s.reconstructed ? css('--surface') : S[0]), spanGaps: true,
+    }] },
+    options: { maintainAspectRatio: false, interaction: { mode: 'nearest', intersect: false },
+      scales: { x: { grid: { display: false } }, y: { min: 0, max: 100, grid, title: { display: true, text: 'score /100' } } },
+      plugins: { tooltip: { callbacks: {
+        title: items => items[0].label,
+        label: c => { const s = H.scores[c.dataIndex]; return `${s.score}/100 ${s.grade}${s.reconstructed ? ' (reconstructed)' : ''}`; },
+        afterLabel: c => { const s = H.scores[c.dataIndex]; const d = Object.entries(s.dims || {}).map(([k, v]) => `${k}: ${v.active ? v.score : 'n/a'}`); return (s.note ? [s.note] : []).concat(d); },
+      } } } },
+    plugins: [markerPlugin],
+  });
+  legend($('lg-score'), [[S[0], 'live Monday run'], [css('--surface') + ';border:2px solid ' + S[0], 'reconstructed from a past commit']]);
+  $('lg-score').innerHTML += H.instrument_changes.map((m, i) => `<span>▲ ${i + 1} ${m.date}: ${m.label}</span>`).join('');
+  table($('t-score'), ['date', 'score', 'grade', 'kind', 'consumers checked', 'drifting'],
+    H.scores.map(s => [s.date, s.score, s.grade, s.reconstructed ? 'reconstructed' : 'live', s.consumers_checked ?? '—', s.consumers_drifting ?? '—']));
+  if (latest) {
+    const dims = Object.entries(latest.dims || {}).map(([k, v]) => `${k} ${v.active ? v.score : 'not measured'} (w${v.weight})`).join(' · ');
+    $('score-note').textContent = `Latest ${latest.date}: ${dims}. Inactive dimensions are renormalised out and shown as "not measured", never scored full.`;
+  }
+
+  // ── cost per credited merge ───────────────────────────────────────────────
+  const tw = complete.filter(w => w.token_sessions > 0);
+  const perMerge = w => w.credited ? w.cost_usd / w.credited : null;
+  new Chart($('c-cost'), {
+    type: 'bar',
+    data: { labels: tw.map(w => short(w.week)), datasets: [{ label: '$ per credited merge', data: tw.map(perMerge), backgroundColor: S[1], borderColor: css('--surface'), borderWidth: 1 }] },
+    options: { maintainAspectRatio: false,
+      scales: { x: { grid: { display: false }, title: { display: true, text: 'week of' } }, y: { beginAtZero: true, grid, ticks: { callback: v => '$' + v }, title: { display: true, text: 'USD per credited merge' } } },
+      plugins: { tooltip: { callbacks: { label: c => { const w = tw[c.dataIndex]; return [`${usd(w.cost_usd)} over ${w.credited} credited merges`, `${w.costed} of ${w.token_sessions} sessions priced`, `${fmtK(w.tokens)} tokens, ${pct(w.cache_read, w.tokens)} cache reads`]; } } } } }
+  });
+  table($('t-cost'), ['week', 'cost', 'credited', '$ / credited', 'sessions', 'priced', 'tokens', 'cache read'],
+    tw.map(w => [w.week, usd(w.cost_usd), w.credited, perMerge(w) === null ? '—' : usd(perMerge(w)), w.token_sessions, w.costed, fmtK(w.tokens), pct(w.cache_read, w.tokens)]));
+  const tc = sum(tw, 'cost_usd'), tcr = sum(tw, 'credited');
+  $('cost-note').textContent = tw.length ? `${tw.length} weeks with token rows: ${usd(tc)} over ${tcr} credited merges, ${usd(tcr ? tc / tcr : 0)} each.` : 'No token rows yet.';
+
+  // ── tokens per part ───────────────────────────────────────────────────────
+  const CLASSES = [['shell', 'shell turns (build)'], ['edits', 'edit / write turns'], ['reads', 'read, search, fetch turns'], ['loops', 'scheduled loops / waits'], ['verify', 'verify-gate agent'], ['agents', 'other agents (reviewers, explorers)'], ['workflow_skills', 'workflow scripts + skills'], ['text', 'text-only turns']];
+  const pw = H.weeks.filter(w => w.tokens > 0);
+  new Chart($('c-parts'), {
+    type: 'bar',
+    data: { labels: pw.map(w => short(w.week)), datasets: CLASSES.map(([k, label], i) => ({
+      label, data: pw.map(w => w.tokens ? 100 * (w.parts[k] || 0) / w.tokens : 0), backgroundColor: S[i], stack: 'p', borderColor: css('--surface'), borderWidth: 1,
+    })) },
+    options: { maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+      scales: { x: { stacked: true, grid: { display: false }, title: { display: true, text: 'week of' } }, y: { stacked: true, min: 0, max: 100, grid, ticks: { callback: v => v + '%' }, title: { display: true, text: 'share of tokens' } } },
+      plugins: { tooltip: { callbacks: { label: c => `${c.dataset.label}: ${c.parsed.y.toFixed(0)}%`, footer: items => `${fmtK(pw[items[0].dataIndex].tokens)} tokens that week` } } } }
+  });
+  legend($('lg-parts'), CLASSES.map(([k, label], i) => [S[i], `${label} · ${share(k) || '0%'} overall`]));
+  table($('t-parts'), ['week', 'tokens', ...CLASSES.map(c => c[0])],
+    pw.map(w => [w.week, fmtK(w.tokens), ...CLASSES.map(([k]) => pct(w.parts[k] || 0, w.tokens))]));
+})();
+</script>
+</body>
+</html>
