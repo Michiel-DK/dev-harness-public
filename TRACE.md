@@ -82,9 +82,13 @@ honest A this time: the previous 94 was 93 real points plus a dimension measurin
 ## 7. Grade — due 2026-11-11
 
 The prediction said the *digest* would print the low-70s line. It will not: the consumers were
-bumped before the first Monday run, so the digest prints about 95 against 94 with no flag. The
-mechanism was demonstrated live (95 → 71 → 95), and the digest-line form of the prediction was
-pre-empted by the bump rather than falsified. That note was written into the stub on 2026-10-28,
-before the grade, so the grader on 11-11 reads it as what happened rather than as an excuse.
+bumped before the first Monday run, so the digest prints about 95 against 94 with no flag. In
+the form it was written, the prediction is therefore **ungradeable**: the event it predicted was
+made impossible by the author's own action. What can be graded is narrower: the mechanism was
+demonstrated live (95 → 71 → 95) and the second clause, that the roster check and the build name
+the same seven consumers, held. That note was written into the stub on 2026-10-28, before the
+grade, so the grader on 11-11 sees the reframing dated before the date rather than after it.
+A reader is entitled to call that convenient; the tally on the main page counts ungradeable
+grades separately for exactly this reason.
 
 That grade, pass, partial or fail, will land in the prediction tally on the main page.

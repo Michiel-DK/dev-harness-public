@@ -127,7 +127,7 @@
       <rect class="n" x="740" y="188" width="208" height="58"/><text x="752" y="210">weekly digest line + this page</text><text class="t" x="752" y="228">counts only leave the writer;</text><text class="t" x="752" y="240">instrument changes are dated</text>
       <!-- ghost node: declared, not measured -->
       <rect class="g" x="558" y="262" width="150" height="40"/><text class="t" x="570" y="279">MCP surface — declared,</text><text class="t" x="570" y="293">not measured (drawn as such)</text>
-      <rect class="g" x="740" y="262" width="208" height="40"/><text class="t" x="752" y="279">post-merge reverts / fix-forwards —</text><text class="t" x="752" y="293">not tracked yet (next stub)</text>
+      <rect class="g" x="740" y="262" width="208" height="40"/><text class="t" x="752" y="279">post-merge reverts / fix-forwards —</text><text class="t" x="752" y="293">tracked since 2026-10-28, 90 days back</text>
       <text class="t" x="12" y="322">Arrows are data flow. A stage without a row kind is a stage this page cannot vouch for.</text>
     </svg></div>
   </section>
@@ -169,7 +169,7 @@
 
   <footer>
     <p><strong>Limits, stated.</strong> One developer, one harness, a few months of rows. The score measures structure, not outcomes; the outcome numbers stop at merge time. There is no control arm, so nothing here says what the numbers would be without the harness. Token history begins when transcript mining started; earlier sessions are gone.</p>
-    <p><strong>Definitions.</strong> Reverted after merge is a later PR carrying GitHub's revert stamp or a Revert title; a fix-forward candidate is a fix/ or hotfix/ PR within 14 days touching a file the credited merge touched, a weak link shown separately. Both are tracked from 2026-10-28; earlier weeks show 0 because nothing looked. A merge is a pull request merged in a repo the harness is mounted in. The build lane opens it and stops; the main loop checks CI and merges under the developer's token, so a week can hold a hundred, and "merged on red" means the loop merged although CI was not green. A credited merge is code-class with green CI at merge time. Sessions come from a roster of repos; token sessions come from every project directory including workflow worktrees, so the second count is larger. Reconstructed score points are plotted as the instrument scored them then, vacuous drift included; hover for the three-dimension number. Weeks with no rows are absent, not zero.</p>
+    <p><strong>Definitions.</strong> Reverted after merge is a later PR carrying GitHub's revert stamp or a Revert title; a fix-forward candidate is a fix/ or hotfix/ PR within 14 days touching a code file the credited merge touched, a weak link shown separately. The detector first ran on 2026-10-28 over the previous 90 days, so candidates appear from late July; earlier weeks show 0 because nothing looked. Review and refuter rows exist only for changes built through the lane, so a week can show credited merges with zero verdicts. A merge is a pull request merged in a repo the harness is mounted in. The build lane opens it and stops; the main loop checks CI and merges under the developer's token, so a week can hold a hundred, and "merged on red" means the loop merged although CI was not green. A credited merge is code-class with green CI at merge time, whoever merged it. Sessions come from a roster of repos that grew on 2026-10-28; token sessions come from every project directory including workflow worktrees, so the second count is larger. Reconstructed score points are plotted as the instrument scored them then, vacuous drift included; hover for the three-dimension number. Weeks with no rows are absent, not zero.</p>
     <p>Generated after the Monday digest by a writer in the private harness repo; the page reads <code>history.json</code> beside it and every number re-derives from that file. Badge endpoint: <code>badge.json</code>.</p>
   </footer>
 </main>
@@ -238,7 +238,7 @@
     tile('rejected / superseded', `${sum(last4, 'rejected')} / ${sum(last4, 'superseded')}`, `prev ${sum(prev4, 'rejected')} / ${sum(prev4, 'superseded')}`),
     tile('sessions abandoned', pct(sum(last4, 'abandoned'), sum(last4, 'sessions')), `edits but no PR · ${sum(last4, 'sessions')} sessions · prev ${pct(sum(prev4, 'abandoned'), sum(prev4, 'sessions'))}`),
     tile('refuter kill rate', kill(last4), `${sum(last4, 'refuted')} of ${sum(last4, 'verdicts')} verdicts refuted · prev ${kill(prev4)}`),
-    tile('reverted after merge', `${sum(last4, 'reverted')}`, `${sum(last4, 'reverted_credited')} were credited · fix-forward candidates ${sum(last4, 'fix_forward')} (weak link) · tracked since 2026-10-28`),
+    tile('reverted after merge', `${sum(last4, 'reverted')}`, `${sum(last4, 'reverted_credited')} were credited · fix-forward candidates ${sum(last4, 'fix_forward')} (weak link) · detector ran 2026-10-28 over 90 days back`),
   ].join('');
   const ow = complete.slice(-16);
   new Chart($('c-outcomes'), {

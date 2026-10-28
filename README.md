@@ -32,16 +32,18 @@ Loop 2 · the harness measuring itself (nightly + Monday)
 
 ## Outcomes — last 4 complete weeks vs the 4 before
 
-| | last 4 weeks | prior 4 |
-|---|---:|---:|
-| credited merges (code-class + green CI at merge time) | **186** of 197 merged | 76 of 96 |
-| CI green at merge | 97% | 100% |
-| merged on red CI | 6 | 0 |
-| rejected / superseded | 2 / 0 | 1 / 1 |
-| sessions abandoned (edits, no PR) | 47% of 240 | 13% of 30 |
-| refuter kill rate (verify gate) | 25% of 419 verdicts | 53% of 90 |
-| reverted after merge (of which credited) | 0 (0) | 0 (0) |
-| fix-forward candidates (weak link) | 2 | 9 |
+| | last 4 weeks | prior 4 | all weeks since live |
+|---|---:|---:|---:|
+| credited merges (code-class + green CI at merge time) | **186** of 197 merged | 76 of 96 | 491 of 887 |
+| CI green at merge | 97% | 100% | 94% |
+| merged on red CI | 6 | 0 | 50 |
+| rejected / superseded | 2 / 0 | 1 / 1 | 15 / 15 |
+| sessions abandoned (edits, no PR) | 47% of 240 | 13% of 30 | 36% of 402 |
+| refuter kill rate (verify gate) | 25% of 419 verdicts | 53% of 90 | 41% of 1206 |
+| reverted after merge (of which credited) | 0 (0) | 0 (0) | 0 (0) |
+| fix-forward candidates (weak link) | 2 | 9 | 21 |
+
+The two windows are not the same population: the session roster grew on 2026-10-28 (two busy repos added), which is most of the jump in sessions and in the abandoned share. The all-weeks column is there so a bad early week cannot hide behind a good recent one.
 
 **Predictions on the harness itself.** Every behavioural change ships with a pre-registered prediction and a review date. **51 grades so far over 40 stubs: 17 pass · 14 partial · 6 fail · 14 ungradeable.** 8 stubs are open with a date and 15 wait on an event, out of 70 stubs in all; the groups overlap, because a graded stub can be re-armed with a new date, and closed or parked stubs are in none.
 
@@ -83,13 +85,14 @@ scheduled loops and waits, the verify-gate agent, other agents (reviewers, explo
 
 ## Definitions
 
-- **merge** — a pull request merged on GitHub in one of the repos the harness is mounted in. Most are opened by an automated build lane, which is why a week can hold a hundred of them.
+- **merge** — a pull request merged on GitHub in one of the repos the harness is mounted in. The build lane opens it and stops; after CI the main loop or the developer merges it, always under the developer's own account, so the page cannot tell the two apart. Most are opened by the lane, which is why a week can hold a hundred.
 - **credited merge** — a merge that is code-class (by its changed paths, branch prefix as fallback) and whose CI was green at merge time. Merges older than the path data carry no class and count as neither code nor docs: 189 of 887 in this file.
-- **merge** — the build lane stops before merging. The main loop checks CI and then merges, under the developer's own token, typically within the hour; the developer confirms in the session rather than clicking. Every merge here was made that way, so "merged on red CI" means the loop merged although CI was not green.
+- **merged on red CI** — merged while CI was failing. Whoever merged it, the gate was not green.
+- **gate coverage** — review and refuter rows exist only for changes built through the lane workflow. A merge from a plain session has none, so a week can show credited merges with zero verdicts; "credited" does not require a verdict. That is a gap in the definition, kept visible rather than papered over.
 - **session** — one interactive or lane session in a roster of repos, mined from the CLI's own transcripts; **token session** — any session with token usage, mined from every project directory including workflow worktrees. The second set is larger; the two are not the same population.
-- **abandoned** — a session that edited files and opened no PR.
+- **abandoned** — a session that edited files and opened no PR. This includes sessions that committed directly without a PR (documentation goes direct in some repos), so it over-counts true abandonment.
 - **refuter verdict** — one lens of the verify gate on one change; *refuted* means it found a reason the change should not ship.
-- **reverted after merge** — a later merged PR carries GitHub's own revert stamp (`Reverts owner/repo#N`) or is titled `Revert "<title>"`; counted in the week of the revert. **Fix-forward candidate** — a later PR on a fix/ or hotfix/ branch, merged within 14 days, touching a file the credited merge touched: a weak link, shown separately and never added to reverted. Both start on 2026-10-28; earlier weeks show 0 because nothing looked, not because nothing happened.
+- **reverted after merge** — a later merged PR carries GitHub's own revert stamp (`Reverts owner/repo#N`) or is titled `Revert "<title>"`; counted in the week of the revert. **Fix-forward candidate** — a later PR on a fix/ or hotfix/ branch, merged within 14 days, touching a code file the credited merge touched; a weak link, shown separately and never added to reverted. The detector first ran on 2026-10-28 over the previous 90 days of merges, so candidates appear from 2026-07-30 on; weeks before that show 0 because nothing looked, not because nothing happened.
 - **reconstructed score point** — the scorecard re-run at a past commit in today's environment, plotted as the instrument scored it then, vacuous drift included; the note on each point gives the three-dimension number.
 - weeks with no rows at all are absent from the series rather than drawn as zero.
 
@@ -97,6 +100,8 @@ scheduled loops and waits, the verify-gate agent, other agents (reviewers, explo
 
 - One developer, one harness, a few months of rows. No control arm: nothing here says what the numbers would be without the harness.
 - The three linked repos are public snapshots of work built through the harness; most merges counted here happened in repos that stay private.
+- Before the harness went live, the same repos had 1609 merges over 25 weeks (2026-01-19 to 2026-07-13): 93% green at merge, 110 merged on red. No agents, no gate, partly different repos — not a control arm, shown so the cut at 2026-07-20 is visible rather than hidden.
+- The badge and the latest score point are the last published run. The number can move between runs (it did on 2026-10-28, see TRACE.md); the next Monday run publishes the new one.
 - The score measures structure, not outcomes. The outcome numbers stop at merge time.
 - Token history begins when transcript mining started; earlier sessions are gone.
 
@@ -113,4 +118,4 @@ scheduled loops and waits, the verify-gate agent, other agents (reviewers, explo
 | `FAILURES.md` | a refuter kill, a prediction that failed and fired its own kill clause, the nine-week vacuous score |
 
 Generated after the Monday digest by a writer that lives in the private harness repo, so its redaction tests cannot be checked from here.
-What can be checked: every number on this page re-derives from `history.json`, and no field in that file is anything but a date, a count or a sum.
+What can be checked: every number on this page re-derives from `history.json`. No field in that file carries a path, a repo name, a prompt or a transcript; the only prose is the note on each score point and the label on each instrument change.

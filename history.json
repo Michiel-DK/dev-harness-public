@@ -2,6 +2,16 @@
   "schema": 1,
   "generated": "2026-10-28",
   "since": "2026-07-20",
+  "baseline": {
+    "weeks": 25,
+    "first_week": "2026-01-19",
+    "last_week": "2026-07-13",
+    "merges": 1609,
+    "green": 1499,
+    "merged_on_red": 110,
+    "credited": 913,
+    "note": "merges in the same repos before the harness went live: no agents, no gate. Not a control arm."
+  },
   "redaction": "aggregates only — no repo names, stub text, paths, prompts or branches leave the writer",
   "weeks": [
     {
