@@ -25,6 +25,8 @@ console.log(`  merged on red CI       ${sum(last4, 'merged_on_red')}           |
 console.log(`  rejected / superseded  ${sum(last4, 'rejected')} / ${sum(last4, 'superseded')}        |  ${sum(prev4, 'rejected')} / ${sum(prev4, 'superseded')}`);
 console.log(`  sessions abandoned     ${pct(sum(last4, 'abandoned'), sum(last4, 'sessions'))} of ${sum(last4, 'sessions')}  |  ${pct(sum(prev4, 'abandoned'), sum(prev4, 'sessions'))} of ${sum(prev4, 'sessions')}`);
 console.log(`  refuter kill rate      ${pct(sum(last4, 'refuted'), sum(last4, 'verdicts'))} of ${sum(last4, 'verdicts')} |  ${pct(sum(prev4, 'refuted'), sum(prev4, 'verdicts'))} of ${sum(prev4, 'verdicts')}`);
+console.log(`  reverted (credited)    ${sum(last4, 'reverted')} (${sum(last4, 'reverted_credited')})       |  ${sum(prev4, 'reverted')} (${sum(prev4, 'reverted_credited')})`);
+console.log(`  fix-forward candidates ${sum(last4, 'fix_forward')}           |  ${sum(prev4, 'fix_forward')}`);
 console.log('');
 console.log('TOTALS');
 console.log(`  merges ${sum(H.weeks, 'merges')} · credited ${sum(H.weeks, 'credited')} · unclassified (no path data) ${sum(H.weeks, 'other')} · priced ${usd(sum(H.weeks, 'cost_usd'))} · tokens ${sum(H.weeks, 'tokens')}`);

@@ -84,6 +84,7 @@
   <header>
     <div>
       <h1>Harness Receipts</h1>
+      <p class="sub"><strong>Michiel De Koninck</strong> · <a href="https://github.com/Michiel-DK">GitHub</a> · built through this harness: <a href="https://github.com/Michiel-DK/agent-sandbox">agent-sandbox</a>, <a href="https://github.com/Michiel-DK/warehouse-rl">warehouse-rl</a>, <a href="https://github.com/Michiel-DK/rlvr-codegen">rlvr-codegen</a> · in words: <a href="TRACE.md">one change traced</a>, <a href="FAILURES.md">three failures</a>.</p>
       <p class="sub">A <em>harness</em> is the fixed set of steps an AI coding agent must pass before its code merges: plan, build, agent review, an adversarial check, CI, merge. This is the weekly scorecard of one such harness, run by one developer across their own projects. Every number is a count or a sum over rows the harness already writes. No prompts, repos or files are named. The score is a health check of the setup, not a grade of the work.</p>
       <div class="meta" id="meta">loading history.json …</div>
     </div>
@@ -168,7 +169,7 @@
 
   <footer>
     <p><strong>Limits, stated.</strong> One developer, one harness, a few months of rows. The score measures structure, not outcomes; the outcome numbers stop at merge time. There is no control arm, so nothing here says what the numbers would be without the harness. Token history begins when transcript mining started; earlier sessions are gone.</p>
-    <p><strong>Definitions.</strong> A merge is a pull request merged in a repo the harness is mounted in. The build lane opens it and stops; the main loop checks CI and merges under the developer's token, so a week can hold a hundred, and "merged on red" means the loop merged although CI was not green. A credited merge is code-class with green CI at merge time. Sessions come from a roster of repos; token sessions come from every project directory including workflow worktrees, so the second count is larger. Reconstructed score points are plotted as the instrument scored them then, vacuous drift included; hover for the three-dimension number. Weeks with no rows are absent, not zero.</p>
+    <p><strong>Definitions.</strong> Reverted after merge is a later PR carrying GitHub's revert stamp or a Revert title; a fix-forward candidate is a fix/ or hotfix/ PR within 14 days touching a file the credited merge touched, a weak link shown separately. Both are tracked from 2026-10-28; earlier weeks show 0 because nothing looked. A merge is a pull request merged in a repo the harness is mounted in. The build lane opens it and stops; the main loop checks CI and merges under the developer's token, so a week can hold a hundred, and "merged on red" means the loop merged although CI was not green. A credited merge is code-class with green CI at merge time. Sessions come from a roster of repos; token sessions come from every project directory including workflow worktrees, so the second count is larger. Reconstructed score points are plotted as the instrument scored them then, vacuous drift included; hover for the three-dimension number. Weeks with no rows are absent, not zero.</p>
     <p>Generated after the Monday digest by a writer in the private harness repo; the page reads <code>history.json</code> beside it and every number re-derives from that file. Badge endpoint: <code>badge.json</code>.</p>
   </footer>
 </main>
@@ -237,6 +238,7 @@
     tile('rejected / superseded', `${sum(last4, 'rejected')} / ${sum(last4, 'superseded')}`, `prev ${sum(prev4, 'rejected')} / ${sum(prev4, 'superseded')}`),
     tile('sessions abandoned', pct(sum(last4, 'abandoned'), sum(last4, 'sessions')), `edits but no PR · ${sum(last4, 'sessions')} sessions · prev ${pct(sum(prev4, 'abandoned'), sum(prev4, 'sessions'))}`),
     tile('refuter kill rate', kill(last4), `${sum(last4, 'refuted')} of ${sum(last4, 'verdicts')} verdicts refuted · prev ${kill(prev4)}`),
+    tile('reverted after merge', `${sum(last4, 'reverted')}`, `${sum(last4, 'reverted_credited')} were credited · fix-forward candidates ${sum(last4, 'fix_forward')} (weak link) · tracked since 2026-10-28`),
   ].join('');
   const ow = complete.slice(-16);
   new Chart($('c-outcomes'), {
