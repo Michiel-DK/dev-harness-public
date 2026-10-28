@@ -84,7 +84,7 @@
   <header>
     <div>
       <h1>Harness Receipts</h1>
-      <p class="sub">One developer's AI-dev harness, measured by itself every Monday. Every number here is a count or a sum over rows the harness already writes, regenerated from the repo. No prompts, repos or files are named.</p>
+      <p class="sub">A <em>harness</em> is the fixed set of steps an AI coding agent must pass before its code merges: plan, build, agent review, an adversarial check, CI, merge. This is the weekly scorecard of one such harness, run by one developer across their own projects. Every number is a count or a sum over rows the harness already writes. No prompts, repos or files are named. The score is a health check of the setup, not a grade of the work.</p>
       <div class="meta" id="meta">loading history.json …</div>
     </div>
     <div class="badge" id="badge"><span class="l">harness</span><span class="m" style="background:#9f9f9f">…</span></div>
@@ -108,7 +108,7 @@
       <line x1="526" y1="63" x2="556" y2="63" marker-end="url(#ah)"/>
       <a href="#parts"><rect class="n" x="558" y="34" width="150" height="58"/><text x="570" y="56">verify</text><text class="t" x="570" y="74">refuter verdicts:</text><text class="t" x="570" y="86">refuted / held, confidence</text><text class="p" x="660" y="56" id="p-verify"></text></a>
       <line x1="708" y1="63" x2="738" y2="63" marker-end="url(#ah)"/>
-      <a href="#outcomes"><rect class="n" x="740" y="34" width="208" height="58"/><text x="752" y="56">CI → merge (by hand)</text><text class="t" x="752" y="74">merge rows: merged / rejected,</text><text class="t" x="752" y="86">CI colour, code vs docs</text></a>
+      <a href="#outcomes"><rect class="n" x="740" y="34" width="208" height="58"/><text x="752" y="56">CI → merge (operator account)</text><text class="t" x="752" y="74">merge rows: merged / rejected,</text><text class="t" x="752" y="86">CI colour, code vs docs</text></a>
       <!-- loop back: merge → stub grade -->
       <path d="M844 92 V118 H87 V92" marker-end="url(#ah)"/>
       <text class="t" x="400" y="132" text-anchor="middle">the prediction binds on what shipped · graded on its date · the grade is struck into the stub</text>
@@ -143,7 +143,7 @@
 
   <section id="score">
     <h2><a href="#score">Harness score over time</a></h2>
-    <p class="sub">A weighted roll-up over four structural checks. Hollow points were reconstructed by re-running the scorecard at past commits and are plotted as the instrument scored them then, including a drift dimension that scored 100 on zero consumers; filled points are live Monday runs. Dashed lines mark changes to the measuring stick itself: a drop at a mark is a correction, not decay.</p>
+    <p class="sub">A weighted roll-up over four structural checks. Hollow points were reconstructed by re-running the scorecard at past commits and are plotted as the instrument scored them then, including a drift dimension that scored 100 on zero consumers; filled points are live runs, Mondays from now on. Dashed lines mark changes to the measuring stick itself: a drop at a mark is a correction, not decay.</p>
     <div class="chart"><canvas id="c-score" aria-label="Harness score per run with instrument-change markers" role="img"></canvas></div>
     <div class="legend" id="lg-score"></div>
     <details><summary>Table</summary><div id="t-score"></div></details>
@@ -255,7 +255,7 @@
     ow.map(w => [w.week, w.merges, w.credited, w.green, w.merged_on_red, w.rejected, w.sessions, w.abandoned, w.verdicts, w.refuted]));
   if (H.predictions) {
     const p = H.predictions;
-    $('pred').innerHTML = `<strong>Predictions on the harness itself:</strong> every behavioural change carries a pre-registered prediction with a date. Graded so far: <strong>${p.pass}</strong> pass · <strong>${p.partial}</strong> partial · <strong>${p.fail}</strong> fail · <strong>${p.ungradeable}</strong> ungradeable (${p.graded} of ${p.stubs} stubs; ${p.open_dated} dated and open, ${p.event_gated} event-gated).`;
+    $('pred').innerHTML = `<strong>Predictions on the harness itself:</strong> every behavioural change carries a pre-registered prediction with a date. <strong>${p.graded}</strong> grades over ${p.graded_stubs ?? '?'} stubs: <strong>${p.pass}</strong> pass · <strong>${p.partial}</strong> partial · <strong>${p.fail}</strong> fail · <strong>${p.ungradeable}</strong> ungradeable. ${p.open_dated} stubs open with a date, ${p.event_gated} waiting on an event, ${p.stubs} in all; the groups overlap (a graded stub can be re-armed) and closed stubs are in none.`;
   }
 
   // ── score over time ───────────────────────────────────────────────────────
