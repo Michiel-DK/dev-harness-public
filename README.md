@@ -9,14 +9,14 @@ It shows what got shipped, what it cost, how often the gate caught something, an
 Every number is a count or a sum over rows the harness already writes. **No repo names, file paths, prompts or
 transcripts appear here, by construction.** The score below is a health check of the setup, not a grade of the work.
 
-Generated 2026-10-28 · 40 weeks of rows · 2,496 merges · 3.14B tokens · $3,210 priced.
+Generated 2026-10-28 · 15 weeks since the harness went live (2026-07-20) · 887 merges · 3.14B tokens · $3,210 priced.
 The interactive page (`index.html`) carries the same data with hover and table views. `node verify.js` re-derives every number below from `history.json`.
 
 ## What runs, and what each stage writes down
 
 ```
 Loop 1 · one change
-  stub + prediction ─► build ─► review ─► verify ─► CI ─► merge
+  stub + prediction ─► build ─► review ─► verify ─► CI ─► merge (session, operator token)
   (review-by date)    session   criterion  refuter    merge rows: merged / rejected,
                       rows      reviews    verdicts   CI colour, code vs docs
         ▲                                                   │
@@ -79,8 +79,8 @@ scheduled loops and waits, the verify-gate agent, other agents (reviewers, explo
 ## Definitions
 
 - **merge** — a pull request merged on GitHub in one of the repos the harness is mounted in. Most are opened by an automated build lane, which is why a week can hold a hundred of them.
-- **credited merge** — a merge that is code-class (by its changed paths, branch prefix as fallback) and whose CI was green at merge time. Merges older than the path data carry no class and count as neither code nor docs: 470 of 2496 in this file.
-- **merge** — every pull request here was opened and merged under the one developer's account, by the developer or by a lane running as them; the page cannot tell the two apart.
+- **credited merge** — a merge that is code-class (by its changed paths, branch prefix as fallback) and whose CI was green at merge time. Merges older than the path data carry no class and count as neither code nor docs: 189 of 887 in this file.
+- **merge** — the build lane stops before merging. The main loop checks CI and then merges, under the developer's own token, typically within the hour; the developer confirms in the session rather than clicking. Every merge here was made that way, so "merged on red CI" means the loop merged although CI was not green.
 - **session** — one interactive or lane session in a roster of repos, mined from the CLI's own transcripts; **token session** — any session with token usage, mined from every project directory including workflow worktrees. The second set is larger; the two are not the same population.
 - **abandoned** — a session that edited files and opened no PR.
 - **refuter verdict** — one lens of the verify gate on one change; *refuted* means it found a reason the change should not ship.

@@ -108,7 +108,7 @@
       <line x1="526" y1="63" x2="556" y2="63" marker-end="url(#ah)"/>
       <a href="#parts"><rect class="n" x="558" y="34" width="150" height="58"/><text x="570" y="56">verify</text><text class="t" x="570" y="74">refuter verdicts:</text><text class="t" x="570" y="86">refuted / held, confidence</text><text class="p" x="660" y="56" id="p-verify"></text></a>
       <line x1="708" y1="63" x2="738" y2="63" marker-end="url(#ah)"/>
-      <a href="#outcomes"><rect class="n" x="740" y="34" width="208" height="58"/><text x="752" y="56">CI → merge (operator account)</text><text class="t" x="752" y="74">merge rows: merged / rejected,</text><text class="t" x="752" y="86">CI colour, code vs docs</text></a>
+      <a href="#outcomes"><rect class="n" x="740" y="34" width="208" height="58"/><text x="752" y="56">CI → merge (session, operator token)</text><text class="t" x="752" y="74">merge rows: merged / rejected,</text><text class="t" x="752" y="86">CI colour, code vs docs</text></a>
       <!-- loop back: merge → stub grade -->
       <path d="M844 92 V118 H87 V92" marker-end="url(#ah)"/>
       <text class="t" x="400" y="132" text-anchor="middle">the prediction binds on what shipped · graded on its date · the grade is struck into the stub</text>
@@ -168,7 +168,7 @@
 
   <footer>
     <p><strong>Limits, stated.</strong> One developer, one harness, a few months of rows. The score measures structure, not outcomes; the outcome numbers stop at merge time. There is no control arm, so nothing here says what the numbers would be without the harness. Token history begins when transcript mining started; earlier sessions are gone.</p>
-    <p><strong>Definitions.</strong> A merge is a pull request merged in a repo the harness is mounted in; most are opened by an automated build lane, so a week can hold a hundred. A credited merge is code-class with green CI at merge time. Sessions come from a roster of repos; token sessions come from every project directory including workflow worktrees, so the second count is larger. Reconstructed score points are plotted as the instrument scored them then, vacuous drift included; hover for the three-dimension number. Weeks with no rows are absent, not zero.</p>
+    <p><strong>Definitions.</strong> A merge is a pull request merged in a repo the harness is mounted in. The build lane opens it and stops; the main loop checks CI and merges under the developer's token, so a week can hold a hundred, and "merged on red" means the loop merged although CI was not green. A credited merge is code-class with green CI at merge time. Sessions come from a roster of repos; token sessions come from every project directory including workflow worktrees, so the second count is larger. Reconstructed score points are plotted as the instrument scored them then, vacuous drift included; hover for the three-dimension number. Weeks with no rows are absent, not zero.</p>
     <p>Generated after the Monday digest by a writer in the private harness repo; the page reads <code>history.json</code> beside it and every number re-derives from that file. Badge endpoint: <code>badge.json</code>.</p>
   </footer>
 </main>
@@ -188,7 +188,7 @@
 
   // ── header ────────────────────────────────────────────────────────────────
   const latest = H.scores.length ? H.scores[H.scores.length - 1] : null;
-  $('meta').textContent = `generated ${H.generated} · ${H.weeks.length} weeks of rows · ${H.totals.merges.toLocaleString('en-US')} merges · ${fmtK(H.totals.tokens)} tokens · ${usd(H.totals.cost_usd)} priced`;
+  $('meta').textContent = `generated ${H.generated} · ${H.weeks.length} weeks since the harness went live${H.since ? ' (' + H.since + ')' : ''} · ${H.totals.merges.toLocaleString('en-US')} merges · ${fmtK(H.totals.tokens)} tokens · ${usd(H.totals.cost_usd)} priced`;
   if (latest) {
     const m = $('badge').querySelector('.m');
     m.textContent = `${latest.score}/100 ${latest.grade}`;
