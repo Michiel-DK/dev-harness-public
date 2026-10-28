@@ -1522,9 +1522,9 @@
     "fail": 6,
     "ungradeable": 14,
     "graded": 51,
-    "open_dated": 6,
-    "event_gated": 15,
-    "stubs": 68
+    "open_dated": 7,
+    "event_gated": 16,
+    "stubs": 70
   },
   "totals": {
     "weeks": 40,

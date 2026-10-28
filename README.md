@@ -2,37 +2,91 @@
 
 ![harness score](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FMichiel-DK%2Fdev-harness-public%2Fmain%2Fbadge.json)
 
-A weekly, reproducible readout of one developer's AI-dev harness: what it shipped,
-what it cost, what it measured about itself, and where the measuring stick changed.
+A weekly, reproducible readout of one developer's AI-dev harness: what it shipped, what it cost, what it
+measured about itself, and where the measuring stick changed. Every number is a count or a sum over rows the
+harness already writes. **No repo names, file paths, prompts or transcripts appear here, by construction.**
 
-**[Open the page](https://michiel-dk.github.io/dev-harness-public/)** · or serve this
-folder locally (`python3 -m http.server`) and open `index.html`.
+Generated 2026-10-28 · 40 weeks of rows · 2,496 merges · 3.14B tokens · $3,210 priced.
+The interactive page (`index.html`, Chart.js) carries the same data with hover and table views; serve this folder over HTTP to open it.
 
-## What is in here
+## Outcomes — last 4 complete weeks vs the 4 before
 
-| File | What it is |
+| | last 4 weeks | prior 4 |
+|---|---:|---:|
+| credited merges (code-class + green CI at merge time) | **186** of 197 merged | 76 of 96 |
+| CI green at merge | 97% | 100% |
+| merged on red CI | 6 | 0 |
+| rejected / superseded | 2 / 0 | 1 / 1 |
+| sessions abandoned (edits, no PR) | 47% of 240 | 13% of 30 |
+| refuter kill rate (verify gate) | 25% of 419 verdicts | 53% of 90 |
+
+**Predictions on the harness itself.** Every behavioural change ships with a pre-registered prediction and a review date. Graded so far: **17 pass · 14 partial · 6 fail · 14 ungradeable** (51 of 70 stubs; 7 dated and open, 16 event-gated).
+
+## Harness score over time
+
+![score over time](score.svg)
+
+A weighted roll-up over four structural checks (skills validate, routing fires, consumers sit at the pin, self-tests pass).
+Hollow points were reconstructed by re-running the scorecard at past commits; filled points are live Monday runs.
+Dashed marks are changes to the instrument — a drop at a mark is a correction, not decay:
+
+- ▲1 2026-08-25 — scorecard first wired (4 of 5 dimensions; drift scored on zero consumers)
+- ▲2 2026-10-20 — skill validator fixed (#82) — skillsValid 66 → 91
+- ▲3 2026-10-28 — drift measured over real consumers (S-166, #85) — 100-on-nothing becomes 0-of-7
+
+Latest 2026-10-28: **71/100 B** — skillsValid 91 (w25) · triggersRouting 98 (w25) · reposInSync 0 (w20) · selfTested 88 (w15) · mcpSurface not measured (w15). Inactive dimensions are renormalised out and shown as "not measured", never scored full.
+
+## Cost per credited merge
+
+![cost per credited merge](cost.svg)
+
+| week of | cost | credited | $ / credited | sessions priced | tokens | cache read |
+|---|---:|---:|---:|---:|---:|---:|
+| 2026-09-21 | $266 | 18 | $15 | 4 / 4 | 307.5M | 96% |
+| 2026-09-28 | $361 | 13 | $28 | 7 / 7 | 326.1M | 95% |
+| 2026-10-05 | $484 | 23 | $21 | 28 / 28 | 358.5M | 96% |
+| 2026-10-12 | $1,076 | 48 | $22 | 75 / 75 | 973.7M | 97% |
+| 2026-10-19 | $946 | 102 | $9 | 311 / 311 | 1.05B | 96% |
+
+5 weeks with token rows: $3,133 over 204 credited merges, **$15 each**. Dollars come from the CLI's own cost line; sessions without one are counted but not priced.
+
+## Tokens per harness part
+
+![tokens per part](parts.svg)
+
+A turn is charged to its first tool call, and most tokens are cache reads, so this is the cost of *carrying context*
+through a stage, not of generating output there. Classes are fixed: shell turns, edit/write turns, read/search/fetch,
+scheduled loops and waits, the verify-gate agent, other agents (reviewers, explorers), workflow scripts + skills, text-only turns.
+
+## What runs, and what each stage writes down
+
+```
+Loop 1 · one change
+  stub + prediction ─► build ─► review ─► verify ─► CI ─► merge (by hand)
+  (review-by date)    session   criterion  refuter    merge rows: merged / rejected,
+                      rows      reviews    verdicts   CI colour, code vs docs
+        ▲                                                   │
+        └──── the prediction binds on what shipped; graded on its date ◄──┘
+
+Loop 2 · the harness measuring itself (nightly + Monday)
+  transcripts + GitHub ─► 4 miners ─► run ledger ─► scorecard ─► digest line + this page
+  declared, not measured: MCP surface · not tracked yet: post-merge reverts / fix-forwards
+```
+
+## Limits, stated
+
+- One developer, one harness, a few months of rows. No control arm: nothing here says what the numbers would be without the harness.
+- The score measures structure, not outcomes. The outcome numbers stop at merge time.
+- Token history begins when transcript mining started; earlier sessions are gone.
+
+## Files
+
+| file | what |
 |---|---|
-| `index.html` | the page: a flowchart of the two loops, outcomes, score over time, cost per credited merge, tokens per harness part |
-| `history.json` | every number on the page — counts and sums per ISO week, score points per run, dated instrument changes, the prediction grade tally |
-| `badge.json` | a shields.io endpoint with the latest grade |
+| `history.json` | every number here — counts and sums per ISO week, score points per run, dated instrument changes, the prediction tally |
+| `index.html` | the interactive page (hover, table views, dark mode) |
+| `badge.json` | shields.io endpoint with the latest grade |
+| `score.svg`, `cost.svg`, `parts.svg` | the charts above, rendered by the writer — no JS |
 
-## What is deliberately not in here
-
-Repo names, file paths, prompts, transcripts, stub text, branch names. The writer that
-produces `history.json` copies no string field out of any row; its test suite greps the
-output for a fake consumer name and a home path and fails if either appears, and the
-publish step re-checks every file against every consumer name before pushing.
-
-## How to read it honestly
-
-- A **credited** merge is code-class with green CI *at merge time*. Nothing here knows
-  what happened after the merge.
-- The **score** measures structure (skills validate, routing fires, consumers are at the
-  pin, self-tests pass), not outcomes. Hollow points were reconstructed by re-running the
-  scorecard at past commits. Dashed marks are changes to the instrument; a drop at a mark
-  is a correction, not decay.
-- **Tokens per part** charges a whole turn to its first tool call, and most tokens are
-  cache reads. It is the cost of carrying context through a stage.
-- One developer, one harness, no control arm.
-
-Generated by the harness's own `scoreboard_writer.js` after the Monday digest.
+Generated by the harness's own `scoreboard_writer.js` after the Monday digest. The writer copies no string field out of any row; its
+tests grep the output for a fake consumer name and a home path, and the publish step re-checks every file against every consumer name.
