@@ -41,7 +41,7 @@ Loop 2 · the harness measuring itself (nightly + Monday)
 | sessions abandoned (edits, no PR) | 47% of 240 | 13% of 30 |
 | refuter kill rate (verify gate) | 25% of 419 verdicts | 53% of 90 |
 | reverted after merge (of which credited) | 0 (0) | 0 (0) |
-| fix-forward candidates (weak link) | 0 | 0 |
+| fix-forward candidates (weak link) | 2 | 9 |
 
 **Predictions on the harness itself.** Every behavioural change ships with a pre-registered prediction and a review date. **51 grades so far over 40 stubs: 17 pass · 14 partial · 6 fail · 14 ungradeable.** 8 stubs are open with a date and 15 wait on an event, out of 70 stubs in all; the groups overlap, because a graded stub can be re-armed with a new date, and closed or parked stubs are in none.
 
