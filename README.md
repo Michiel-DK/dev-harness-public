@@ -2,7 +2,7 @@
 
 ![harness score](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FMichiel-DK%2Fdev-harness-public%2Fmain%2Fbadge.json)
 
-**Michiel De Koninck** — I run this harness across my own projects. [GitHub profile](https://github.com/Michiel-DK) · built through it: [agent-sandbox](https://github.com/Michiel-DK/agent-sandbox), [warehouse-rl](https://github.com/Michiel-DK/warehouse-rl), [rlvr-codegen](https://github.com/Michiel-DK/rlvr-codegen) · in words: [one change traced end to end](TRACE.md), [three things that went wrong](FAILURES.md).
+**Michiel De Koninck** — I run this harness across my own projects. [GitHub profile](https://github.com/Michiel-DK) · built through it: [wilco](https://github.com/Michiel-DK/wilco), [warehouse-rl](https://github.com/Michiel-DK/warehouse-rl), [rlvr-codegen](https://github.com/Michiel-DK/rlvr-codegen) · in words: [one change traced end to end](TRACE.md), [three things that went wrong](FAILURES.md).
 
 **In plain words.** A *harness* is the fixed set of steps an AI coding agent has to go through before its code is merged:
 plan, build, get reviewed by other agents, get attacked by an agent whose only job is to find a reason not to ship, pass CI,
