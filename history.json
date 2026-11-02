@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated": "2026-10-28",
+  "generated": "2026-11-02",
   "since": "2026-07-20",
   "baseline": {
     "weeks": 25,
@@ -16,13 +16,13 @@
   "weeks": [
     {
       "week": "2026-07-20",
-      "merges": 164,
-      "credited": 80,
-      "green": 137,
+      "merges": 165,
+      "credited": 81,
+      "green": 138,
       "rejected": 0,
       "superseded": 0,
       "merged_on_red": 27,
-      "code": 90,
+      "code": 91,
       "docs": 23,
       "other": 51,
       "reverted": 0,
@@ -168,13 +168,13 @@
     },
     {
       "week": "2026-08-17",
-      "merges": 39,
-      "credited": 11,
-      "green": 39,
-      "rejected": 0,
+      "merges": 42,
+      "credited": 14,
+      "green": 42,
+      "rejected": 2,
       "superseded": 0,
       "merged_on_red": 0,
-      "code": 11,
+      "code": 14,
       "docs": 6,
       "other": 22,
       "reverted": 0,
@@ -548,40 +548,40 @@
     },
     {
       "week": "2026-10-26",
-      "merges": 11,
-      "credited": 11,
-      "green": 11,
-      "rejected": 0,
-      "superseded": 0,
-      "merged_on_red": 0,
-      "code": 11,
-      "docs": 0,
+      "merges": 136,
+      "credited": 112,
+      "green": 133,
+      "rejected": 2,
+      "superseded": 1,
+      "merged_on_red": 3,
+      "code": 114,
+      "docs": 22,
       "other": 0,
       "reverted": 0,
       "reverted_credited": 0,
-      "fix_forward": 0,
-      "sessions": 8,
-      "pr_opened": 4,
-      "abandoned": 1,
-      "tool_errors": 56,
-      "verdicts": 29,
-      "refuted": 5,
-      "reviews": 11,
-      "sound": 5,
-      "token_sessions": 65,
-      "tokens": 129374858,
-      "cache_read": 125557572,
-      "cost_usd": 77.29,
-      "costed": 65,
+      "fix_forward": 2,
+      "sessions": 39,
+      "pr_opened": 18,
+      "abandoned": 7,
+      "tool_errors": 142,
+      "verdicts": 214,
+      "refuted": 55,
+      "reviews": 105,
+      "sound": 42,
+      "token_sessions": 145,
+      "tokens": 1105143269,
+      "cache_read": 1069757922,
+      "cost_usd": 1003.78,
+      "costed": 145,
       "parts": {
-        "shell": 39306168,
-        "edits": 27616706,
-        "reads": 9095233,
-        "loops": 6861926,
-        "verify": 33264314,
-        "agents": 1783882,
-        "workflow_skills": 505125,
-        "text": 10941504
+        "shell": 630732190,
+        "edits": 46733610,
+        "reads": 48888041,
+        "loops": 8361711,
+        "verify": 40959836,
+        "agents": 125780106,
+        "workflow_skills": 18001066,
+        "text": 185686709
       }
     }
   ],
@@ -724,6 +724,40 @@
       },
       "consumers_checked": 7,
       "consumers_drifting": 7
+    },
+    {
+      "date": "2026-11-02",
+      "score": 94,
+      "grade": "A",
+      "dims": {
+        "skillsValid": {
+          "weight": 25,
+          "active": true,
+          "score": 91
+        },
+        "triggersRouting": {
+          "weight": 25,
+          "active": true,
+          "score": 98
+        },
+        "reposInSync": {
+          "weight": 20,
+          "active": true,
+          "score": 100
+        },
+        "selfTested": {
+          "weight": 15,
+          "active": true,
+          "score": 87
+        },
+        "mcpSurface": {
+          "weight": 15,
+          "active": false,
+          "score": null
+        }
+      },
+      "consumers_checked": 9,
+      "consumers_drifting": 0
     }
   ],
   "instrument_changes": [
@@ -747,15 +781,15 @@
     "ungradeable": 14,
     "graded": 51,
     "graded_stubs": 40,
-    "open_dated": 8,
-    "event_gated": 15,
-    "stubs": 70
+    "open_dated": 9,
+    "event_gated": 16,
+    "stubs": 72
   },
   "totals": {
     "weeks": 15,
-    "merges": 887,
-    "credited": 491,
-    "cost_usd": 3210.25,
-    "tokens": 3141973414
+    "merges": 1016,
+    "credited": 596,
+    "cost_usd": 4136.74,
+    "tokens": 4117741825
   }
 }
