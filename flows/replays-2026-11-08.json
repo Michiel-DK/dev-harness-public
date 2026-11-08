@@ -2,15 +2,26 @@
   "replayed": "2026-11-08",
   "source": {
     "repo": "roger3000_automations (private)",
-    "sha": "fcba29d"
+    "sha": "e23df9b"
   },
   "totals": {
-    "flows": 12,
-    "sentences": 200,
-    "plain_figures": 9,
+    "flows": 15,
+    "sentences": 217,
+    "plain_figures": 10,
     "flows_failed": 0
   },
   "demos": [
+    {
+      "slug": "accounting-missing-documents",
+      "name": "Missing documents chased before the VAT deadline",
+      "class": "C",
+      "model_step": true,
+      "cases": 20,
+      "pass": 3,
+      "of": 3,
+      "pass_line": "PASS 3/3",
+      "replayed": "2026-11-08"
+    },
     {
       "slug": "accounting-monthly-report",
       "name": "Monthly client report",
@@ -100,6 +111,17 @@
       "replayed": "2026-11-08"
     },
     {
+      "slug": "real-estate-viewing-feedback",
+      "name": "Viewing feedback → seller update",
+      "class": "C",
+      "model_step": true,
+      "cases": 21,
+      "pass": 7,
+      "of": 8,
+      "pass_line": "PASS 7/8",
+      "replayed": "2026-11-08"
+    },
+    {
       "slug": "recruitment-monthly-report",
       "name": "Monthly client report",
       "class": "B",
@@ -108,6 +130,17 @@
       "pass": 27,
       "of": 27,
       "pass_line": "PASS 27/27",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "recruitment-sponsored-spend",
+      "name": "Sponsored-job spend against matches",
+      "class": "C",
+      "model_step": true,
+      "cases": 23,
+      "pass": 6,
+      "of": 6,
+      "pass_line": "PASS 6/6",
       "replayed": "2026-11-08"
     },
     {
