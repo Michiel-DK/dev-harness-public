@@ -1,0 +1,147 @@
+{
+  "replayed": "2026-11-08",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "fcba29d"
+  },
+  "totals": {
+    "flows": 12,
+    "sentences": 200,
+    "plain_figures": 9,
+    "flows_failed": 0
+  },
+  "demos": [
+    {
+      "slug": "accounting-monthly-report",
+      "name": "Monthly client report",
+      "class": "B",
+      "model_step": true,
+      "cases": 14,
+      "pass": 27,
+      "of": 30,
+      "pass_line": "PASS 27/30",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "ai-draft-review-publish",
+      "name": "AI draft → review → publish",
+      "class": "B",
+      "model_step": true,
+      "cases": 19,
+      "pass": 29,
+      "of": 30,
+      "pass_line": "PASS 29/30",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "data-health-check",
+      "name": "Data health check",
+      "class": "A",
+      "model_step": true,
+      "cases": 18,
+      "pass": 6,
+      "of": 6,
+      "pass_line": "PASS 6/6",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "ecommerce-campaign-stock-check",
+      "name": "Campaign-ready stock check",
+      "class": "C",
+      "model_step": true,
+      "cases": 14,
+      "pass": 2,
+      "of": 2,
+      "pass_line": "PASS 2/2",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "ecommerce-monthly-report",
+      "name": "Monthly client report",
+      "class": "B",
+      "model_step": true,
+      "cases": 12,
+      "pass": 19,
+      "of": 19,
+      "pass_line": "PASS 19/19",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "form-crm-alert",
+      "name": "Form → CRM → alert",
+      "class": "A",
+      "model_step": false,
+      "cases": 21,
+      "pass": 15,
+      "of": 15,
+      "pass_line": "PASS 15/15",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "posts-from-sheet",
+      "name": "Posts from a sheet, with approval",
+      "class": "A",
+      "model_step": false,
+      "cases": 26,
+      "pass": 17,
+      "of": 19,
+      "pass_line": "PASS 17/19",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "real-estate-monthly-report",
+      "name": "Monthly client report",
+      "class": "B",
+      "model_step": true,
+      "cases": 18,
+      "pass": 27,
+      "of": 30,
+      "pass_line": "PASS 27/30",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "recruitment-monthly-report",
+      "name": "Monthly client report",
+      "class": "B",
+      "model_step": true,
+      "cases": 19,
+      "pass": 27,
+      "of": 27,
+      "pass_line": "PASS 27/27",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "response-time-alert",
+      "name": "Response-time alert",
+      "class": "A",
+      "model_step": false,
+      "cases": 19,
+      "pass": 11,
+      "of": 11,
+      "pass_line": "PASS 11/11",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "spend-anomaly-alerts",
+      "name": "Spend and anomaly alerts",
+      "class": "A",
+      "model_step": true,
+      "cases": 18,
+      "pass": 8,
+      "of": 8,
+      "pass_line": "PASS 8/8",
+      "replayed": "2026-11-08"
+    },
+    {
+      "slug": "two-tools-in-sync",
+      "name": "Two tools kept in sync",
+      "class": "A",
+      "model_step": true,
+      "cases": 20,
+      "pass": 3,
+      "of": 3,
+      "pass_line": "PASS 3/3",
+      "replayed": "2026-11-08"
+    }
+  ]
+}
