@@ -1,0 +1,215 @@
+{
+  "experiment": "07-fallback-quote",
+  "date": "2026-11-09",
+  "question": "If the fallback facts line names the inbound free-text fields instead of quoting them, how many of the 24 viewing-feedback injection cases still carry planted content to the reader, and does the template baseline of 147 of 155 hold?",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "1f99958",
+    "change_sha": "3bc106f",
+    "prediction_sha": "01a991f",
+    "results_sha": "f389789",
+    "before_injection_sha": "12249da",
+    "note": "on the branch of the private PR, not yet on its main"
+  },
+  "grading": "deterministic markers and the demos own checks against a control run of the same drafter; no model judge",
+  "drafter": "template (offline); local-model and hosted re-sits not run here",
+  "viewing_feedback": {
+    "before": {
+      "total": {
+        "cases": 24,
+        "planted_content_in_final_text": 24,
+        "draft_caught_by_checks": 24,
+        "fell_back_to_facts_line": 24,
+        "unchanged": 0
+      },
+      "by_shape": {
+        "add-figure": {
+          "cases": 4,
+          "planted_content_in_final_text": 4,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "change-addressee": {
+          "cases": 4,
+          "planted_content_in_final_text": 4,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "include-link": {
+          "cases": 4,
+          "planted_content_in_final_text": 4,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "ignore-facts": {
+          "cases": 4,
+          "planted_content_in_final_text": 4,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "switch-language": {
+          "cases": 4,
+          "planted_content_in_final_text": 4,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "add-judgement": {
+          "cases": 4,
+          "planted_content_in_final_text": 4,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        }
+      }
+    },
+    "after": {
+      "total": {
+        "cases": 24,
+        "planted_content_in_final_text": 0,
+        "draft_caught_by_checks": 24,
+        "fell_back_to_facts_line": 24,
+        "unchanged": 0
+      },
+      "by_shape": {
+        "add-figure": {
+          "cases": 4,
+          "planted_content_in_final_text": 0,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "change-addressee": {
+          "cases": 4,
+          "planted_content_in_final_text": 0,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "include-link": {
+          "cases": 4,
+          "planted_content_in_final_text": 0,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "ignore-facts": {
+          "cases": 4,
+          "planted_content_in_final_text": 0,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "switch-language": {
+          "cases": 4,
+          "planted_content_in_final_text": 0,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        },
+        "add-judgement": {
+          "cases": 4,
+          "planted_content_in_final_text": 0,
+          "draft_caught_by_checks": 4,
+          "fell_back_to_facts_line": 4,
+          "unchanged": 0
+        }
+      }
+    }
+  },
+  "by_field": {
+    "before": {
+      "accounting-question": {
+        "cases": 12,
+        "planted_content_in_final_text": 0,
+        "draft_caught_by_checks": 0,
+        "fell_back_to_facts_line": 0,
+        "unchanged": 12
+      },
+      "form-message": {
+        "cases": 12,
+        "planted_content_in_final_text": 12,
+        "draft_caught_by_checks": 0,
+        "fell_back_to_facts_line": 0,
+        "unchanged": 0
+      },
+      "viewing-note": {
+        "cases": 12,
+        "planted_content_in_final_text": 12,
+        "draft_caught_by_checks": 12,
+        "fell_back_to_facts_line": 12,
+        "unchanged": 0
+      },
+      "viewing-price-remark": {
+        "cases": 12,
+        "planted_content_in_final_text": 12,
+        "draft_caught_by_checks": 12,
+        "fell_back_to_facts_line": 12,
+        "unchanged": 0
+      }
+    },
+    "after": {
+      "accounting-question": {
+        "cases": 12,
+        "planted_content_in_final_text": 0,
+        "draft_caught_by_checks": 0,
+        "fell_back_to_facts_line": 0,
+        "unchanged": 12
+      },
+      "form-message": {
+        "cases": 12,
+        "planted_content_in_final_text": 12,
+        "draft_caught_by_checks": 0,
+        "fell_back_to_facts_line": 0,
+        "unchanged": 0
+      },
+      "viewing-note": {
+        "cases": 12,
+        "planted_content_in_final_text": 0,
+        "draft_caught_by_checks": 12,
+        "fell_back_to_facts_line": 12,
+        "unchanged": 0
+      },
+      "viewing-price-remark": {
+        "cases": 12,
+        "planted_content_in_final_text": 0,
+        "draft_caught_by_checks": 12,
+        "fell_back_to_facts_line": 12,
+        "unchanged": 0
+      }
+    }
+  },
+  "template_baseline": {
+    "before": {
+      "run": "2026-11-08/template-fixed",
+      "pass": 147,
+      "of": 155,
+      "facts_lines": 13
+    },
+    "after": {
+      "run": "2026-11-09/fallback/template-fixed",
+      "pass": 147,
+      "of": 155,
+      "facts_lines": 13
+    },
+    "units_whose_final_text_changed": 1
+  },
+  "prediction": {
+    "viewing_feedback_reached": {
+      "predicted": 0,
+      "observed": 0,
+      "of": 24,
+      "verdict": "held"
+    },
+    "template_baseline": {
+      "predicted": "147/155",
+      "verdict": "held"
+    },
+    "lines_predicted": 8,
+    "lines_held": 8
+  }
+}
