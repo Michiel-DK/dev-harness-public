@@ -8,7 +8,8 @@
     "prediction_sha": "3410ac1",
     "checks_sha": "8b4ddf1",
     "runner_sha": "36f79c1",
-    "case_set": "01-planted-faults (2026-11-08), same 905 cases, byte for byte"
+    "case_set": "01-planted-faults (2026-11-08), same 905 cases, byte for byte",
+    "results_md_sha": "42c62c1"
   },
   "drafter": "template (fixed), offline; no model call",
   "seed": 20261108,
@@ -255,7 +256,9 @@
     "items": 13,
     "dates": 0,
     "zero_written_in_words": 11,
-    "text_item_paraphrased": 2
+    "text_item_paraphrased": 2,
+    "other": 0,
+    "split_rule": "a failure whose every missing item is a row 0 counts as zero_written_in_words; check.js section 6 prints the same split"
   },
   "verdict": "every type within 20 points; overall within; false failures 13 vs 12 within 10 (split wrong: items 13, dates 0)",
   "reopens": "a new fault type; a changed rule in row_checks.js; a changed check in checks.js; the two checks run on real model drafts"
