@@ -1,0 +1,514 @@
+{
+  "experiment": "03-cheapest-model",
+  "date": "2026-11-09",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "3fc45e0"
+  },
+  "question": "Per flow, which is the cheapest model whose pass count reaches the template baseline on every pass, and what does the model step cost per 10,000 runs (one run = one sentence sent to the model, retry included)?",
+  "models": [
+    {
+      "tag": "gemma4-e2b-ctx16k",
+      "provider": "ollama",
+      "passes": 3,
+      "price": {
+        "local": true
+      }
+    },
+    {
+      "tag": "gemma4:e4b",
+      "provider": "ollama",
+      "passes": 3,
+      "price": {
+        "local": true
+      }
+    },
+    {
+      "tag": "claude-haiku-5-5",
+      "provider": "anthropic",
+      "passes": 3,
+      "price": {
+        "inputPerMTok": 0.1,
+        "outputPerMTok": 0.5,
+        "tier": "prompts up to 100,000 tokens"
+      }
+    },
+    {
+      "tag": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "passes": 3,
+      "price": {
+        "inputPerMTok": 2,
+        "outputPerMTok": 10
+      }
+    }
+  ],
+  "prices": {
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "read": "2026-11-09",
+    "basis": "standard rate: base input tokens and output tokens columns; no cache, batch or inference_geo multiplier; USD",
+    "local": "$0 marginal (own laptop GPU); energy is context, not a price"
+  },
+  "flows": {
+    "demo-accounting-missing-documents": {
+      "baseline": 3,
+      "of": 3,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 3,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "gemma4:e4b": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 3,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            0,
+            1,
+            0
+          ],
+          "stable_verdicts": 2,
+          "cost_per_10k_usd": 1.4111,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            2,
+            2,
+            3
+          ],
+          "stable_verdicts": 2,
+          "cost_per_10k_usd": 29.8711,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "none"
+    },
+    "demo-accounting-monthly-report": {
+      "baseline": 27,
+      "of": 30,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            27,
+            27,
+            27
+          ],
+          "stable_verdicts": 30,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": true
+        },
+        "gemma4:e4b": {
+          "passes": [
+            27,
+            27,
+            27
+          ],
+          "stable_verdicts": 30,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": true
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            27,
+            26,
+            26
+          ],
+          "stable_verdicts": 29,
+          "cost_per_10k_usd": 0.7909,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            26,
+            25,
+            24
+          ],
+          "stable_verdicts": 26,
+          "cost_per_10k_usd": 16.3736,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "gemma4-e2b-ctx16k"
+    },
+    "demo-ai-draft-review-publish": {
+      "baseline": 29,
+      "of": 30,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            26,
+            26,
+            26
+          ],
+          "stable_verdicts": 30,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "gemma4:e4b": {
+          "passes": [
+            29,
+            29,
+            29
+          ],
+          "stable_verdicts": 30,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": true
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            23,
+            24,
+            26
+          ],
+          "stable_verdicts": 23,
+          "cost_per_10k_usd": 0.9402,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            28,
+            28,
+            26
+          ],
+          "stable_verdicts": 24,
+          "cost_per_10k_usd": 19.1002,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "gemma4:e4b"
+    },
+    "demo-ecommerce-campaign-stock-check": {
+      "baseline": 2,
+      "of": 2,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            2,
+            2,
+            2
+          ],
+          "stable_verdicts": 2,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": true
+        },
+        "gemma4:e4b": {
+          "passes": [
+            1,
+            1,
+            1
+          ],
+          "stable_verdicts": 2,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 2,
+          "cost_per_10k_usd": 1.065,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            1,
+            1,
+            1
+          ],
+          "stable_verdicts": 2,
+          "cost_per_10k_usd": 23.4333,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "gemma4-e2b-ctx16k"
+    },
+    "demo-ecommerce-monthly-report": {
+      "baseline": 19,
+      "of": 19,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            3,
+            3,
+            3
+          ],
+          "stable_verdicts": 19,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "gemma4:e4b": {
+          "passes": [
+            3,
+            3,
+            3
+          ],
+          "stable_verdicts": 19,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            7,
+            6,
+            6
+          ],
+          "stable_verdicts": 13,
+          "cost_per_10k_usd": 0.6919,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            17,
+            19,
+            18
+          ],
+          "stable_verdicts": 16,
+          "cost_per_10k_usd": 15.6695,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "none"
+    },
+    "demo-real-estate-monthly-report": {
+      "baseline": 27,
+      "of": 30,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            17,
+            17,
+            17
+          ],
+          "stable_verdicts": 30,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "gemma4:e4b": {
+          "passes": [
+            25,
+            25,
+            25
+          ],
+          "stable_verdicts": 30,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            19,
+            20,
+            18
+          ],
+          "stable_verdicts": 28,
+          "cost_per_10k_usd": 0.8595,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            27,
+            26,
+            25
+          ],
+          "stable_verdicts": 27,
+          "cost_per_10k_usd": 17.861,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "none"
+    },
+    "demo-real-estate-viewing-feedback": {
+      "baseline": 7,
+      "of": 8,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 8,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "gemma4:e4b": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 8,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 8,
+          "cost_per_10k_usd": 1.4375,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 8,
+          "cost_per_10k_usd": 28.0967,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "none"
+    },
+    "demo-recruitment-monthly-report": {
+      "baseline": 27,
+      "of": 27,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 27,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "gemma4:e4b": {
+          "passes": [
+            20,
+            20,
+            20
+          ],
+          "stable_verdicts": 27,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            3,
+            4,
+            2
+          ],
+          "stable_verdicts": 21,
+          "cost_per_10k_usd": 0.6936,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            17,
+            20,
+            24
+          ],
+          "stable_verdicts": 12,
+          "cost_per_10k_usd": 17.7516,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "none"
+    },
+    "demo-recruitment-sponsored-spend": {
+      "baseline": 6,
+      "of": 6,
+      "models": {
+        "gemma4-e2b-ctx16k": {
+          "passes": [
+            1,
+            1,
+            1
+          ],
+          "stable_verdicts": 6,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "gemma4:e4b": {
+          "passes": [
+            0,
+            0,
+            0
+          ],
+          "stable_verdicts": 6,
+          "cost_per_10k_usd": 0,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-haiku-5-5": {
+          "passes": [
+            3,
+            5,
+            2
+          ],
+          "stable_verdicts": 2,
+          "cost_per_10k_usd": 1.0511,
+          "reaches_baseline_every_pass": false
+        },
+        "claude-sonnet-5-5": {
+          "passes": [
+            3,
+            4,
+            4
+          ],
+          "stable_verdicts": 1,
+          "cost_per_10k_usd": 20.8644,
+          "reaches_baseline_every_pass": false
+        }
+      },
+      "pick": "none"
+    }
+  },
+  "totals": {
+    "baseline": 147,
+    "gemma4-e2b-ctx16k": {
+      "passes": [
+        76,
+        76,
+        76
+      ]
+    },
+    "gemma4:e4b": {
+      "passes": [
+        105,
+        105,
+        105
+      ]
+    },
+    "claude-haiku-5-5": {
+      "passes": [
+        82,
+        86,
+        80
+      ]
+    },
+    "claude-sonnet-5-5": {
+      "passes": [
+        121,
+        125,
+        125
+      ]
+    }
+  },
+  "prediction": {
+    "scored_picks": 7,
+    "held": 5,
+    "refuted": false
+  },
+  "hosted_spend_usd_this_job": 0.955
+}
