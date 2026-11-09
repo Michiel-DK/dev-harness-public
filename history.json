@@ -1366,20 +1366,20 @@
       "refuted": 55,
       "reviews": 105,
       "sound": 42,
-      "token_sessions": 145,
-      "tokens": 1105143269,
-      "cache_read": 1069757922,
-      "cost_usd": 1003.78,
-      "costed": 145,
+      "token_sessions": 147,
+      "tokens": 1362980821,
+      "cache_read": 1322954232,
+      "cost_usd": 1026.36,
+      "costed": 146,
       "parts": {
-        "shell": 630732190,
-        "edits": 46733610,
-        "reads": 48888041,
+        "shell": 815568842,
+        "edits": 54262313,
+        "reads": 53260779,
         "loops": 8361711,
-        "verify": 40959836,
-        "agents": 125780106,
-        "workflow_skills": 18001066,
-        "text": 185686709
+        "verify": 54266103,
+        "agents": 133111718,
+        "workflow_skills": 34077223,
+        "text": 210072132
       },
       "queues": {
         "ra": {
@@ -1428,9 +1428,9 @@
           "cost_usd": 0
         },
         "unattributed": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 2,
+          "tokens": 257837552,
+          "cost_usd": 22.58
         },
         "not_looked": {
           "sessions": 145,
@@ -1452,7 +1452,7 @@
       "other": 0,
       "reverted": 0,
       "reverted_credited": 0,
-      "fix_forward": 0,
+      "fix_forward": 1,
       "sessions": 84,
       "pr_opened": 68,
       "abandoned": 5,
@@ -1461,41 +1461,41 @@
       "refuted": 0,
       "reviews": 6,
       "sound": 5,
-      "token_sessions": 0,
-      "tokens": 0,
-      "cache_read": 0,
-      "cost_usd": 0,
-      "costed": 0,
+      "token_sessions": 147,
+      "tokens": 949399932,
+      "cache_read": 916175155,
+      "cost_usd": 790.64,
+      "costed": 140,
       "parts": {
-        "shell": 0,
-        "edits": 0,
-        "reads": 0,
-        "loops": 0,
-        "verify": 0,
-        "agents": 0,
-        "workflow_skills": 0,
-        "text": 0
+        "shell": 623619822,
+        "edits": 31177688,
+        "reads": 45853409,
+        "loops": 1161316,
+        "verify": 3422632,
+        "agents": 71719294,
+        "workflow_skills": 3625683,
+        "text": 168820088
       },
       "queues": {
         "ra": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 27,
+          "tokens": 103101208,
+          "cost_usd": 102.39
         },
         "mi": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 4,
+          "tokens": 2968451,
+          "cost_usd": 2.91
         },
         "site": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 15,
+          "tokens": 40738273,
+          "cost_usd": 33.21
         },
         "as": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 8,
+          "tokens": 22130703,
+          "cost_usd": 18.93
         },
         "wr": {
           "sessions": 0,
@@ -1503,29 +1503,29 @@
           "cost_usd": 0
         },
         "rd": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 9,
+          "tokens": 19637803,
+          "cost_usd": 14.07
         },
         "hr": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 2,
+          "tokens": 3138957,
+          "cost_usd": 2.46
         },
         "lab": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 27,
+          "tokens": 92107816,
+          "cost_usd": 107.13
         },
         "other": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 12,
+          "tokens": 17008460,
+          "cost_usd": 10.29
         },
         "unattributed": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 43,
+          "tokens": 648568261,
+          "cost_usd": 499.25
         },
         "not_looked": {
           "sessions": 0,
@@ -1556,26 +1556,26 @@
       "refuted": 0,
       "reviews": 0,
       "sound": 0,
-      "token_sessions": 0,
-      "tokens": 0,
-      "cache_read": 0,
-      "cost_usd": 0,
-      "costed": 0,
+      "token_sessions": 9,
+      "tokens": 34501964,
+      "cache_read": 33421820,
+      "cost_usd": 21.85,
+      "costed": 9,
       "parts": {
-        "shell": 0,
-        "edits": 0,
-        "reads": 0,
-        "loops": 0,
+        "shell": 28948106,
+        "edits": 1631576,
+        "reads": 1285769,
+        "loops": 560428,
         "verify": 0,
         "agents": 0,
         "workflow_skills": 0,
-        "text": 0
+        "text": 2076085
       },
       "queues": {
         "ra": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 2,
+          "tokens": 9556908,
+          "cost_usd": 5.56
         },
         "mi": {
           "sessions": 0,
@@ -1608,19 +1608,19 @@
           "cost_usd": 0
         },
         "lab": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 2,
+          "tokens": 8291330,
+          "cost_usd": 5.01
         },
         "other": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 1,
+          "tokens": 966107,
+          "cost_usd": 0.33
         },
         "unattributed": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 4,
+          "tokens": 15687619,
+          "cost_usd": 10.95
         },
         "not_looked": {
           "sessions": 0,
@@ -1866,14 +1866,14 @@
     "graded": 51,
     "graded_stubs": 40,
     "open_dated": 10,
-    "event_gated": 21,
-    "stubs": 79
+    "event_gated": 24,
+    "stubs": 82
   },
   "totals": {
     "weeks": 17,
     "merges": 1112,
     "credited": 683,
-    "cost_usd": 4136.74,
-    "tokens": 4117741825
+    "cost_usd": 4971.81,
+    "tokens": 5359481273
   }
 }

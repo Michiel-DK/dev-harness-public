@@ -12,7 +12,7 @@ Every number is a count or a sum over rows the harness already writes. **No file
 private repo names appear here, by construction**; the three public repos linked above are the one deliberate exception.
 The score below is a health check of the setup, not a grade of the work.
 
-Generated 2026-11-09 · 17 weeks since the harness went live (2026-07-20) · 1,112 merges · 4.12B tokens · $4,137 priced.
+Generated 2026-11-09 · 17 weeks since the harness went live (2026-07-20) · 1,112 merges · 5.36B tokens · $4,972 priced.
 The interactive page (`index.html`) carries the same data with hover and table views. `node verify.js` re-derives every number below from `history.json`.
 
 ## What runs, and what each stage writes down
@@ -41,11 +41,11 @@ Loop 2 · the harness measuring itself (nightly + Monday)
 | sessions abandoned (edits, no PR) | 33% of 335 | 43% of 37 | 30% of 522 |
 | refuter kill rate (verify gate) | 24% of 597 verdicts | 31% of 75 | 39% of 1415 |
 | reverted after merge (of which credited) | 0 (0) | 0 (0) | 0 (0) |
-| fix-forward candidates (weak link) | 2 | 6 | 23 |
+| fix-forward candidates (weak link) | 3 | 6 | 24 |
 
 The two windows are not the same population: the session roster grew on 2026-10-28 (two busy repos added), which is most of the jump in sessions and in the abandoned share. The all-weeks column is there so a bad early week cannot hide behind a good recent one.
 
-**Predictions on the harness itself.** Every behavioural change ships with a pre-registered prediction and a review date. **51 grades so far over 40 stubs: 17 pass · 14 partial · 6 fail · 14 ungradeable.** 10 stubs are open with a date and 21 wait on an event, out of 79 stubs in all; the groups overlap, because a graded stub can be re-armed with a new date, and closed or parked stubs are in none.
+**Predictions on the harness itself.** Every behavioural change ships with a pre-registered prediction and a review date. **51 grades so far over 40 stubs: 17 pass · 14 partial · 6 fail · 14 ungradeable.** 10 stubs are open with a date and 24 wait on an event, out of 82 stubs in all; the groups overlap, because a graded stub can be re-armed with a new date, and closed or parked stubs are in none.
 
 ## Harness score over time
 
@@ -72,13 +72,20 @@ Latest 2026-11-09: **74/100 B** — skillsValid 91 (w25) · triggersRouting 98 (
 | 2026-10-05 | $484 | 23 | $21 | 28 / 28 | 358.5M | 96% |
 | 2026-10-12 | $1,076 | 48 | $22 | 75 / 75 | 973.7M | 97% |
 | 2026-10-19 | $946 | 102 | $9 | 311 / 311 | 1.05B | 96% |
-| 2026-10-26 | $1,004 | 112 | $9 | 145 / 145 | 1.11B | 97% |
+| 2026-10-26 | $1,026 | 112 | $9 | 146 / 147 | 1.36B | 97% |
+| 2026-11-02 | $791 | 82 | $10 | 140 / 147 | 949.4M | 97% |
 
-6 complete weeks with token rows: $4,137 over 316 credited merges, **$13 each**. The priced total in the header ($4,137) also includes the current, incomplete week. Dollars come from the CLI's own cost line; sessions without one are counted but not priced.
+7 complete weeks with token rows: $4,950 over 398 credited merges, **$12 each**. The priced total in the header ($4,972) also includes the current, incomplete week. Dollars come from the CLI's own cost line; sessions without one are counted but not priced.
 
 ## Cost per scheduler queue
 
-Not measured yet: no token row in a complete week carries the scheduler join (570 token sessions were mined before it existed).
+| week of | ra | mi | site | as | rd | hr | lab | other | not a job | not looked |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2026-10-26 | — | — | — | — | — | — | — | — | $23 · 2 | $1,004 · 145 |
+| 2026-11-02 | $102 · 27 | $3 · 4 | $33 · 15 | $19 · 8 | $14 · 9 | $2 · 2 | $107 · 27 | $10 · 12 | $499 · 43 | — |
+
+Each cell is dollars · token sessions. A *queue* is the laptop scheduler's job-id prefix: one per project or chore stream, codes only.
+A session counts for a queue when it ran in the job's repo and started inside exactly one of that repo's job windows. *Not a job* = the join looked and found none, two overlapping jobs (ambiguous, left unassigned rather than guessed), or an interactive session. *Not looked* = mined before the join existed.
 
 ## Tokens per harness part
 
