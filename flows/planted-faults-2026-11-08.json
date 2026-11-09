@@ -1,0 +1,723 @@
+{
+  "experiment": "01-planted-faults",
+  "date": "2026-11-08",
+  "question": "Of faults planted into sentences that pass all seven checks, which share do the seven checks catch, per fault type and per flow?",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "d0abe2d",
+    "prediction_sha": "26d92eb",
+    "injector_sha": "ee70cbc"
+  },
+  "drafter": "template (fixed), offline; no model call",
+  "seed": 20261108,
+  "checks": [
+    "numbers",
+    "actor",
+    "field",
+    "length",
+    "language",
+    "reasons",
+    "judgement"
+  ],
+  "sentences": 147,
+  "prediction": {
+    "catch_rate_pct": {
+      "figure-changed": 85,
+      "figure-invented": 90,
+      "actor-swapped": 95,
+      "date-shifted": 25,
+      "item-dropped": 10,
+      "language-switched": 95,
+      "reason-invented": 40,
+      "judgement-added": 50
+    },
+    "overall_pct": 60,
+    "caught_least": "item-dropped"
+  },
+  "by_type": {
+    "figure-changed": {
+      "planted": 129,
+      "caught": 120,
+      "missed": 9,
+      "not_applicable": 18,
+      "catch_rate_pct": 93,
+      "caught_by_own_check": 120,
+      "own_check": "numbers",
+      "by_check": {
+        "numbers": 120,
+        "actor": 0,
+        "field": 0,
+        "length": 0,
+        "language": 0,
+        "reasons": 0,
+        "judgement": 0
+      }
+    },
+    "figure-invented": {
+      "planted": 147,
+      "caught": 141,
+      "missed": 6,
+      "not_applicable": 0,
+      "catch_rate_pct": 95.9,
+      "caught_by_own_check": 141,
+      "own_check": "numbers",
+      "by_check": {
+        "numbers": 141,
+        "actor": 0,
+        "field": 0,
+        "length": 1,
+        "language": 0,
+        "reasons": 0,
+        "judgement": 0
+      }
+    },
+    "actor-swapped": {
+      "planted": 10,
+      "caught": 10,
+      "missed": 0,
+      "not_applicable": 137,
+      "catch_rate_pct": 100,
+      "caught_by_own_check": 10,
+      "own_check": "actor",
+      "by_check": {
+        "numbers": 0,
+        "actor": 10,
+        "field": 0,
+        "length": 0,
+        "language": 0,
+        "reasons": 0,
+        "judgement": 0
+      }
+    },
+    "date-shifted": {
+      "planted": 114,
+      "caught": 6,
+      "missed": 108,
+      "not_applicable": 33,
+      "catch_rate_pct": 5.3,
+      "caught_by_own_check": 6,
+      "own_check": "numbers",
+      "by_check": {
+        "numbers": 6,
+        "actor": 0,
+        "field": 0,
+        "length": 0,
+        "language": 0,
+        "reasons": 0,
+        "judgement": 0
+      }
+    },
+    "item-dropped": {
+      "planted": 64,
+      "caught": 0,
+      "missed": 64,
+      "not_applicable": 83,
+      "catch_rate_pct": 0,
+      "caught_by_own_check": 0,
+      "own_check": null,
+      "by_check": {
+        "numbers": 0,
+        "actor": 0,
+        "field": 0,
+        "length": 0,
+        "language": 0,
+        "reasons": 0,
+        "judgement": 0
+      }
+    },
+    "language-switched": {
+      "planted": 147,
+      "caught": 147,
+      "missed": 0,
+      "not_applicable": 0,
+      "catch_rate_pct": 100,
+      "caught_by_own_check": 147,
+      "own_check": "language",
+      "by_check": {
+        "numbers": 0,
+        "actor": 0,
+        "field": 0,
+        "length": 0,
+        "language": 147,
+        "reasons": 0,
+        "judgement": 0
+      }
+    },
+    "reason-invented": {
+      "planted": 147,
+      "caught": 66,
+      "missed": 81,
+      "not_applicable": 0,
+      "catch_rate_pct": 44.9,
+      "caught_by_own_check": 65,
+      "own_check": "reasons",
+      "by_check": {
+        "numbers": 0,
+        "actor": 0,
+        "field": 0,
+        "length": 2,
+        "language": 0,
+        "reasons": 65,
+        "judgement": 0
+      }
+    },
+    "judgement-added": {
+      "planted": 147,
+      "caught": 81,
+      "missed": 66,
+      "not_applicable": 0,
+      "catch_rate_pct": 55.1,
+      "caught_by_own_check": 81,
+      "own_check": "judgement",
+      "by_check": {
+        "numbers": 0,
+        "actor": 0,
+        "field": 0,
+        "length": 0,
+        "language": 0,
+        "reasons": 0,
+        "judgement": 81
+      }
+    }
+  },
+  "by_flow": [
+    {
+      "slug": "accounting-missing-documents",
+      "planted": 24,
+      "caught": 17,
+      "missed": 7,
+      "not_applicable": 0,
+      "catch_rate_pct": 70.8,
+      "by_type": {
+        "figure-changed": {
+          "planted": 3,
+          "caught": 3,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "figure-invented": {
+          "planted": 3,
+          "caught": 3,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 3,
+          "caught": 3,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "date-shifted": {
+          "planted": 3,
+          "caught": 2,
+          "missed": 1,
+          "not_applicable": 0
+        },
+        "item-dropped": {
+          "planted": 3,
+          "caught": 0,
+          "missed": 3,
+          "not_applicable": 0
+        },
+        "language-switched": {
+          "planted": 3,
+          "caught": 3,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 3,
+          "caught": 2,
+          "missed": 1,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 3,
+          "caught": 1,
+          "missed": 2,
+          "not_applicable": 0
+        }
+      }
+    },
+    {
+      "slug": "accounting-monthly-report",
+      "planted": 174,
+      "caught": 107,
+      "missed": 67,
+      "not_applicable": 42,
+      "catch_rate_pct": 61.5,
+      "by_type": {
+        "figure-changed": {
+          "planted": 24,
+          "caught": 23,
+          "missed": 1,
+          "not_applicable": 3
+        },
+        "figure-invented": {
+          "planted": 27,
+          "caught": 25,
+          "missed": 2,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 27
+        },
+        "date-shifted": {
+          "planted": 27,
+          "caught": 0,
+          "missed": 27,
+          "not_applicable": 0
+        },
+        "item-dropped": {
+          "planted": 15,
+          "caught": 0,
+          "missed": 15,
+          "not_applicable": 12
+        },
+        "language-switched": {
+          "planted": 27,
+          "caught": 27,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 27,
+          "caught": 13,
+          "missed": 14,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 27,
+          "caught": 19,
+          "missed": 8,
+          "not_applicable": 0
+        }
+      }
+    },
+    {
+      "slug": "ai-draft-review-publish",
+      "planted": 152,
+      "caught": 103,
+      "missed": 49,
+      "not_applicable": 80,
+      "catch_rate_pct": 67.8,
+      "by_type": {
+        "figure-changed": {
+          "planted": 19,
+          "caught": 16,
+          "missed": 3,
+          "not_applicable": 10
+        },
+        "figure-invented": {
+          "planted": 29,
+          "caught": 26,
+          "missed": 3,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 29
+        },
+        "date-shifted": {
+          "planted": 11,
+          "caught": 4,
+          "missed": 7,
+          "not_applicable": 18
+        },
+        "item-dropped": {
+          "planted": 6,
+          "caught": 0,
+          "missed": 6,
+          "not_applicable": 23
+        },
+        "language-switched": {
+          "planted": 29,
+          "caught": 29,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 29,
+          "caught": 13,
+          "missed": 16,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 29,
+          "caught": 15,
+          "missed": 14,
+          "not_applicable": 0
+        }
+      }
+    },
+    {
+      "slug": "ecommerce-campaign-stock-check",
+      "planted": 12,
+      "caught": 9,
+      "missed": 3,
+      "not_applicable": 4,
+      "catch_rate_pct": 75,
+      "by_type": {
+        "figure-changed": {
+          "planted": 2,
+          "caught": 2,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "figure-invented": {
+          "planted": 2,
+          "caught": 2,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 2
+        },
+        "date-shifted": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 2
+        },
+        "item-dropped": {
+          "planted": 2,
+          "caught": 0,
+          "missed": 2,
+          "not_applicable": 0
+        },
+        "language-switched": {
+          "planted": 2,
+          "caught": 2,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 2,
+          "caught": 1,
+          "missed": 1,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 2,
+          "caught": 2,
+          "missed": 0,
+          "not_applicable": 0
+        }
+      }
+    },
+    {
+      "slug": "ecommerce-monthly-report",
+      "planted": 114,
+      "caught": 79,
+      "missed": 35,
+      "not_applicable": 38,
+      "catch_rate_pct": 69.3,
+      "by_type": {
+        "figure-changed": {
+          "planted": 19,
+          "caught": 19,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "figure-invented": {
+          "planted": 19,
+          "caught": 19,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 19
+        },
+        "date-shifted": {
+          "planted": 19,
+          "caught": 0,
+          "missed": 19,
+          "not_applicable": 0
+        },
+        "item-dropped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 19
+        },
+        "language-switched": {
+          "planted": 19,
+          "caught": 19,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 19,
+          "caught": 9,
+          "missed": 10,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 19,
+          "caught": 13,
+          "missed": 6,
+          "not_applicable": 0
+        }
+      }
+    },
+    {
+      "slug": "real-estate-monthly-report",
+      "planted": 185,
+      "caught": 97,
+      "missed": 88,
+      "not_applicable": 31,
+      "catch_rate_pct": 52.4,
+      "by_type": {
+        "figure-changed": {
+          "planted": 25,
+          "caught": 20,
+          "missed": 5,
+          "not_applicable": 2
+        },
+        "figure-invented": {
+          "planted": 27,
+          "caught": 26,
+          "missed": 1,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 27
+        },
+        "date-shifted": {
+          "planted": 27,
+          "caught": 0,
+          "missed": 27,
+          "not_applicable": 0
+        },
+        "item-dropped": {
+          "planted": 25,
+          "caught": 0,
+          "missed": 25,
+          "not_applicable": 2
+        },
+        "language-switched": {
+          "planted": 27,
+          "caught": 27,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 27,
+          "caught": 11,
+          "missed": 16,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 27,
+          "caught": 13,
+          "missed": 14,
+          "not_applicable": 0
+        }
+      }
+    },
+    {
+      "slug": "real-estate-viewing-feedback",
+      "planted": 49,
+      "caught": 34,
+      "missed": 15,
+      "not_applicable": 7,
+      "catch_rate_pct": 69.4,
+      "by_type": {
+        "figure-changed": {
+          "planted": 7,
+          "caught": 7,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "figure-invented": {
+          "planted": 7,
+          "caught": 7,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 7,
+          "caught": 7,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "date-shifted": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 7
+        },
+        "item-dropped": {
+          "planted": 7,
+          "caught": 0,
+          "missed": 7,
+          "not_applicable": 0
+        },
+        "language-switched": {
+          "planted": 7,
+          "caught": 7,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 7,
+          "caught": 3,
+          "missed": 4,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 7,
+          "caught": 3,
+          "missed": 4,
+          "not_applicable": 0
+        }
+      }
+    },
+    {
+      "slug": "recruitment-monthly-report",
+      "planted": 162,
+      "caught": 106,
+      "missed": 56,
+      "not_applicable": 54,
+      "catch_rate_pct": 65.4,
+      "by_type": {
+        "figure-changed": {
+          "planted": 27,
+          "caught": 27,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "figure-invented": {
+          "planted": 27,
+          "caught": 27,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 27
+        },
+        "date-shifted": {
+          "planted": 27,
+          "caught": 0,
+          "missed": 27,
+          "not_applicable": 0
+        },
+        "item-dropped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 27
+        },
+        "language-switched": {
+          "planted": 27,
+          "caught": 27,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 27,
+          "caught": 11,
+          "missed": 16,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 27,
+          "caught": 14,
+          "missed": 13,
+          "not_applicable": 0
+        }
+      }
+    },
+    {
+      "slug": "recruitment-sponsored-spend",
+      "planted": 33,
+      "caught": 19,
+      "missed": 14,
+      "not_applicable": 15,
+      "catch_rate_pct": 57.6,
+      "by_type": {
+        "figure-changed": {
+          "planted": 3,
+          "caught": 3,
+          "missed": 0,
+          "not_applicable": 3
+        },
+        "figure-invented": {
+          "planted": 6,
+          "caught": 6,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 6
+        },
+        "date-shifted": {
+          "planted": 0,
+          "caught": 0,
+          "missed": 0,
+          "not_applicable": 6
+        },
+        "item-dropped": {
+          "planted": 6,
+          "caught": 0,
+          "missed": 6,
+          "not_applicable": 0
+        },
+        "language-switched": {
+          "planted": 6,
+          "caught": 6,
+          "missed": 0,
+          "not_applicable": 0
+        },
+        "reason-invented": {
+          "planted": 6,
+          "caught": 3,
+          "missed": 3,
+          "not_applicable": 0
+        },
+        "judgement-added": {
+          "planted": 6,
+          "caught": 1,
+          "missed": 5,
+          "not_applicable": 0
+        }
+      }
+    }
+  ],
+  "overall": {
+    "planted": 905,
+    "caught": 571,
+    "missed": 334,
+    "not_applicable": 271,
+    "catch_rate_pct": 63.1,
+    "by_check": {
+      "numbers": 267,
+      "actor": 10,
+      "field": 0,
+      "length": 3,
+      "language": 147,
+      "reasons": 65,
+      "judgement": 81
+    }
+  }
+}
