@@ -1,0 +1,211 @@
+{
+  "experiment": "06-frontier-sentence",
+  "date": "2026-11-09",
+  "question": "On the nine model-step demo flows, same checks, do Sonnet 5.5 and Opus 5.5 writing the one sentence pass more of the 155 sentences than the fixed template, as many, or fewer?",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "052acfa",
+    "prediction_sha": "d3257d6",
+    "departure_sha": "9924550"
+  },
+  "template_baseline": {
+    "pass": 147,
+    "of": 155,
+    "cost_per_10k_usd": 0
+  },
+  "prediction": {
+    "claude-opus-5-5": {
+      "pass_per_pass": 130,
+      "vs_template": "fewer",
+      "cost_per_10k_usd": 40,
+      "count_range": [
+        115,
+        145
+      ],
+      "cost_range_usd": [
+        25,
+        60
+      ]
+    }
+  },
+  "arms": [
+    {
+      "model": "claude-haiku-5-5",
+      "role": "context from 00-real-drafts; thinking disabled, max_tokens 200",
+      "passes": [
+        82,
+        86,
+        80
+      ],
+      "of": 155,
+      "vs_template": [
+        "fewer",
+        "fewer",
+        "fewer"
+      ],
+      "cost_per_10k_usd": 0.87,
+      "per_flow_pass": {
+        "accounting-missing-documents": [
+          0,
+          1,
+          0
+        ],
+        "accounting-monthly-report": [
+          27,
+          26,
+          26
+        ],
+        "ai-draft-review-publish": [
+          23,
+          24,
+          26
+        ],
+        "ecommerce-campaign-stock-check": [
+          0,
+          0,
+          0
+        ],
+        "ecommerce-monthly-report": [
+          7,
+          6,
+          6
+        ],
+        "real-estate-monthly-report": [
+          19,
+          20,
+          18
+        ],
+        "real-estate-viewing-feedback": [
+          0,
+          0,
+          0
+        ],
+        "recruitment-monthly-report": [
+          3,
+          4,
+          2
+        ],
+        "recruitment-sponsored-spend": [
+          3,
+          5,
+          2
+        ]
+      }
+    },
+    {
+      "model": "claude-sonnet-5-5",
+      "role": "reused from 03-cheapest-model; thinking between_tools, max_tokens 200",
+      "passes": [
+        121,
+        125,
+        125
+      ],
+      "of": 155,
+      "vs_template": [
+        "fewer",
+        "fewer",
+        "fewer"
+      ],
+      "cost_per_10k_usd": 18.6,
+      "per_flow_pass": {
+        "accounting-missing-documents": [
+          2,
+          2,
+          3
+        ],
+        "accounting-monthly-report": [
+          26,
+          25,
+          24
+        ],
+        "ai-draft-review-publish": [
+          28,
+          28,
+          26
+        ],
+        "ecommerce-campaign-stock-check": [
+          1,
+          1,
+          1
+        ],
+        "ecommerce-monthly-report": [
+          17,
+          19,
+          18
+        ],
+        "real-estate-monthly-report": [
+          27,
+          26,
+          25
+        ],
+        "real-estate-viewing-feedback": [
+          0,
+          0,
+          0
+        ],
+        "recruitment-monthly-report": [
+          17,
+          20,
+          24
+        ],
+        "recruitment-sponsored-spend": [
+          3,
+          4,
+          4
+        ]
+      }
+    },
+    {
+      "model": "claude-opus-5-5",
+      "role": "run here, 1 pass (3 would cross the $3.00 ceiling); thinking adaptive, effort low, max_tokens 2000 (the API refuses thinking disabled for this model)",
+      "passes": [
+        133
+      ],
+      "of": 155,
+      "vs_template": [
+        "fewer"
+      ],
+      "cost_per_10k_usd": 72.41,
+      "per_flow_pass": {
+        "accounting-missing-documents": [
+          3
+        ],
+        "accounting-monthly-report": [
+          26
+        ],
+        "ai-draft-review-publish": [
+          27
+        ],
+        "ecommerce-campaign-stock-check": [
+          0
+        ],
+        "ecommerce-monthly-report": [
+          17
+        ],
+        "real-estate-monthly-report": [
+          26
+        ],
+        "real-estate-viewing-feedback": [
+          2
+        ],
+        "recruitment-monthly-report": [
+          26
+        ],
+        "recruitment-sponsored-spend": [
+          6
+        ]
+      }
+    }
+  ],
+  "verdict": {
+    "direction": "held",
+    "count": "held",
+    "cost": "refuted"
+  },
+  "prices": {
+    "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "read": "2026-11-09",
+    "basis": "standard rate, USD; thinking billed as output"
+  },
+  "reopens": "a changed prompt, a new or changed check, a new model tag (or Opus with thinking off), Opus at three passes or higher effort, a new list price"
+}
