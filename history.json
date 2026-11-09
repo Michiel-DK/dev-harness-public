@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated": "2026-11-02",
+  "generated": "2026-11-09",
   "since": "2026-07-20",
   "baseline": {
     "weeks": 25,
@@ -50,6 +50,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -88,6 +145,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -126,6 +240,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -164,6 +335,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -202,6 +430,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -240,6 +525,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -278,6 +620,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -316,6 +715,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -354,6 +810,63 @@
         "agents": 0,
         "workflow_skills": 0,
         "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     },
     {
@@ -392,6 +905,63 @@
         "agents": 3383406,
         "workflow_skills": 175878,
         "text": 98011074
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 4,
+          "tokens": 307519354,
+          "cost_usd": 265.8
+        }
       }
     },
     {
@@ -430,6 +1000,63 @@
         "agents": 51558003,
         "workflow_skills": 1152879,
         "text": 74660954
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 7,
+          "tokens": 326055356,
+          "cost_usd": 360.83
+        }
       }
     },
     {
@@ -468,6 +1095,63 @@
         "agents": 1504342,
         "workflow_skills": 6517369,
         "text": 60319351
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 28,
+          "tokens": 358502520,
+          "cost_usd": 484.34
+        }
       }
     },
     {
@@ -506,6 +1190,63 @@
         "agents": 35897522,
         "workflow_skills": 15084608,
         "text": 143917325
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 75,
+          "tokens": 973671066,
+          "cost_usd": 1076.25
+        }
       }
     },
     {
@@ -544,6 +1285,63 @@
         "agents": 66771355,
         "workflow_skills": 18571441,
         "text": 115596406
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 311,
+          "tokens": 1046850260,
+          "cost_usd": 945.74
+        }
       }
     },
     {
@@ -582,6 +1380,253 @@
         "agents": 125780106,
         "workflow_skills": 18001066,
         "text": 185686709
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 145,
+          "tokens": 1105143269,
+          "cost_usd": 1003.78
+        }
+      }
+    },
+    {
+      "week": "2026-11-02",
+      "merges": 91,
+      "credited": 82,
+      "green": 91,
+      "rejected": 3,
+      "superseded": 0,
+      "merged_on_red": 0,
+      "code": 82,
+      "docs": 9,
+      "other": 0,
+      "reverted": 0,
+      "reverted_credited": 0,
+      "fix_forward": 0,
+      "sessions": 84,
+      "pr_opened": 68,
+      "abandoned": 5,
+      "tool_errors": 121,
+      "verdicts": 24,
+      "refuted": 0,
+      "reviews": 6,
+      "sound": 5,
+      "token_sessions": 0,
+      "tokens": 0,
+      "cache_read": 0,
+      "cost_usd": 0,
+      "costed": 0,
+      "parts": {
+        "shell": 0,
+        "edits": 0,
+        "reads": 0,
+        "loops": 0,
+        "verify": 0,
+        "agents": 0,
+        "workflow_skills": 0,
+        "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
+      }
+    },
+    {
+      "week": "2026-11-09",
+      "merges": 5,
+      "credited": 5,
+      "green": 5,
+      "rejected": 0,
+      "superseded": 0,
+      "merged_on_red": 0,
+      "code": 5,
+      "docs": 0,
+      "other": 0,
+      "reverted": 0,
+      "reverted_credited": 0,
+      "fix_forward": 0,
+      "sessions": 5,
+      "pr_opened": 5,
+      "abandoned": 0,
+      "tool_errors": 9,
+      "verdicts": 0,
+      "refuted": 0,
+      "reviews": 0,
+      "sound": 0,
+      "token_sessions": 0,
+      "tokens": 0,
+      "cache_read": 0,
+      "cost_usd": 0,
+      "costed": 0,
+      "parts": {
+        "shell": 0,
+        "edits": 0,
+        "reads": 0,
+        "loops": 0,
+        "verify": 0,
+        "agents": 0,
+        "workflow_skills": 0,
+        "text": 0
+      },
+      "queues": {
+        "ra": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "as": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "other": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "unattributed": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
       }
     }
   ],
@@ -758,6 +1803,45 @@
       },
       "consumers_checked": 9,
       "consumers_drifting": 0
+    },
+    {
+      "date": "2026-11-09",
+      "score": 74,
+      "grade": "B",
+      "dims": {
+        "skillsValid": {
+          "weight": 25,
+          "active": true,
+          "score": 91
+        },
+        "triggersRouting": {
+          "weight": 25,
+          "active": true,
+          "score": 98
+        },
+        "reposInSync": {
+          "weight": 20,
+          "active": true,
+          "score": 0
+        },
+        "selfTested": {
+          "weight": 15,
+          "active": true,
+          "score": 88
+        },
+        "proseBudget": {
+          "weight": 10,
+          "active": true,
+          "score": 100
+        },
+        "mcpSurface": {
+          "weight": 15,
+          "active": false,
+          "score": null
+        }
+      },
+      "consumers_checked": 3,
+      "consumers_drifting": 3
     }
   ],
   "instrument_changes": [
@@ -781,14 +1865,14 @@
     "ungradeable": 14,
     "graded": 51,
     "graded_stubs": 40,
-    "open_dated": 9,
-    "event_gated": 16,
-    "stubs": 72
+    "open_dated": 10,
+    "event_gated": 21,
+    "stubs": 79
   },
   "totals": {
-    "weeks": 15,
-    "merges": 1016,
-    "credited": 596,
+    "weeks": 17,
+    "merges": 1112,
+    "credited": 683,
     "cost_usd": 4136.74,
     "tokens": 4117741825
   }

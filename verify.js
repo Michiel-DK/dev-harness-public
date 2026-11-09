@@ -32,6 +32,14 @@ console.log('TOTALS');
 console.log(`  merges ${sum(H.weeks, 'merges')} · credited ${sum(H.weeks, 'credited')} · unclassified (no path data) ${sum(H.weeks, 'other')} · priced ${usd(sum(H.weeks, 'cost_usd'))} · tokens ${sum(H.weeks, 'tokens')}`);
 const tw = complete.filter(w => w.token_sessions > 0).slice(-12);
 console.log(`  cost table (${tw.length} complete weeks with token rows): ${usd(sum(tw, 'cost_usd'))} over ${sum(tw, 'credited')} credited = ${usd(sum(tw, 'credited') ? sum(tw, 'cost_usd') / sum(tw, 'credited') : 0)} each`);
+const qweeks = complete.filter(w => w.queues && w.token_sessions - (w.queues.not_looked || {}).sessions > 0).slice(-8);
+if (qweeks.length) {
+  console.log(`  cost per queue (${qweeks.length} complete weeks the join looked at):`);
+  for (const k of Object.keys(qweeks[0].queues)) {
+    const n = qweeks.reduce((s, w) => s + w.queues[k].sessions, 0), c = qweeks.reduce((s, w) => s + w.queues[k].cost_usd, 0);
+    if (n) console.log(`    ${k.padEnd(13)} ${usd(c)} over ${n} sessions`);
+  }
+}
 console.log('');
 console.log('SCORE POINTS (total recomputed from the active dimensions)');
 for (const s of H.scores) {

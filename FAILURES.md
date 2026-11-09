@@ -6,7 +6,7 @@ and public repositories; nothing here was written after the fact.
 
 ## 1. The refuter killed a change that would have deleted the data
 
-**Where:** [warehouse-rl](https://github.com/Michiel-DK/warehouse-rl), PR #45, 2026-10-19.
+**Where:** [fleet-lab](https://github.com/Michiel-DK/fleet-lab), PR #45, 2026-10-19.
 A new per-cell change detector, `fleet/fastmap.py`, plus ten tests. The lane built it, the
 reviewers passed it, CI was green: 985 tests in one suite, 976 in the other.
 
