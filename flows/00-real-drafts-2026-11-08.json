@@ -1,0 +1,137 @@
+{
+  "experiment": "00-real-drafts",
+  "date": "2026-11-08",
+  "question": "How many sentences pass the repo checks when a real model, not the fixed template, writes the one model step of each demo flow?",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "53ef4e7",
+    "prediction_sha": "b82bd2c"
+  },
+  "prediction": {
+    "of": 155,
+    "template_baseline": 147,
+    "local_gemma4_e2b_ctx16k": 77,
+    "hosted_haiku_5_5": 124
+  },
+  "runs": [
+    {
+      "drafter": "template",
+      "model": "fixed",
+      "temperature": 0,
+      "status": "baseline, offline; equals every replay PASS n/m",
+      "flows": [
+        {
+          "slug": "accounting-missing-documents",
+          "pass": 3,
+          "of": 3,
+          "facts_lines": 0,
+          "alerts": 3,
+          "approval_items": 3,
+          "rows": 10,
+          "handoffs_per_100": 30
+        },
+        {
+          "slug": "accounting-monthly-report",
+          "pass": 27,
+          "of": 30,
+          "facts_lines": 3,
+          "alerts": 0,
+          "approval_items": 0,
+          "rows": 10,
+          "handoffs_per_100": 30
+        },
+        {
+          "slug": "ai-draft-review-publish",
+          "pass": 29,
+          "of": 30,
+          "facts_lines": 2,
+          "alerts": 0,
+          "approval_items": 9,
+          "rows": 12,
+          "handoffs_per_100": 16.7
+        },
+        {
+          "slug": "ecommerce-campaign-stock-check",
+          "pass": 2,
+          "of": 2,
+          "facts_lines": 2,
+          "alerts": 1,
+          "approval_items": 4,
+          "rows": 4,
+          "handoffs_per_100": 75
+        },
+        {
+          "slug": "ecommerce-monthly-report",
+          "pass": 19,
+          "of": 19,
+          "facts_lines": 1,
+          "alerts": 0,
+          "approval_items": 0,
+          "rows": 12,
+          "handoffs_per_100": 8.3
+        },
+        {
+          "slug": "real-estate-monthly-report",
+          "pass": 27,
+          "of": 30,
+          "facts_lines": 3,
+          "alerts": 0,
+          "approval_items": 0,
+          "rows": 10,
+          "handoffs_per_100": 30
+        },
+        {
+          "slug": "real-estate-viewing-feedback",
+          "pass": 7,
+          "of": 8,
+          "facts_lines": 1,
+          "alerts": 4,
+          "approval_items": 8,
+          "rows": 10,
+          "handoffs_per_100": 50
+        },
+        {
+          "slug": "recruitment-monthly-report",
+          "pass": 27,
+          "of": 27,
+          "facts_lines": 1,
+          "alerts": 0,
+          "approval_items": 0,
+          "rows": 10,
+          "handoffs_per_100": 10
+        },
+        {
+          "slug": "recruitment-sponsored-spend",
+          "pass": 6,
+          "of": 6,
+          "facts_lines": 0,
+          "alerts": 2,
+          "approval_items": 3,
+          "rows": 7,
+          "handoffs_per_100": 28.6
+        }
+      ],
+      "totals": {
+        "pass": 147,
+        "of": 155,
+        "facts_lines": 13,
+        "alerts": 10,
+        "approval_items": 27,
+        "rows": 85,
+        "flows": 9,
+        "handoffs_per_100": 27.1
+      }
+    }
+  ],
+  "pending": [
+    {
+      "drafter": "ollama",
+      "model": "gemma4-e2b-ctx16k"
+    },
+    {
+      "drafter": "openrouter",
+      "model": "Haiku 5.5"
+    }
+  ],
+  "reopens": "a change to a prompt, a check, a fixture or the set of flows is a new experiment name"
+}
