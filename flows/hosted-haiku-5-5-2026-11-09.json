@@ -1,0 +1,19 @@
+{
+  "experiment": "00-real-drafts, hosted arm",
+  "date": "2026-11-09",
+  "model": "claude-haiku-5-5",
+  "provider": "anthropic (Messages API)",
+  "source": { "repo": "roger3000_automations (private)", "sha": "bb8e2be" },
+  "question": "How many of 155 sentences, across the nine model-step demo flows, pass the repo's own checks when Haiku 5.5 writes them?",
+  "passes": [
+    { "pass": 1, "sentences_passing": 82, "of": 155, "handoffs_per_100_rows": 103.5 },
+    { "pass": 2, "sentences_passing": 86, "of": 155, "handoffs_per_100_rows": 98.8 },
+    { "pass": 3, "sentences_passing": 80, "of": 155, "handoffs_per_100_rows": 105.9 }
+  ],
+  "template_baseline": { "sentences_passing": 147, "of": 155 },
+  "predicted": 124,
+  "prediction_refuted": true,
+  "temperature": "default (the API rejects temperature for this model)",
+  "thinking": "disabled",
+  "spend_usd": 0.0434
+}
