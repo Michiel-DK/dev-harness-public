@@ -1,0 +1,262 @@
+{
+  "experiment": "08-dropped-item-check",
+  "date": "2026-11-09",
+  "question": "Do two new checks (every row item appears in the sentence; every date in the sentence is a row date) raise the catch rate on dropped items and shifted dates, and how many clean sentences do they fail wrongly?",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "a6ffe1a",
+    "prediction_sha": "3410ac1",
+    "checks_sha": "8b4ddf1",
+    "runner_sha": "36f79c1",
+    "case_set": "01-planted-faults (2026-11-08), same 905 cases, byte for byte"
+  },
+  "drafter": "template (fixed), offline; no model call",
+  "seed": 20261108,
+  "checks_before": [
+    "numbers",
+    "actor",
+    "field",
+    "length",
+    "language",
+    "reasons",
+    "judgement"
+  ],
+  "checks_added": [
+    "items",
+    "dates"
+  ],
+  "sentences": 147,
+  "prediction": {
+    "after_catch_rate_pct": {
+      "figure-changed": 97,
+      "figure-invented": 96,
+      "actor-swapped": 100,
+      "date-shifted": 95,
+      "item-dropped": 70,
+      "language-switched": 100,
+      "reason-invented": 45,
+      "judgement-added": 55
+    },
+    "overall_after_pct": 80,
+    "clean_false_failures": {
+      "total": 12,
+      "items": 11,
+      "dates": 1
+    },
+    "refuted_if": "a type more than 20 points off; false failures more than 10 off"
+  },
+  "by_type": {
+    "figure-changed": {
+      "planted": 129,
+      "not_applicable": 18,
+      "before": {
+        "caught": 120,
+        "catch_rate_pct": 93
+      },
+      "after": {
+        "caught": 129,
+        "catch_rate_pct": 100
+      },
+      "caught_only_by_new_checks": 9,
+      "by_new_check": {
+        "items": 123,
+        "dates": 0
+      },
+      "planted_on_clean_sentence_that_already_fails": 11,
+      "after_where_clean_sentence_passes": {
+        "caught": 118,
+        "of": 118,
+        "catch_rate_pct": 100
+      }
+    },
+    "figure-invented": {
+      "planted": 147,
+      "not_applicable": 0,
+      "before": {
+        "caught": 141,
+        "catch_rate_pct": 95.9
+      },
+      "after": {
+        "caught": 142,
+        "catch_rate_pct": 96.6
+      },
+      "caught_only_by_new_checks": 1,
+      "by_new_check": {
+        "items": 13,
+        "dates": 0
+      },
+      "planted_on_clean_sentence_that_already_fails": 13,
+      "after_where_clean_sentence_passes": {
+        "caught": 129,
+        "of": 134,
+        "catch_rate_pct": 96.3
+      }
+    },
+    "actor-swapped": {
+      "planted": 10,
+      "not_applicable": 137,
+      "before": {
+        "caught": 10,
+        "catch_rate_pct": 100
+      },
+      "after": {
+        "caught": 10,
+        "catch_rate_pct": 100
+      },
+      "caught_only_by_new_checks": 0,
+      "by_new_check": {
+        "items": 9,
+        "dates": 0
+      },
+      "planted_on_clean_sentence_that_already_fails": 0,
+      "after_where_clean_sentence_passes": {
+        "caught": 10,
+        "of": 10,
+        "catch_rate_pct": 100
+      }
+    },
+    "date-shifted": {
+      "planted": 114,
+      "not_applicable": 33,
+      "before": {
+        "caught": 6,
+        "catch_rate_pct": 5.3
+      },
+      "after": {
+        "caught": 114,
+        "catch_rate_pct": 100
+      },
+      "caught_only_by_new_checks": 108,
+      "by_new_check": {
+        "items": 26,
+        "dates": 114
+      },
+      "planted_on_clean_sentence_that_already_fails": 12,
+      "after_where_clean_sentence_passes": {
+        "caught": 102,
+        "of": 102,
+        "catch_rate_pct": 100
+      }
+    },
+    "item-dropped": {
+      "planted": 64,
+      "not_applicable": 83,
+      "before": {
+        "caught": 0,
+        "catch_rate_pct": 0
+      },
+      "after": {
+        "caught": 57,
+        "catch_rate_pct": 89.1
+      },
+      "caught_only_by_new_checks": 57,
+      "by_new_check": {
+        "items": 57,
+        "dates": 0
+      },
+      "planted_on_clean_sentence_that_already_fails": 9,
+      "after_where_clean_sentence_passes": {
+        "caught": 48,
+        "of": 55,
+        "catch_rate_pct": 87.3
+      }
+    },
+    "language-switched": {
+      "planted": 147,
+      "not_applicable": 0,
+      "before": {
+        "caught": 147,
+        "catch_rate_pct": 100
+      },
+      "after": {
+        "caught": 147,
+        "catch_rate_pct": 100
+      },
+      "caught_only_by_new_checks": 0,
+      "by_new_check": {
+        "items": 58,
+        "dates": 0
+      },
+      "planted_on_clean_sentence_that_already_fails": 13,
+      "after_where_clean_sentence_passes": {
+        "caught": 134,
+        "of": 134,
+        "catch_rate_pct": 100
+      }
+    },
+    "reason-invented": {
+      "planted": 147,
+      "not_applicable": 0,
+      "before": {
+        "caught": 66,
+        "catch_rate_pct": 44.9
+      },
+      "after": {
+        "caught": 75,
+        "catch_rate_pct": 51
+      },
+      "caught_only_by_new_checks": 9,
+      "by_new_check": {
+        "items": 13,
+        "dates": 0
+      },
+      "planted_on_clean_sentence_that_already_fails": 13,
+      "after_where_clean_sentence_passes": {
+        "caught": 62,
+        "of": 134,
+        "catch_rate_pct": 46.3
+      }
+    },
+    "judgement-added": {
+      "planted": 147,
+      "not_applicable": 0,
+      "before": {
+        "caught": 81,
+        "catch_rate_pct": 55.1
+      },
+      "after": {
+        "caught": 85,
+        "catch_rate_pct": 57.8
+      },
+      "caught_only_by_new_checks": 4,
+      "by_new_check": {
+        "items": 15,
+        "dates": 0
+      },
+      "planted_on_clean_sentence_that_already_fails": 13,
+      "after_where_clean_sentence_passes": {
+        "caught": 72,
+        "of": 134,
+        "catch_rate_pct": 53.7
+      }
+    }
+  },
+  "overall": {
+    "planted": 905,
+    "not_applicable": 271,
+    "before": {
+      "caught": 571,
+      "catch_rate_pct": 63.1
+    },
+    "after": {
+      "caught": 759,
+      "catch_rate_pct": 83.9
+    },
+    "caught_only_by_new_checks": 188,
+    "after_where_clean_sentence_passes": {
+      "caught": 675,
+      "of": 821,
+      "catch_rate_pct": 82.2
+    }
+  },
+  "clean_false_failures": {
+    "sentences": 147,
+    "failed": 13,
+    "items": 13,
+    "dates": 0,
+    "zero_written_in_words": 11,
+    "text_item_paraphrased": 2
+  },
+  "verdict": "every type within 20 points; overall within; false failures 13 vs 12 within 10 (split wrong: items 13, dates 0)",
+  "reopens": "a new fault type; a changed rule in row_checks.js; a changed check in checks.js; the two checks run on real model drafts"
+}
