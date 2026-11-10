@@ -1,0 +1,228 @@
+{
+  "experiment": "14-mentall-drafts",
+  "date": "2026-11-10",
+  "question": "On 96 fabricated change-log rows (70 scored), does a model write the change-log sentence (first draft and after one regeneration, eight deterministic checks), do 5 examples in the prompt change that, and how much does K of a 20-case held-out set move between three passes?",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "0541571",
+    "prediction_sha": "9137207"
+  },
+  "rows": 96,
+  "scored": 70,
+  "facts_only": 26,
+  "held_out": 20,
+  "examples": 5,
+  "arms": [
+    {
+      "arm": "anthropic-claude-haiku-5-5-ex0",
+      "model": "claude-haiku-5-5",
+      "examples": 0,
+      "first": [
+        70,
+        70,
+        70
+      ],
+      "final": [
+        70,
+        70,
+        70
+      ],
+      "k_of_20": [
+        20,
+        20,
+        20
+      ],
+      "first_65": [
+        65,
+        65,
+        65
+      ],
+      "final_65": [
+        65,
+        65,
+        65
+      ],
+      "handoffs_per_100": [
+        27.1,
+        27.1,
+        27.1
+      ],
+      "calls": [
+        70,
+        70,
+        70
+      ]
+    },
+    {
+      "arm": "anthropic-claude-haiku-5-5-ex5",
+      "model": "claude-haiku-5-5",
+      "examples": 5,
+      "first": [
+        68,
+        68,
+        68
+      ],
+      "final": [
+        69,
+        69,
+        69
+      ],
+      "k_of_20": [
+        20,
+        20,
+        20
+      ],
+      "first_65": [
+        63,
+        63,
+        63
+      ],
+      "final_65": [
+        64,
+        64,
+        64
+      ],
+      "handoffs_per_100": [
+        28.1,
+        28.1,
+        28.1
+      ],
+      "calls": [
+        72,
+        72,
+        72
+      ]
+    },
+    {
+      "arm": "ollama-gemma4-e2b-ctx16k-ex0",
+      "model": "gemma4-e2b-ctx16k",
+      "examples": 0,
+      "first": [
+        67,
+        67,
+        67
+      ],
+      "final": [
+        68,
+        68,
+        68
+      ],
+      "k_of_20": [
+        19,
+        19,
+        19
+      ],
+      "first_65": [
+        62,
+        62,
+        62
+      ],
+      "final_65": [
+        63,
+        63,
+        63
+      ],
+      "handoffs_per_100": [
+        29.2,
+        29.2,
+        29.2
+      ],
+      "calls": [
+        73,
+        73,
+        73
+      ]
+    },
+    {
+      "arm": "ollama-gemma4-e2b-ctx16k-ex5",
+      "model": "gemma4-e2b-ctx16k",
+      "examples": 5,
+      "first": [
+        69,
+        69,
+        69
+      ],
+      "final": [
+        70,
+        70,
+        70
+      ],
+      "k_of_20": [
+        20,
+        20,
+        20
+      ],
+      "first_65": [
+        64,
+        64,
+        64
+      ],
+      "final_65": [
+        65,
+        65,
+        65
+      ],
+      "handoffs_per_100": [
+        27.1,
+        27.1,
+        27.1
+      ],
+      "calls": [
+        71,
+        71,
+        71
+      ]
+    },
+    {
+      "arm": "template-fixed-ex0",
+      "model": "fixed",
+      "examples": 0,
+      "first": [
+        70
+      ],
+      "final": [
+        70
+      ],
+      "k_of_20": [
+        20
+      ],
+      "first_65": [
+        65
+      ],
+      "final_65": [
+        65
+      ],
+      "handoffs_per_100": [
+        27.1
+      ],
+      "calls": [
+        70
+      ]
+    }
+  ],
+  "spread_of_k": {
+    "anthropic-claude-haiku-5-5-ex0": 0,
+    "anthropic-claude-haiku-5-5-ex5": 0,
+    "ollama-gemma4-e2b-ctx16k-ex0": 0,
+    "ollama-gemma4-e2b-ctx16k-ex5": 0,
+    "template-fixed-ex0": 0
+  },
+  "regeneration": {
+    "second_calls": 18,
+    "rescued": 9
+  },
+  "predictions": {
+    "held": 5,
+    "refuted": 10,
+    "not_assessable": 1,
+    "kill_clause": "not triggered (Haiku 0 examples after regeneration 70 of 70; threshold below 42)"
+  },
+  "spend_usd_hosted": 0.0616,
+  "hosted_calls": 426,
+  "price": {
+    "model": "claude-haiku-5-5",
+    "usd_per_mtok_input": 0.1,
+    "usd_per_mtok_output": 0.5,
+    "read": "2026-11-09"
+  }
+}
