@@ -1,0 +1,1076 @@
+{
+  "experiment": "11-checks-on-model-drafts",
+  "date": "2026-11-10",
+  "question": "Are the two row checks of 08 (items, dates; unchanged) rules about rows or about the template wording? On the model sentences of 00-real-drafts that pass every check: how many do items or dates fail, and what catch rate do the eight planted fault types get after the nine checks?",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "5ead5f3",
+    "prediction_sha": "92a1d2d",
+    "runner_sha": "131c4b6",
+    "results_sha": "ecc0fc7",
+    "results_repo_sha_stamp": "92a1d2d",
+    "case_set": "pass 1 of the four 00-real-drafts runs (2026-11-09), units with pass true",
+    "injector": "inject.js sha256 c65b88f8cedfe1b8",
+    "seed": 20261108
+  },
+  "drafters": {
+    "ollama-gemma4-e2b-ctx16k": {
+      "model_tag": "gemma4-e2b-ctx16k",
+      "provider": "ollama",
+      "source_run": "00-real-drafts pass 1, 2026-11-09"
+    },
+    "ollama-gemma4_e4b": {
+      "model_tag": "gemma4:e4b",
+      "provider": "ollama",
+      "source_run": "00-real-drafts pass 1, 2026-11-09"
+    },
+    "anthropic-claude-haiku-5-5": {
+      "model_tag": "claude-haiku-5-5",
+      "provider": "anthropic",
+      "source_run": "00-real-drafts pass 1, 2026-11-09"
+    },
+    "anthropic-claude-sonnet-5-5": {
+      "model_tag": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "source_run": "00-real-drafts pass 1, 2026-11-09"
+    }
+  },
+  "no_model_called": true,
+  "checks": [
+    "numbers",
+    "actor",
+    "field",
+    "length",
+    "language",
+    "reasons",
+    "judgement",
+    "items",
+    "dates"
+  ],
+  "sentences": 384,
+  "excluded_pass_seven_fail_demo_check": 7,
+  "prediction": {
+    "clean_items_pct_range": {
+      "overall": [
+        15,
+        30
+      ],
+      "anthropic-claude-haiku-5-5": [
+        10,
+        20
+      ],
+      "anthropic-claude-sonnet-5-5": [
+        10,
+        20
+      ],
+      "ollama-gemma4-e2b-ctx16k": [
+        20,
+        35
+      ],
+      "ollama-gemma4_e4b": [
+        20,
+        35
+      ]
+    },
+    "clean_dates_pct_range": [
+      0,
+      3
+    ],
+    "after_pct_range": {
+      "figure-changed": [
+        95,
+        100
+      ],
+      "figure-invented": [
+        91.6,
+        100
+      ],
+      "actor-swapped": [
+        95,
+        100
+      ],
+      "date-shifted": [
+        95,
+        100
+      ],
+      "item-dropped": [
+        70,
+        85
+      ],
+      "language-switched": [
+        95,
+        100
+      ],
+      "reason-invented": [
+        43,
+        59
+      ],
+      "judgement-added": [
+        49.8,
+        65.8
+      ],
+      "overall": [
+        75,
+        85
+      ]
+    },
+    "kill": "items clean false-failure rate pooled above 20 %"
+  },
+  "clean_false_failures": {
+    "template_08": {
+      "sentences": 147,
+      "fail_items": 13,
+      "fail_dates": 0
+    },
+    "pooled": {
+      "sentences": 384,
+      "fail_items": 143,
+      "fail_dates": 1,
+      "fail_either": 143,
+      "items_pct": 37.2,
+      "dates_pct": 0.3
+    },
+    "by_drafter": {
+      "ollama-gemma4-e2b-ctx16k": {
+        "sentences": 76,
+        "fail_items": 50,
+        "fail_dates": 0,
+        "fail_either": 50,
+        "items_pct": 65.8,
+        "dates_pct": 0
+      },
+      "ollama-gemma4_e4b": {
+        "sentences": 105,
+        "fail_items": 30,
+        "fail_dates": 1,
+        "fail_either": 30,
+        "items_pct": 28.6,
+        "dates_pct": 1
+      },
+      "anthropic-claude-haiku-5-5": {
+        "sentences": 82,
+        "fail_items": 32,
+        "fail_dates": 0,
+        "fail_either": 32,
+        "items_pct": 39,
+        "dates_pct": 0
+      },
+      "anthropic-claude-sonnet-5-5": {
+        "sentences": 121,
+        "fail_items": 31,
+        "fail_dates": 0,
+        "fail_either": 31,
+        "items_pct": 25.6,
+        "dates_pct": 0
+      }
+    },
+    "missing_items_by_kind": {
+      "text_not_word_for_word": 114,
+      "figure_other_than_zero": 29,
+      "row_zero": 18
+    },
+    "commonest_pattern": {
+      "what": "one clause-valued row field in one flow, required word for word; the model reorders or rewords it",
+      "sentences": 105,
+      "of_items_failures": 143
+    },
+    "without_that_flow": {
+      "fail_items": 38,
+      "sentences": 278
+    }
+  },
+  "kill_fired": true,
+  "by_type_pooled": {
+    "figure-changed": {
+      "planted": 323,
+      "not_applicable": 61,
+      "before": {
+        "caught": 311,
+        "catch_rate_pct": 96.3
+      },
+      "after": {
+        "caught": 323,
+        "catch_rate_pct": 100
+      },
+      "caught_only_by_new_checks": 12,
+      "planted_on_clean_sentence_that_already_fails": 92,
+      "after_where_clean_sentence_passes_all_nine": {
+        "caught": 231,
+        "planted": 231,
+        "catch_rate_pct": 100
+      }
+    },
+    "figure-invented": {
+      "planted": 384,
+      "not_applicable": 0,
+      "before": {
+        "caught": 365,
+        "catch_rate_pct": 95.1
+      },
+      "after": {
+        "caught": 374,
+        "catch_rate_pct": 97.4
+      },
+      "caught_only_by_new_checks": 9,
+      "planted_on_clean_sentence_that_already_fails": 143,
+      "after_where_clean_sentence_passes_all_nine": {
+        "caught": 231,
+        "planted": 241,
+        "catch_rate_pct": 95.9
+      }
+    },
+    "actor-swapped": {
+      "planted": 2,
+      "not_applicable": 382,
+      "before": {
+        "caught": 2,
+        "catch_rate_pct": 100
+      },
+      "after": {
+        "caught": 2,
+        "catch_rate_pct": 100
+      },
+      "caught_only_by_new_checks": 0,
+      "planted_on_clean_sentence_that_already_fails": 0,
+      "after_where_clean_sentence_passes_all_nine": {
+        "caught": 2,
+        "planted": 2,
+        "catch_rate_pct": 100
+      }
+    },
+    "date-shifted": {
+      "planted": 316,
+      "not_applicable": 68,
+      "before": {
+        "caught": 31,
+        "catch_rate_pct": 9.8
+      },
+      "after": {
+        "caught": 316,
+        "catch_rate_pct": 100
+      },
+      "caught_only_by_new_checks": 285,
+      "planted_on_clean_sentence_that_already_fails": 85,
+      "after_where_clean_sentence_passes_all_nine": {
+        "caught": 231,
+        "planted": 231,
+        "catch_rate_pct": 100
+      }
+    },
+    "item-dropped": {
+      "planted": 179,
+      "not_applicable": 205,
+      "before": {
+        "caught": 51,
+        "catch_rate_pct": 28.5
+      },
+      "after": {
+        "caught": 151,
+        "catch_rate_pct": 84.4
+      },
+      "caught_only_by_new_checks": 100,
+      "planted_on_clean_sentence_that_already_fails": 63,
+      "after_where_clean_sentence_passes_all_nine": {
+        "caught": 88,
+        "planted": 116,
+        "catch_rate_pct": 75.9
+      }
+    },
+    "language-switched": {
+      "planted": 384,
+      "not_applicable": 0,
+      "before": {
+        "caught": 382,
+        "catch_rate_pct": 99.5
+      },
+      "after": {
+        "caught": 384,
+        "catch_rate_pct": 100
+      },
+      "caught_only_by_new_checks": 2,
+      "planted_on_clean_sentence_that_already_fails": 143,
+      "after_where_clean_sentence_passes_all_nine": {
+        "caught": 241,
+        "planted": 241,
+        "catch_rate_pct": 100
+      }
+    },
+    "reason-invented": {
+      "planted": 384,
+      "not_applicable": 0,
+      "before": {
+        "caught": 153,
+        "catch_rate_pct": 39.8
+      },
+      "after": {
+        "caught": 235,
+        "catch_rate_pct": 61.2
+      },
+      "caught_only_by_new_checks": 82,
+      "planted_on_clean_sentence_that_already_fails": 143,
+      "after_where_clean_sentence_passes_all_nine": {
+        "caught": 92,
+        "planted": 241,
+        "catch_rate_pct": 38.2
+      }
+    },
+    "judgement-added": {
+      "planted": 384,
+      "not_applicable": 0,
+      "before": {
+        "caught": 250,
+        "catch_rate_pct": 65.1
+      },
+      "after": {
+        "caught": 297,
+        "catch_rate_pct": 77.3
+      },
+      "caught_only_by_new_checks": 47,
+      "planted_on_clean_sentence_that_already_fails": 143,
+      "after_where_clean_sentence_passes_all_nine": {
+        "caught": 154,
+        "planted": 241,
+        "catch_rate_pct": 63.9
+      }
+    }
+  },
+  "overall_pooled": {
+    "planted": 2356,
+    "not_applicable": 716,
+    "before": {
+      "caught": 1545,
+      "catch_rate_pct": 65.6
+    },
+    "after": {
+      "caught": 2082,
+      "catch_rate_pct": 88.4
+    },
+    "caught_only_by_new_checks": 537,
+    "planted_on_clean_sentence_that_already_fails": 812,
+    "after_where_clean_sentence_passes_all_nine": {
+      "caught": 1270,
+      "planted": 1544,
+      "catch_rate_pct": 82.3
+    }
+  },
+  "by_drafter": {
+    "ollama-gemma4-e2b-ctx16k": {
+      "by_type": {
+        "figure-changed": {
+          "planted": 57,
+          "not_applicable": 19,
+          "before": {
+            "caught": 53,
+            "catch_rate_pct": 93
+          },
+          "after": {
+            "caught": 57,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 4,
+          "planted_on_clean_sentence_that_already_fails": 32,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 25,
+            "planted": 25,
+            "catch_rate_pct": 100
+          }
+        },
+        "figure-invented": {
+          "planted": 76,
+          "not_applicable": 0,
+          "before": {
+            "caught": 69,
+            "catch_rate_pct": 90.8
+          },
+          "after": {
+            "caught": 73,
+            "catch_rate_pct": 96.1
+          },
+          "caught_only_by_new_checks": 4,
+          "planted_on_clean_sentence_that_already_fails": 50,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 23,
+            "planted": 26,
+            "catch_rate_pct": 88.5
+          }
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "not_applicable": 76,
+          "before": {
+            "caught": 0,
+            "catch_rate_pct": null
+          },
+          "after": {
+            "caught": 0,
+            "catch_rate_pct": null
+          },
+          "caught_only_by_new_checks": 0,
+          "planted_on_clean_sentence_that_already_fails": 0,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 0,
+            "planted": 0,
+            "catch_rate_pct": null
+          }
+        },
+        "date-shifted": {
+          "planted": 52,
+          "not_applicable": 24,
+          "before": {
+            "caught": 6,
+            "catch_rate_pct": 11.5
+          },
+          "after": {
+            "caught": 52,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 46,
+          "planted_on_clean_sentence_that_already_fails": 31,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 21,
+            "planted": 21,
+            "catch_rate_pct": 100
+          }
+        },
+        "item-dropped": {
+          "planted": 27,
+          "not_applicable": 49,
+          "before": {
+            "caught": 13,
+            "catch_rate_pct": 48.1
+          },
+          "after": {
+            "caught": 25,
+            "catch_rate_pct": 92.6
+          },
+          "caught_only_by_new_checks": 12,
+          "planted_on_clean_sentence_that_already_fails": 15,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 10,
+            "planted": 12,
+            "catch_rate_pct": 83.3
+          }
+        },
+        "language-switched": {
+          "planted": 76,
+          "not_applicable": 0,
+          "before": {
+            "caught": 75,
+            "catch_rate_pct": 98.7
+          },
+          "after": {
+            "caught": 76,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 1,
+          "planted_on_clean_sentence_that_already_fails": 50,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 26,
+            "planted": 26,
+            "catch_rate_pct": 100
+          }
+        },
+        "reason-invented": {
+          "planted": 76,
+          "not_applicable": 0,
+          "before": {
+            "caught": 28,
+            "catch_rate_pct": 36.8
+          },
+          "after": {
+            "caught": 58,
+            "catch_rate_pct": 76.3
+          },
+          "caught_only_by_new_checks": 30,
+          "planted_on_clean_sentence_that_already_fails": 50,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 8,
+            "planted": 26,
+            "catch_rate_pct": 30.8
+          }
+        },
+        "judgement-added": {
+          "planted": 76,
+          "not_applicable": 0,
+          "before": {
+            "caught": 48,
+            "catch_rate_pct": 63.2
+          },
+          "after": {
+            "caught": 63,
+            "catch_rate_pct": 82.9
+          },
+          "caught_only_by_new_checks": 15,
+          "planted_on_clean_sentence_that_already_fails": 50,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 13,
+            "planted": 26,
+            "catch_rate_pct": 50
+          }
+        }
+      },
+      "overall": {
+        "planted": 440,
+        "not_applicable": 168,
+        "before": {
+          "caught": 292,
+          "catch_rate_pct": 66.4
+        },
+        "after": {
+          "caught": 404,
+          "catch_rate_pct": 91.8
+        },
+        "caught_only_by_new_checks": 112,
+        "planted_on_clean_sentence_that_already_fails": 278,
+        "after_where_clean_sentence_passes_all_nine": {
+          "caught": 126,
+          "planted": 162,
+          "catch_rate_pct": 77.8
+        }
+      }
+    },
+    "ollama-gemma4_e4b": {
+      "by_type": {
+        "figure-changed": {
+          "planted": 91,
+          "not_applicable": 14,
+          "before": {
+            "caught": 89,
+            "catch_rate_pct": 97.8
+          },
+          "after": {
+            "caught": 91,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 2,
+          "planted_on_clean_sentence_that_already_fails": 19,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 72,
+            "planted": 72,
+            "catch_rate_pct": 100
+          }
+        },
+        "figure-invented": {
+          "planted": 105,
+          "not_applicable": 0,
+          "before": {
+            "caught": 101,
+            "catch_rate_pct": 96.2
+          },
+          "after": {
+            "caught": 102,
+            "catch_rate_pct": 97.1
+          },
+          "caught_only_by_new_checks": 1,
+          "planted_on_clean_sentence_that_already_fails": 30,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 72,
+            "planted": 75,
+            "catch_rate_pct": 96
+          }
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "not_applicable": 105,
+          "before": {
+            "caught": 0,
+            "catch_rate_pct": null
+          },
+          "after": {
+            "caught": 0,
+            "catch_rate_pct": null
+          },
+          "caught_only_by_new_checks": 0,
+          "planted_on_clean_sentence_that_already_fails": 0,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 0,
+            "planted": 0,
+            "catch_rate_pct": null
+          }
+        },
+        "date-shifted": {
+          "planted": 87,
+          "not_applicable": 18,
+          "before": {
+            "caught": 10,
+            "catch_rate_pct": 11.5
+          },
+          "after": {
+            "caught": 87,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 77,
+          "planted_on_clean_sentence_that_already_fails": 13,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 74,
+            "planted": 74,
+            "catch_rate_pct": 100
+          }
+        },
+        "item-dropped": {
+          "planted": 43,
+          "not_applicable": 62,
+          "before": {
+            "caught": 9,
+            "catch_rate_pct": 20.9
+          },
+          "after": {
+            "caught": 31,
+            "catch_rate_pct": 72.1
+          },
+          "caught_only_by_new_checks": 22,
+          "planted_on_clean_sentence_that_already_fails": 7,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 24,
+            "planted": 36,
+            "catch_rate_pct": 66.7
+          }
+        },
+        "language-switched": {
+          "planted": 105,
+          "not_applicable": 0,
+          "before": {
+            "caught": 105,
+            "catch_rate_pct": 100
+          },
+          "after": {
+            "caught": 105,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 0,
+          "planted_on_clean_sentence_that_already_fails": 30,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 75,
+            "planted": 75,
+            "catch_rate_pct": 100
+          }
+        },
+        "reason-invented": {
+          "planted": 105,
+          "not_applicable": 0,
+          "before": {
+            "caught": 40,
+            "catch_rate_pct": 38.1
+          },
+          "after": {
+            "caught": 58,
+            "catch_rate_pct": 55.2
+          },
+          "caught_only_by_new_checks": 18,
+          "planted_on_clean_sentence_that_already_fails": 30,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 28,
+            "planted": 75,
+            "catch_rate_pct": 37.3
+          }
+        },
+        "judgement-added": {
+          "planted": 105,
+          "not_applicable": 0,
+          "before": {
+            "caught": 75,
+            "catch_rate_pct": 71.4
+          },
+          "after": {
+            "caught": 82,
+            "catch_rate_pct": 78.1
+          },
+          "caught_only_by_new_checks": 7,
+          "planted_on_clean_sentence_that_already_fails": 30,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 52,
+            "planted": 75,
+            "catch_rate_pct": 69.3
+          }
+        }
+      },
+      "overall": {
+        "planted": 641,
+        "not_applicable": 199,
+        "before": {
+          "caught": 429,
+          "catch_rate_pct": 66.9
+        },
+        "after": {
+          "caught": 556,
+          "catch_rate_pct": 86.7
+        },
+        "caught_only_by_new_checks": 127,
+        "planted_on_clean_sentence_that_already_fails": 159,
+        "after_where_clean_sentence_passes_all_nine": {
+          "caught": 397,
+          "planted": 482,
+          "catch_rate_pct": 82.4
+        }
+      }
+    },
+    "anthropic-claude-haiku-5-5": {
+      "by_type": {
+        "figure-changed": {
+          "planted": 68,
+          "not_applicable": 14,
+          "before": {
+            "caught": 64,
+            "catch_rate_pct": 94.1
+          },
+          "after": {
+            "caught": 68,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 4,
+          "planted_on_clean_sentence_that_already_fails": 21,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 47,
+            "planted": 47,
+            "catch_rate_pct": 100
+          }
+        },
+        "figure-invented": {
+          "planted": 82,
+          "not_applicable": 0,
+          "before": {
+            "caught": 79,
+            "catch_rate_pct": 96.3
+          },
+          "after": {
+            "caught": 82,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 3,
+          "planted_on_clean_sentence_that_already_fails": 32,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 50,
+            "planted": 50,
+            "catch_rate_pct": 100
+          }
+        },
+        "actor-swapped": {
+          "planted": 0,
+          "not_applicable": 82,
+          "before": {
+            "caught": 0,
+            "catch_rate_pct": null
+          },
+          "after": {
+            "caught": 0,
+            "catch_rate_pct": null
+          },
+          "caught_only_by_new_checks": 0,
+          "planted_on_clean_sentence_that_already_fails": 0,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 0,
+            "planted": 0,
+            "catch_rate_pct": null
+          }
+        },
+        "date-shifted": {
+          "planted": 69,
+          "not_applicable": 13,
+          "before": {
+            "caught": 5,
+            "catch_rate_pct": 7.2
+          },
+          "after": {
+            "caught": 69,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 64,
+          "planted_on_clean_sentence_that_already_fails": 21,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 48,
+            "planted": 48,
+            "catch_rate_pct": 100
+          }
+        },
+        "item-dropped": {
+          "planted": 44,
+          "not_applicable": 38,
+          "before": {
+            "caught": 16,
+            "catch_rate_pct": 36.4
+          },
+          "after": {
+            "caught": 44,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 28,
+          "planted_on_clean_sentence_that_already_fails": 20,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 24,
+            "planted": 24,
+            "catch_rate_pct": 100
+          }
+        },
+        "language-switched": {
+          "planted": 82,
+          "not_applicable": 0,
+          "before": {
+            "caught": 81,
+            "catch_rate_pct": 98.8
+          },
+          "after": {
+            "caught": 82,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 1,
+          "planted_on_clean_sentence_that_already_fails": 32,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 50,
+            "planted": 50,
+            "catch_rate_pct": 100
+          }
+        },
+        "reason-invented": {
+          "planted": 82,
+          "not_applicable": 0,
+          "before": {
+            "caught": 35,
+            "catch_rate_pct": 42.7
+          },
+          "after": {
+            "caught": 53,
+            "catch_rate_pct": 64.6
+          },
+          "caught_only_by_new_checks": 18,
+          "planted_on_clean_sentence_that_already_fails": 32,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 21,
+            "planted": 50,
+            "catch_rate_pct": 42
+          }
+        },
+        "judgement-added": {
+          "planted": 82,
+          "not_applicable": 0,
+          "before": {
+            "caught": 47,
+            "catch_rate_pct": 57.3
+          },
+          "after": {
+            "caught": 65,
+            "catch_rate_pct": 79.3
+          },
+          "caught_only_by_new_checks": 18,
+          "planted_on_clean_sentence_that_already_fails": 32,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 33,
+            "planted": 50,
+            "catch_rate_pct": 66
+          }
+        }
+      },
+      "overall": {
+        "planted": 509,
+        "not_applicable": 147,
+        "before": {
+          "caught": 327,
+          "catch_rate_pct": 64.2
+        },
+        "after": {
+          "caught": 463,
+          "catch_rate_pct": 91
+        },
+        "caught_only_by_new_checks": 136,
+        "planted_on_clean_sentence_that_already_fails": 190,
+        "after_where_clean_sentence_passes_all_nine": {
+          "caught": 273,
+          "planted": 319,
+          "catch_rate_pct": 85.6
+        }
+      }
+    },
+    "anthropic-claude-sonnet-5-5": {
+      "by_type": {
+        "figure-changed": {
+          "planted": 107,
+          "not_applicable": 14,
+          "before": {
+            "caught": 105,
+            "catch_rate_pct": 98.1
+          },
+          "after": {
+            "caught": 107,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 2,
+          "planted_on_clean_sentence_that_already_fails": 20,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 87,
+            "planted": 87,
+            "catch_rate_pct": 100
+          }
+        },
+        "figure-invented": {
+          "planted": 121,
+          "not_applicable": 0,
+          "before": {
+            "caught": 116,
+            "catch_rate_pct": 95.9
+          },
+          "after": {
+            "caught": 117,
+            "catch_rate_pct": 96.7
+          },
+          "caught_only_by_new_checks": 1,
+          "planted_on_clean_sentence_that_already_fails": 31,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 86,
+            "planted": 90,
+            "catch_rate_pct": 95.6
+          }
+        },
+        "actor-swapped": {
+          "planted": 2,
+          "not_applicable": 119,
+          "before": {
+            "caught": 2,
+            "catch_rate_pct": 100
+          },
+          "after": {
+            "caught": 2,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 0,
+          "planted_on_clean_sentence_that_already_fails": 0,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 2,
+            "planted": 2,
+            "catch_rate_pct": 100
+          }
+        },
+        "date-shifted": {
+          "planted": 108,
+          "not_applicable": 13,
+          "before": {
+            "caught": 10,
+            "catch_rate_pct": 9.3
+          },
+          "after": {
+            "caught": 108,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 98,
+          "planted_on_clean_sentence_that_already_fails": 20,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 88,
+            "planted": 88,
+            "catch_rate_pct": 100
+          }
+        },
+        "item-dropped": {
+          "planted": 65,
+          "not_applicable": 56,
+          "before": {
+            "caught": 13,
+            "catch_rate_pct": 20
+          },
+          "after": {
+            "caught": 51,
+            "catch_rate_pct": 78.5
+          },
+          "caught_only_by_new_checks": 38,
+          "planted_on_clean_sentence_that_already_fails": 21,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 30,
+            "planted": 44,
+            "catch_rate_pct": 68.2
+          }
+        },
+        "language-switched": {
+          "planted": 121,
+          "not_applicable": 0,
+          "before": {
+            "caught": 121,
+            "catch_rate_pct": 100
+          },
+          "after": {
+            "caught": 121,
+            "catch_rate_pct": 100
+          },
+          "caught_only_by_new_checks": 0,
+          "planted_on_clean_sentence_that_already_fails": 31,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 90,
+            "planted": 90,
+            "catch_rate_pct": 100
+          }
+        },
+        "reason-invented": {
+          "planted": 121,
+          "not_applicable": 0,
+          "before": {
+            "caught": 50,
+            "catch_rate_pct": 41.3
+          },
+          "after": {
+            "caught": 66,
+            "catch_rate_pct": 54.5
+          },
+          "caught_only_by_new_checks": 16,
+          "planted_on_clean_sentence_that_already_fails": 31,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 35,
+            "planted": 90,
+            "catch_rate_pct": 38.9
+          }
+        },
+        "judgement-added": {
+          "planted": 121,
+          "not_applicable": 0,
+          "before": {
+            "caught": 80,
+            "catch_rate_pct": 66.1
+          },
+          "after": {
+            "caught": 87,
+            "catch_rate_pct": 71.9
+          },
+          "caught_only_by_new_checks": 7,
+          "planted_on_clean_sentence_that_already_fails": 31,
+          "after_where_clean_sentence_passes_all_nine": {
+            "caught": 56,
+            "planted": 90,
+            "catch_rate_pct": 62.2
+          }
+        }
+      },
+      "overall": {
+        "planted": 766,
+        "not_applicable": 202,
+        "before": {
+          "caught": 497,
+          "catch_rate_pct": 64.9
+        },
+        "after": {
+          "caught": 659,
+          "catch_rate_pct": 86
+        },
+        "caught_only_by_new_checks": 162,
+        "planted_on_clean_sentence_that_already_fails": 185,
+        "after_where_clean_sentence_passes_all_nine": {
+          "caught": 474,
+          "planted": 581,
+          "catch_rate_pct": 81.6
+        }
+      }
+    }
+  },
+  "template_row_08": {
+    "by_type_after_pct": {
+      "figure-changed": 100,
+      "figure-invented": 96.6,
+      "actor-swapped": 100,
+      "date-shifted": 100,
+      "item-dropped": 89.1,
+      "language-switched": 100,
+      "reason-invented": 51,
+      "judgement-added": 57.8
+    },
+    "overall_after_pct": 83.9
+  },
+  "verdicts": {
+    "held": 9,
+    "refuted": 7
+  },
+  "reopens": "passes 2-3 or prompt-v2 drafts in the set; a changed rule in row_checks.js; a changed check in checks.js; a new fault type"
+}
