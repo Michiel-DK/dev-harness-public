@@ -1,0 +1,232 @@
+{
+  "experiment": "12-e2b-stock-tag",
+  "date": "2026-11-10",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "79f0aba"
+  },
+  "question": "Is the gap between the two local arms of 03-cheapest-model (gemma4-e2b-ctx16k 76 vs gemma4:e4b 105 of 155) the model size, or the tag? The stock gemma4:e2b tag, run as the e4b arm was (temperature 0, reasoning_effort none, three passes), on the same 155 sentences.",
+  "tags": {
+    "gemma4-e2b-ctx16k": {
+      "model_blob": "sha256:3646b4c147cd",
+      "quantisation": "Q4_0",
+      "same_blobs_as": "gemma4:e2b-it-qat"
+    },
+    "gemma4:e2b": {
+      "model_blob": "sha256:4e30e2665218",
+      "quantisation": "Q4_K_M"
+    }
+  },
+  "arms": [
+    {
+      "tag": "gemma4-e2b-ctx16k",
+      "provider": "ollama",
+      "date": "2026-11-09",
+      "manifest_digest": "7f16fd316739ff537c98598be0f48b97dd600d362617eae1c7739bd2cf815cfa",
+      "passes": 3,
+      "pass_per_flow_per_pass": {
+        "accounting-missing-documents": [
+          0,
+          0,
+          0
+        ],
+        "accounting-monthly-report": [
+          27,
+          27,
+          27
+        ],
+        "ai-draft-review-publish": [
+          26,
+          26,
+          26
+        ],
+        "ecommerce-campaign-stock-check": [
+          2,
+          2,
+          2
+        ],
+        "ecommerce-monthly-report": [
+          3,
+          3,
+          3
+        ],
+        "real-estate-monthly-report": [
+          17,
+          17,
+          17
+        ],
+        "real-estate-viewing-feedback": [
+          0,
+          0,
+          0
+        ],
+        "recruitment-monthly-report": [
+          0,
+          0,
+          0
+        ],
+        "recruitment-sponsored-spend": [
+          1,
+          1,
+          1
+        ]
+      },
+      "total_per_pass": [
+        76,
+        76,
+        76
+      ],
+      "of": 155
+    },
+    {
+      "tag": "gemma4:e2b",
+      "provider": "ollama",
+      "date": "2026-11-10",
+      "manifest_digest": "7fbdbf8f5e45a75bb122155ed546e765b4d9c53a1285f62fd9f506baa1c5a47e",
+      "passes": 3,
+      "pass_per_flow_per_pass": {
+        "accounting-missing-documents": [
+          0,
+          0,
+          0
+        ],
+        "accounting-monthly-report": [
+          24,
+          24,
+          24
+        ],
+        "ai-draft-review-publish": [
+          27,
+          27,
+          27
+        ],
+        "ecommerce-campaign-stock-check": [
+          0,
+          0,
+          0
+        ],
+        "ecommerce-monthly-report": [
+          0,
+          0,
+          0
+        ],
+        "real-estate-monthly-report": [
+          23,
+          23,
+          23
+        ],
+        "real-estate-viewing-feedback": [
+          0,
+          0,
+          0
+        ],
+        "recruitment-monthly-report": [
+          9,
+          9,
+          9
+        ],
+        "recruitment-sponsored-spend": [
+          1,
+          1,
+          1
+        ]
+      },
+      "total_per_pass": [
+        84,
+        84,
+        84
+      ],
+      "of": 155
+    },
+    {
+      "tag": "gemma4:e4b",
+      "provider": "ollama",
+      "date": "2026-11-09",
+      "manifest_digest": "a3d2b95350da03ff9b1943a753bb6617c49a3ee462b632a758518ec817743986",
+      "passes": 3,
+      "pass_per_flow_per_pass": {
+        "accounting-missing-documents": [
+          0,
+          0,
+          0
+        ],
+        "accounting-monthly-report": [
+          27,
+          27,
+          27
+        ],
+        "ai-draft-review-publish": [
+          29,
+          29,
+          29
+        ],
+        "ecommerce-campaign-stock-check": [
+          1,
+          1,
+          1
+        ],
+        "ecommerce-monthly-report": [
+          3,
+          3,
+          3
+        ],
+        "real-estate-monthly-report": [
+          25,
+          25,
+          25
+        ],
+        "real-estate-viewing-feedback": [
+          0,
+          0,
+          0
+        ],
+        "recruitment-monthly-report": [
+          20,
+          20,
+          20
+        ],
+        "recruitment-sponsored-spend": [
+          0,
+          0,
+          0
+        ]
+      },
+      "total_per_pass": [
+        105,
+        105,
+        105
+      ],
+      "of": 155
+    }
+  ],
+  "stable_verdicts": {
+    "gemma4-e2b-ctx16k": "155/155",
+    "gemma4:e2b": "155/155",
+    "gemma4:e4b": "155/155"
+  },
+  "calls_at_max_tokens": {
+    "gemma4:e2b": "0/474",
+    "gemma4:e4b": "0/474"
+  },
+  "tokens_per_sentence": {
+    "gemma4:e2b": {
+      "input": 463.6,
+      "output": 26.1
+    },
+    "gemma4:e4b": {
+      "input": 464.0,
+      "output": 34.1
+    }
+  },
+  "prediction": {
+    "branch_declared": 2,
+    "kill_clause": "fired (84/84/84 is +8 from 76; e2b picks lost: accounting-monthly-report 24 < 27, ecommerce-campaign-stock-check 0 < 2)",
+    "scored": {
+      "below_105_every_pass": "held",
+      "stable_at_least_150": "held",
+      "max_tokens_0": "held",
+      "usage_every_call": "held"
+    }
+  },
+  "reopen": "a gemma4:e2b manifest change, a prompt or lib/checks change, a new model-step demo; follow-up: gemma4-e2b-ctx16k-plain to split weights from window"
+}
