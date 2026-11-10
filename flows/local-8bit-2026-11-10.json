@@ -1,0 +1,117 @@
+{
+  "experiment": "15-local-8bit",
+  "date": "2026-11-10",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "178715f"
+  },
+  "question": "Does an 8-bit local model beat the current local arm (gemma4-e2b-ctx16k, 76 of 155) on the same 155 sentences and checks, and how much of any gain is the 8 bits versus the larger model (stock gemma4:e4b, 105)?",
+  "tags": {
+    "gemma4-e4b-ctx16k-q8": {
+      "built_from": "gemma4:e4b-it-q8_0",
+      "num_ctx": 16384,
+      "model_blob": "sha256:38e6c022cc27",
+      "quantisation": "Q8_0"
+    },
+    "gemma4:e4b": {
+      "model_blob": "sha256:4c27e0f5b5ad",
+      "quantisation": "Q4_K/Q6_K blocks, BF16 per-layer embedding"
+    },
+    "gemma4-e2b-ctx16k": {
+      "model_blob": "sha256:3646b4c147cd",
+      "quantisation": "Q4_0"
+    }
+  },
+  "arms": [
+    {
+      "tag": "gemma4-e2b-ctx16k",
+      "provider": "ollama",
+      "date": "2026-11-09",
+      "manifest_digest": "7f16fd316739ff537c98598be0f48b97dd600d362617eae1c7739bd2cf815cfa",
+      "passes": 3,
+      "total": 76,
+      "of": 155,
+      "total_per_pass": [
+        76,
+        76,
+        76
+      ],
+      "pass_per_flow": {
+        "accounting-missing-documents": 0,
+        "accounting-monthly-report": 27,
+        "ai-draft-review-publish": 26,
+        "ecommerce-campaign-stock-check": 2,
+        "ecommerce-monthly-report": 3,
+        "real-estate-monthly-report": 17,
+        "real-estate-viewing-feedback": 0,
+        "recruitment-monthly-report": 0,
+        "recruitment-sponsored-spend": 1
+      },
+      "note": "pass 1 per flow; passes 2 and 3 identical totals"
+    },
+    {
+      "tag": "gemma4:e4b",
+      "provider": "ollama",
+      "date": "2026-11-09",
+      "manifest_digest": "a3d2b95350da03ff9b1943a753bb6617c49a3ee462b632a758518ec817743986",
+      "passes": 3,
+      "total": 105,
+      "of": 155,
+      "total_per_pass": [
+        105,
+        105,
+        105
+      ],
+      "pass_per_flow": {
+        "accounting-missing-documents": 0,
+        "accounting-monthly-report": 27,
+        "ai-draft-review-publish": 29,
+        "ecommerce-campaign-stock-check": 1,
+        "ecommerce-monthly-report": 3,
+        "real-estate-monthly-report": 25,
+        "real-estate-viewing-feedback": 0,
+        "recruitment-monthly-report": 20,
+        "recruitment-sponsored-spend": 0
+      },
+      "note": "pass 1 per flow; passes 2 and 3 identical totals"
+    },
+    {
+      "tag": "gemma4-e4b-ctx16k-q8",
+      "provider": "ollama",
+      "date": "2026-11-10",
+      "manifest_digest": "0f992909c10f6bfed8f0283839356ab1154de0c87ff49e38a77e32f61011bfa5",
+      "passes": 1,
+      "pass_per_flow": {
+        "accounting-missing-documents": 1,
+        "accounting-monthly-report": 26,
+        "ai-draft-review-publish": 30,
+        "ecommerce-campaign-stock-check": 1,
+        "ecommerce-monthly-report": 3,
+        "real-estate-monthly-report": 26,
+        "real-estate-viewing-feedback": 0,
+        "recruitment-monthly-report": 9,
+        "recruitment-sponsored-spend": 3
+      },
+      "total": 99,
+      "of": 155
+    }
+  ],
+  "calls_at_max_tokens": {
+    "gemma4-e4b-ctx16k-q8": "0/152"
+  },
+  "peak_footprint_gb": {
+    "gemma4-e4b-ctx16k-q8": 16.99
+  },
+  "prediction": {
+    "predicted": 107,
+    "band": [
+      102,
+      112
+    ],
+    "result": 99,
+    "kill_below_86_vs_76": "not fired",
+    "kill_below_100_vs_105": "fired",
+    "pass_2": "aborted by the memory rule (peak 16.99 GB + 2.0 GB headroom exceeds the 16 GB box)"
+  },
+  "reopen": "a pass 2 at >= 102 on a box with room, or a Q8_0 e2b tag at 16k"
+}
