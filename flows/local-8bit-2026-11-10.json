@@ -3,7 +3,7 @@
   "date": "2026-11-10",
   "source": {
     "repo": "roger3000_automations (private)",
-    "sha": "178715f"
+    "sha": "de60f16"
   },
   "question": "Does an 8-bit local model beat the current local arm (gemma4-e2b-ctx16k, 76 of 155) on the same 155 sentences and checks, and how much of any gain is the 8 bits versus the larger model (stock gemma4:e4b, 105)?",
   "tags": {
