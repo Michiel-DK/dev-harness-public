@@ -142,6 +142,14 @@
     <p class="note" id="pred"></p>
   </section>
 
+  <section id="replay" style="display:none">
+    <h2><a href="#replay">Same task, built twice: with the gate and without</a></h2>
+    <p class="sub" id="replay-sub"></p>
+    <div id="t-replay"></div>
+    <p class="note" id="replay-note"></p>
+    <p class="note" id="claims-note"></p>
+  </section>
+
   <section id="score">
     <h2><a href="#score">Harness score over time</a></h2>
     <p class="sub">A weighted roll-up over four structural checks. Hollow points were reconstructed by re-running the scorecard at past commits and are plotted as the instrument scored them then, including a drift dimension that scored 100 on zero consumers; filled points are live runs, Mondays from now on. Dashed lines mark changes to the measuring stick itself: a drop at a mark is a correction, not decay.</p>
@@ -255,6 +263,25 @@
   legend($('lg-outcomes'), [[S[0], 'credited (code + green CI)'], [css('--muted-fill'), 'merged, not credited (docs, or CI not green)'], [S[7], 'rejected']]);
   table($('t-outcomes'), ['week', 'merges', 'credited', 'green', 'on red', 'rejected', 'sessions', 'abandoned', 'verdicts', 'refuted'],
     ow.map(w => [w.week, w.merges, w.credited, w.green, w.merged_on_red, w.rejected, w.sessions, w.abandoned, w.verdicts, w.refuted]));
+  // ── built twice (S-189 replay, counts only) + claims re-run ────────────────
+  const nv = v => (v === null || v === undefined ? 'n/a' : v);
+  if (H.replay && H.replay.cells && H.replay.cells.length) {
+    const r = H.replay, p2 = r.pairs || {}, st = r.stopped || {};
+    $('replay').style.display = '';
+    $('replay-sub').textContent = `Exploratory, no verdict${r.as_of ? '; builds finished ' + r.as_of : ''}. ${nv(r.tasks)} small tasks, each built from one starting commit by the same model: once plain, once through the harness. Scored on ${nv(r.cases_per_task)} test cases per task that the builders never saw. At this size only a very large difference can show.`;
+    table($('t-replay'), ['builder', 'arm', 'produced a project', 'hidden cases passed', 'wrong claims in PR text', 'median $ / build', 'median min'],
+      r.cells.map(c => [c.builder, c.arm, `${nv(c.produced)} of ${nv(c.builds)}`, `${nv(c.cases_passed)} of ${nv(c.cases_total)}`,
+        c.claims_checkable ? `${nv(c.claims_mismatch)} of ${c.claims_checkable}` : 'n/a (0 checkable)',
+        c.median_cost_usd === null ? 'n/a' : '$' + c.median_cost_usd.toFixed(2), c.median_wall_min === null ? 'n/a' : Math.round(c.median_wall_min)]));
+    $('replay-note').textContent = `Of ${nv(p2.total)} plain/gated pairs the gated build scored higher in ${nv(p2.gated_higher)}, lower in ${nv(p2.gated_lower)}, the same in ${nv(p2.tie)}. ${nv(r.builds_all_cases)} of ${nv(r.builds_total)} builds passed every hidden case. Gated builds: ${nv(st.criterion_halt)} halted at the criterion review and built nothing, ${nv(st.other_no_project)} stopped for another reason, ${nv(st.skipped_gate)} skipped the gate, ${nv(st.open_findings)} ended with a gate finding left open. One repo, one task type, same-family reviewers; the README lists the limits.`;
+  }
+  if (H.claims && ((H.claims.weekly || []).length || H.claims.audit)) {
+    const arm = (label, a) => (!a || !a.prs ? `${label} n/a (0 PRs)` : `${label} ${nv(a.mismatches)} wrong of ${nv(a.claims)} claims in ${a.prs} PRs`);
+    const wk = (H.claims.weekly || []).slice(-1)[0];
+    $('replay').style.display = '';
+    $('claims-note').textContent = 'Claims re-measured after merge: ' + (wk ? `week of ${wk.week}: ${arm('gated', wk.arms.gated)} · ${arm('plain', wk.arms.plain)}.` : 'weekly re-run n/a (not run yet).')
+      + (H.claims.audit ? ` One-off audit ${H.claims.audit.date} (${H.claims.audit.arm} arm, one repo): ${nv(H.claims.audit.mismatches)} wrong of ${nv(H.claims.audit.claims)}.` : '');
+  }
   if (H.predictions) {
     const p = H.predictions;
     $('pred').innerHTML = `<strong>Predictions on the harness itself:</strong> every behavioural change carries a pre-registered prediction with a date. <strong>${p.graded}</strong> grades over ${p.graded_stubs ?? '?'} stubs: <strong>${p.pass}</strong> pass · <strong>${p.partial}</strong> partial · <strong>${p.fail}</strong> fail · <strong>${p.ungradeable}</strong> ungradeable. ${p.open_dated} stubs open with a date, ${p.event_gated} waiting on an event, ${p.stubs} in all; the groups overlap (a graded stub can be re-armed) and closed stubs are in none.`;
