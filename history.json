@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated": "2026-11-16",
+  "generated": "2026-11-24",
   "since": "2026-07-20",
   "baseline": {
     "weeks": 25,
@@ -1573,20 +1573,20 @@
       "reviews": 120,
       "sound": 79,
       "gated_runs": 93,
-      "token_sessions": 333,
-      "tokens": 1847060160,
-      "cache_read": 1782061590,
-      "cost_usd": 1513.17,
-      "costed": 333,
+      "token_sessions": 337,
+      "tokens": 1932460098,
+      "cache_read": 1864180442,
+      "cost_usd": 1592.37,
+      "costed": 337,
       "parts": {
-        "shell": 1345655671,
-        "edits": 71595209,
-        "reads": 35863839,
+        "shell": 1407990264,
+        "edits": 77915573,
+        "reads": 39158179,
         "loops": 23120442,
         "verify": 1815029,
-        "agents": 126118120,
-        "workflow_skills": 22886237,
-        "text": 220005613
+        "agents": 127218275,
+        "workflow_skills": 22951175,
+        "text": 232291161
       },
       "queues": {
         "ra": {
@@ -1635,9 +1635,201 @@
           "cost_usd": 207.39
         },
         "unattributed": {
-          "sessions": 86,
-          "tokens": 783461718,
-          "cost_usd": 611.31
+          "sessions": 90,
+          "tokens": 868861656,
+          "cost_usd": 690.51
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
+      }
+    },
+    {
+      "week": "2026-11-16",
+      "merges": 134,
+      "credited": 97,
+      "green": 133,
+      "rejected": 15,
+      "superseded": 1,
+      "merged_on_red": 1,
+      "code": 98,
+      "docs": 34,
+      "other": 2,
+      "reverted": 0,
+      "reverted_credited": 0,
+      "fix_forward": 0,
+      "sessions": 197,
+      "pr_opened": 98,
+      "abandoned": 37,
+      "tool_errors": 291,
+      "verdicts": 386,
+      "refuted": 41,
+      "reviews": 84,
+      "sound": 52,
+      "gated_runs": 86,
+      "token_sessions": 943,
+      "tokens": 2311764013,
+      "cache_read": 2221397641,
+      "cost_usd": 1921.47,
+      "costed": 943,
+      "parts": {
+        "shell": 1707473579,
+        "edits": 83083312,
+        "reads": 50749190,
+        "loops": 17860148,
+        "verify": 10539000,
+        "agents": 173924008,
+        "workflow_skills": 17827098,
+        "text": 250307678
+      },
+      "queues": {
+        "ra": {
+          "sessions": 51,
+          "tokens": 317020787,
+          "cost_usd": 307.99
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 18,
+          "tokens": 48570092,
+          "cost_usd": 51.58
+        },
+        "as": {
+          "sessions": 29,
+          "tokens": 66621559,
+          "cost_usd": 63.35
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 24,
+          "tokens": 98519704,
+          "cost_usd": 72.66
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 96,
+          "tokens": 403829896,
+          "cost_usd": 321.64
+        },
+        "other": {
+          "sessions": 70,
+          "tokens": 425016723,
+          "cost_usd": 302.13
+        },
+        "unattributed": {
+          "sessions": 655,
+          "tokens": 952185252,
+          "cost_usd": 802.12
+        },
+        "not_looked": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        }
+      }
+    },
+    {
+      "week": "2026-11-23",
+      "merges": 24,
+      "credited": 17,
+      "green": 24,
+      "rejected": 0,
+      "superseded": 0,
+      "merged_on_red": 0,
+      "code": 17,
+      "docs": 7,
+      "other": 0,
+      "reverted": 0,
+      "reverted_credited": 0,
+      "fix_forward": 0,
+      "sessions": 29,
+      "pr_opened": 23,
+      "abandoned": 2,
+      "tool_errors": 51,
+      "verdicts": 34,
+      "refuted": 0,
+      "reviews": 7,
+      "sound": 5,
+      "gated_runs": 7,
+      "token_sessions": 38,
+      "tokens": 223612797,
+      "cache_read": 214984451,
+      "cost_usd": 179.16,
+      "costed": 38,
+      "parts": {
+        "shell": 181705691,
+        "edits": 7627648,
+        "reads": 3331374,
+        "loops": 3035617,
+        "verify": 0,
+        "agents": 10325806,
+        "workflow_skills": 2266860,
+        "text": 15319801
+      },
+      "queues": {
+        "ra": {
+          "sessions": 12,
+          "tokens": 81346166,
+          "cost_usd": 63.92
+        },
+        "mi": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "site": {
+          "sessions": 1,
+          "tokens": 378921,
+          "cost_usd": 0.52
+        },
+        "as": {
+          "sessions": 2,
+          "tokens": 8143177,
+          "cost_usd": 3.34
+        },
+        "wr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "rd": {
+          "sessions": 3,
+          "tokens": 16566317,
+          "cost_usd": 10
+        },
+        "hr": {
+          "sessions": 0,
+          "tokens": 0,
+          "cost_usd": 0
+        },
+        "lab": {
+          "sessions": 5,
+          "tokens": 23015591,
+          "cost_usd": 21.25
+        },
+        "other": {
+          "sessions": 6,
+          "tokens": 14744862,
+          "cost_usd": 21.82
+        },
+        "unattributed": {
+          "sessions": 9,
+          "tokens": 79417763,
+          "cost_usd": 58.31
         },
         "not_looked": {
           "sessions": 0,
@@ -1898,6 +2090,45 @@
       },
       "consumers_checked": 4,
       "consumers_drifting": 1
+    },
+    {
+      "date": "2026-11-24",
+      "score": 86,
+      "grade": "A",
+      "dims": {
+        "skillsValid": {
+          "weight": 25,
+          "active": true,
+          "score": 90
+        },
+        "triggersRouting": {
+          "weight": 25,
+          "active": true,
+          "score": 98
+        },
+        "reposInSync": {
+          "weight": 20,
+          "active": true,
+          "score": 67
+        },
+        "selfTested": {
+          "weight": 15,
+          "active": true,
+          "score": 87
+        },
+        "proseBudget": {
+          "weight": 10,
+          "active": true,
+          "score": 83
+        },
+        "mcpSurface": {
+          "weight": 15,
+          "active": false,
+          "score": null
+        }
+      },
+      "consumers_checked": 4,
+      "consumers_drifting": 0
     }
   ],
   "instrument_changes": [
@@ -1915,14 +2146,14 @@
     }
   ],
   "predictions": {
-    "pass": 17,
-    "partial": 18,
-    "fail": 8,
-    "ungradeable": 15,
-    "graded": 58,
-    "graded_stubs": 47,
-    "open_dated": 18,
-    "event_gated": 8,
+    "pass": 21,
+    "partial": 19,
+    "fail": 9,
+    "ungradeable": 20,
+    "graded": 69,
+    "graded_stubs": 57,
+    "open_dated": 8,
+    "event_gated": 7,
     "stubs": 93
   },
   "replay": {
@@ -2033,13 +2264,44 @@
       "claims": 75,
       "mismatches": 4
     },
-    "weekly": []
+    "weekly": [
+      {
+        "week": "2026-11-09",
+        "arms": {
+          "plain": {
+            "prs": 51,
+            "claims": 37,
+            "mismatches": 3
+          },
+          "gated": {
+            "prs": 40,
+            "claims": 61,
+            "mismatches": 1
+          }
+        }
+      },
+      {
+        "week": "2026-11-16",
+        "arms": {
+          "plain": {
+            "prs": 36,
+            "claims": 64,
+            "mismatches": 1
+          },
+          "gated": {
+            "prs": 69,
+            "claims": 113,
+            "mismatches": 5
+          }
+        }
+      }
+    ]
   },
   "totals": {
-    "weeks": 17,
-    "merges": 1241,
-    "credited": 791,
-    "cost_usd": 6515.15,
-    "tokens": 7224422614
+    "weeks": 19,
+    "merges": 1399,
+    "credited": 905,
+    "cost_usd": 8694.98,
+    "tokens": 9845199362
   }
 }
