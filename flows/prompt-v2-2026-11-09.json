@@ -1,0 +1,46 @@
+{
+  "experiment": "09-prompt-v2",
+  "date": "2026-11-09",
+  "source": { "repo": "roger3000_automations (private)", "sha": "e7cedf1", "runner_sha_in_results": "0bd3cf6" },
+  "question": "Same nine model-step demo flows, same 155 sentences, same checks: does a rewritten prompt raise the pass count for Haiku 5.5, and does the same rewrite raise it for a local 2B model (prompt vs model)?",
+  "template_baseline": { "sentences_passing": 147, "of": 155 },
+  "arms": [
+    {
+      "model": "claude-haiku-5-5",
+      "provider": "anthropic (Messages API)",
+      "temperature": "default (the API rejects temperature for this model)",
+      "thinking": "disabled",
+      "max_tokens": 200,
+      "prompt_v1_passes": [82, 86, 80],
+      "prompt_v2_passes": [
+        { "pass": 1, "sentences_passing": 131, "of": 155, "handoffs_per_100_rows": 45.9 },
+        { "pass": 2, "sentences_passing": 127, "of": 155, "handoffs_per_100_rows": 50.6 },
+        { "pass": 3, "sentences_passing": 125, "of": 155, "handoffs_per_100_rows": 52.9 }
+      ],
+      "mean_v1": 82.7,
+      "mean_v2": 127.7,
+      "predicted_mean_v2": 121.4,
+      "refute_band": 12,
+      "verdict": "held",
+      "calls_at_max_tokens": 14,
+      "spend_usd": 0.0591
+    },
+    {
+      "model": "gemma4-e2b-ctx16k",
+      "provider": "ollama (local)",
+      "temperature": 0,
+      "prompt_v1_passes": [76, 76, 76],
+      "prompt_v2_passes": [
+        { "pass": 1, "sentences_passing": 89, "of": 155, "handoffs_per_100_rows": 95.3 },
+        { "pass": 2, "sentences_passing": 89, "of": 155, "handoffs_per_100_rows": 95.3 }
+      ],
+      "predicted_v2": 104.2,
+      "refute_band": 10,
+      "verdict": "refuted",
+      "spend_usd": 0
+    }
+  ],
+  "overall_verdict": "mixed",
+  "reading": "both arms rose by more than their band, so by the rule fixed before the run the 00 shortfall was mostly the prompt; the rise was +45 for Haiku and +13 for the 2B model",
+  "regressions": { "claude-haiku-5-5_per_pass": [4, 3, 3], "gemma4-e2b-ctx16k_per_pass": [16, 16] }
+}

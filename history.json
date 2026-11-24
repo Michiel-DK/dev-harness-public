@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "generated": "2026-11-09",
+  "generated": "2026-11-16",
   "since": "2026-07-20",
   "baseline": {
     "weeks": 25,
@@ -25,9 +25,9 @@
       "code": 91,
       "docs": 23,
       "other": 51,
-      "reverted": 0,
-      "reverted_credited": 0,
-      "fix_forward": 0,
+      "reverted": null,
+      "reverted_credited": null,
+      "fix_forward": null,
       "sessions": 33,
       "pr_opened": 23,
       "abandoned": 9,
@@ -36,6 +36,7 @@
       "refuted": 5,
       "reviews": 0,
       "sound": 0,
+      "gated_runs": 2,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -131,6 +132,7 @@
       "refuted": 105,
       "reviews": 0,
       "sound": 0,
+      "gated_runs": 48,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -226,6 +228,7 @@
       "refuted": 108,
       "reviews": 69,
       "sound": 4,
+      "gated_runs": 43,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -321,6 +324,7 @@
       "refuted": 24,
       "reviews": 45,
       "sound": 12,
+      "gated_runs": 13,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -416,6 +420,7 @@
       "refuted": 38,
       "reviews": 88,
       "sound": 8,
+      "gated_runs": 24,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -511,6 +516,7 @@
       "refuted": 60,
       "reviews": 34,
       "sound": 4,
+      "gated_runs": 24,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -606,6 +612,7 @@
       "refuted": 28,
       "reviews": 36,
       "sound": 8,
+      "gated_runs": 9,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -701,6 +708,7 @@
       "refuted": 13,
       "reviews": 13,
       "sound": 2,
+      "gated_runs": 5,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -796,6 +804,7 @@
       "refuted": 7,
       "reviews": 4,
       "sound": 0,
+      "gated_runs": 3,
       "token_sessions": 0,
       "tokens": 0,
       "cache_read": 0,
@@ -891,6 +900,7 @@
       "refuted": 0,
       "reviews": 0,
       "sound": 0,
+      "gated_runs": 0,
       "token_sessions": 4,
       "tokens": 307519354,
       "cache_read": 295213006,
@@ -986,6 +996,7 @@
       "refuted": 0,
       "reviews": 0,
       "sound": 0,
+      "gated_runs": 0,
       "token_sessions": 7,
       "tokens": 326055356,
       "cache_read": 310764269,
@@ -1081,6 +1092,7 @@
       "refuted": 16,
       "reviews": 25,
       "sound": 10,
+      "gated_runs": 12,
       "token_sessions": 28,
       "tokens": 358502520,
       "cache_read": 342440218,
@@ -1176,6 +1188,7 @@
       "refuted": 33,
       "reviews": 87,
       "sound": 33,
+      "gated_runs": 45,
       "token_sessions": 75,
       "tokens": 973671066,
       "cache_read": 939783455,
@@ -1271,6 +1284,7 @@
       "refuted": 54,
       "reviews": 52,
       "sound": 26,
+      "gated_runs": 44,
       "token_sessions": 311,
       "tokens": 1046850260,
       "cache_read": 1008833132,
@@ -1366,6 +1380,7 @@
       "refuted": 55,
       "reviews": 105,
       "sound": 42,
+      "gated_runs": 47,
       "token_sessions": 147,
       "tokens": 1362980821,
       "cache_read": 1322954232,
@@ -1461,20 +1476,21 @@
       "refuted": 0,
       "reviews": 6,
       "sound": 5,
-      "token_sessions": 147,
-      "tokens": 949399932,
-      "cache_read": 916175155,
-      "cost_usd": 790.64,
-      "costed": 140,
+      "gated_runs": 5,
+      "token_sessions": 148,
+      "tokens": 1001783077,
+      "cache_read": 967126762,
+      "cost_usd": 842.66,
+      "costed": 141,
       "parts": {
-        "shell": 623619822,
-        "edits": 31177688,
-        "reads": 45853409,
+        "shell": 665214457,
+        "edits": 31469927,
+        "reads": 45977371,
         "loops": 1161316,
         "verify": 3422632,
         "agents": 71719294,
         "workflow_skills": 3625683,
-        "text": 168820088
+        "text": 179192397
       },
       "queues": {
         "ra": {
@@ -1523,9 +1539,9 @@
           "cost_usd": 10.29
         },
         "unattributed": {
-          "sessions": 43,
-          "tokens": 648568261,
-          "cost_usd": 499.25
+          "sessions": 44,
+          "tokens": 700951406,
+          "cost_usd": 551.27
         },
         "not_looked": {
           "sessions": 0,
@@ -1536,46 +1552,47 @@
     },
     {
       "week": "2026-11-09",
-      "merges": 5,
-      "credited": 5,
-      "green": 5,
-      "rejected": 0,
+      "merges": 134,
+      "credited": 113,
+      "green": 134,
+      "rejected": 66,
       "superseded": 0,
       "merged_on_red": 0,
-      "code": 5,
-      "docs": 0,
-      "other": 0,
+      "code": 113,
+      "docs": 19,
+      "other": 2,
       "reverted": 0,
       "reverted_credited": 0,
-      "fix_forward": 0,
-      "sessions": 5,
-      "pr_opened": 5,
-      "abandoned": 0,
-      "tool_errors": 9,
-      "verdicts": 0,
-      "refuted": 0,
-      "reviews": 0,
-      "sound": 0,
-      "token_sessions": 9,
-      "tokens": 34501964,
-      "cache_read": 33421820,
-      "cost_usd": 21.85,
-      "costed": 9,
+      "fix_forward": 4,
+      "sessions": 150,
+      "pr_opened": 81,
+      "abandoned": 40,
+      "tool_errors": 244,
+      "verdicts": 477,
+      "refuted": 96,
+      "reviews": 120,
+      "sound": 79,
+      "gated_runs": 93,
+      "token_sessions": 333,
+      "tokens": 1847060160,
+      "cache_read": 1782061590,
+      "cost_usd": 1513.17,
+      "costed": 333,
       "parts": {
-        "shell": 28948106,
-        "edits": 1631576,
-        "reads": 1285769,
-        "loops": 560428,
-        "verify": 0,
-        "agents": 0,
-        "workflow_skills": 0,
-        "text": 2076085
+        "shell": 1345655671,
+        "edits": 71595209,
+        "reads": 35863839,
+        "loops": 23120442,
+        "verify": 1815029,
+        "agents": 126118120,
+        "workflow_skills": 22886237,
+        "text": 220005613
       },
       "queues": {
         "ra": {
-          "sessions": 2,
-          "tokens": 9556908,
-          "cost_usd": 5.56
+          "sessions": 102,
+          "tokens": 427536880,
+          "cost_usd": 400.25
         },
         "mi": {
           "sessions": 0,
@@ -1583,14 +1600,14 @@
           "cost_usd": 0
         },
         "site": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 13,
+          "tokens": 41276600,
+          "cost_usd": 31.91
         },
         "as": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 23,
+          "tokens": 105083629,
+          "cost_usd": 89.84
         },
         "wr": {
           "sessions": 0,
@@ -1598,9 +1615,9 @@
           "cost_usd": 0
         },
         "rd": {
-          "sessions": 0,
-          "tokens": 0,
-          "cost_usd": 0
+          "sessions": 20,
+          "tokens": 39477170,
+          "cost_usd": 47.3
         },
         "hr": {
           "sessions": 0,
@@ -1608,19 +1625,19 @@
           "cost_usd": 0
         },
         "lab": {
-          "sessions": 2,
-          "tokens": 8291330,
-          "cost_usd": 5.01
+          "sessions": 29,
+          "tokens": 150847668,
+          "cost_usd": 125.17
         },
         "other": {
-          "sessions": 1,
-          "tokens": 966107,
-          "cost_usd": 0.33
+          "sessions": 60,
+          "tokens": 299376495,
+          "cost_usd": 207.39
         },
         "unattributed": {
-          "sessions": 4,
-          "tokens": 15687619,
-          "cost_usd": 10.95
+          "sessions": 86,
+          "tokens": 783461718,
+          "cost_usd": 611.31
         },
         "not_looked": {
           "sessions": 0,
@@ -1842,6 +1859,45 @@
       },
       "consumers_checked": 3,
       "consumers_drifting": 3
+    },
+    {
+      "date": "2026-11-16",
+      "score": 82,
+      "grade": "B",
+      "dims": {
+        "skillsValid": {
+          "weight": 25,
+          "active": true,
+          "score": 90
+        },
+        "triggersRouting": {
+          "weight": 25,
+          "active": true,
+          "score": 98
+        },
+        "reposInSync": {
+          "weight": 20,
+          "active": true,
+          "score": 50
+        },
+        "selfTested": {
+          "weight": 15,
+          "active": true,
+          "score": 87
+        },
+        "proseBudget": {
+          "weight": 10,
+          "active": true,
+          "score": 83
+        },
+        "mcpSurface": {
+          "weight": 15,
+          "active": false,
+          "score": null
+        }
+      },
+      "consumers_checked": 4,
+      "consumers_drifting": 1
     }
   ],
   "instrument_changes": [
@@ -1860,20 +1916,130 @@
   ],
   "predictions": {
     "pass": 17,
-    "partial": 14,
-    "fail": 6,
-    "ungradeable": 14,
-    "graded": 51,
-    "graded_stubs": 40,
-    "open_dated": 10,
-    "event_gated": 24,
-    "stubs": 82
+    "partial": 18,
+    "fail": 8,
+    "ungradeable": 15,
+    "graded": 58,
+    "graded_stubs": 47,
+    "open_dated": 18,
+    "event_gated": 8,
+    "stubs": 93
+  },
+  "replay": {
+    "schema": 1,
+    "as_of": "2026-11-14",
+    "tasks": 8,
+    "cases_per_task": 5,
+    "cells": [
+      {
+        "builder": "opus",
+        "arm": "plain",
+        "builds": 8,
+        "produced": 8,
+        "cases_passed": 40,
+        "cases_total": 40,
+        "claims_mismatch": 3,
+        "claims_checkable": 101,
+        "median_cost_usd": 3.99,
+        "median_wall_min": 13.6
+      },
+      {
+        "builder": "opus",
+        "arm": "gated",
+        "builds": 8,
+        "produced": 8,
+        "cases_passed": 40,
+        "cases_total": 40,
+        "claims_mismatch": 3,
+        "claims_checkable": 149,
+        "median_cost_usd": 8.52,
+        "median_wall_min": 33.9
+      },
+      {
+        "builder": "sonnet",
+        "arm": "plain",
+        "builds": 8,
+        "produced": 8,
+        "cases_passed": 40,
+        "cases_total": 40,
+        "claims_mismatch": 1,
+        "claims_checkable": 82,
+        "median_cost_usd": 0.82,
+        "median_wall_min": 5.1
+      },
+      {
+        "builder": "sonnet",
+        "arm": "gated",
+        "builds": 8,
+        "produced": 7,
+        "cases_passed": 35,
+        "cases_total": 40,
+        "claims_mismatch": 2,
+        "claims_checkable": 119,
+        "median_cost_usd": 2.87,
+        "median_wall_min": 22.1
+      },
+      {
+        "builder": "haiku",
+        "arm": "plain",
+        "builds": 8,
+        "produced": 8,
+        "cases_passed": 35,
+        "cases_total": 40,
+        "claims_mismatch": 1,
+        "claims_checkable": 103,
+        "median_cost_usd": 1.07,
+        "median_wall_min": 11.9
+      },
+      {
+        "builder": "haiku",
+        "arm": "gated",
+        "builds": 8,
+        "produced": 5,
+        "cases_passed": 22,
+        "cases_total": 40,
+        "claims_mismatch": 3,
+        "claims_checkable": 85,
+        "median_cost_usd": 1.62,
+        "median_wall_min": 14
+      }
+    ],
+    "pairs": {
+      "total": 24,
+      "gated_higher": 0,
+      "gated_lower": 4,
+      "tie": 20
+    },
+    "builds_total": 48,
+    "builds_all_cases": 42,
+    "stopped": {
+      "criterion_halt": 3,
+      "other_no_project": 1,
+      "skipped_gate": 1,
+      "open_findings": 2
+    },
+    "advisor": [
+      {
+        "builder": "haiku",
+        "sessions": 16,
+        "sessions_with_call": 14
+      }
+    ]
+  },
+  "claims": {
+    "audit": {
+      "date": "2026-11-09",
+      "arm": "plain",
+      "claims": 75,
+      "mismatches": 4
+    },
+    "weekly": []
   },
   "totals": {
     "weeks": 17,
-    "merges": 1112,
-    "credited": 683,
-    "cost_usd": 4971.81,
-    "tokens": 5359481273
+    "merges": 1241,
+    "credited": 791,
+    "cost_usd": 6515.15,
+    "tokens": 7224422614
   }
 }
