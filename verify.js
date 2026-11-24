@@ -49,6 +49,31 @@ for (const s of H.scores) {
   const verdict = re === null ? 'no dimensions stored' : re === s.score ? 'OK' : 'MISMATCH';
   console.log(`  ${s.date}  stored ${s.score} ${s.grade}  recomputed ${re ?? '—'}  ${verdict}${s.reconstructed ? '  (reconstructed)' : ''}`);
 }
+if (H.replay && H.replay.cells && H.replay.cells.length) {
+  const r = H.replay, nv = v => (v === null || v === undefined ? 'n/a' : v);
+  console.log('');
+  console.log(`BUILT TWICE (${nv(r.tasks)} tasks, ${nv(r.cases_per_task)} hidden cases each${r.as_of ? ', builds finished ' + r.as_of : ''})`);
+  for (const c of r.cells) {
+    const claims = c.claims_checkable ? `${nv(c.claims_mismatch)} of ${c.claims_checkable}` : 'n/a (0 checkable)';
+    console.log(`  ${c.builder.padEnd(6)} ${c.arm.padEnd(5)}  produced ${nv(c.produced)} of ${nv(c.builds)} · cases ${nv(c.cases_passed)} of ${nv(c.cases_total)} · claims ${claims} · median $${nv(c.median_cost_usd)} · ${nv(c.median_wall_min)} min`);
+  }
+  for (const b of [...new Set(r.cells.map(c => c.builder))]) {
+    const pl = r.cells.find(c => c.builder === b && c.arm === 'plain'), g = r.cells.find(c => c.builder === b && c.arm === 'gated');
+    const ratio = pl && g && pl.median_cost_usd && g.median_cost_usd !== null ? (g.median_cost_usd / pl.median_cost_usd).toFixed(1) + '×' : 'n/a';
+    console.log(`  cost ratio ${b.padEnd(6)} ${ratio}`);
+  }
+  const pr = r.pairs || {}, st = r.stopped || {};
+  console.log(`  pairs ${nv(pr.total)}: gated higher ${nv(pr.gated_higher)} · lower ${nv(pr.gated_lower)} · same ${nv(pr.tie)}; builds passing every case ${nv(r.builds_all_cases)} of ${nv(r.builds_total)}`);
+  console.log(`  gated: criterion halts ${nv(st.criterion_halt)} · other no-project ${nv(st.other_no_project)} · skipped the gate ${nv(st.skipped_gate)} · findings left open ${nv(st.open_findings)}`);
+}
+if (H.claims && ((H.claims.weekly || []).length || H.claims.audit)) {
+  const arm = (label, a) => (!a || !a.prs ? `${label} n/a (0 PRs)` : `${label} ${a.mismatches} of ${a.claims} in ${a.prs} PRs`);
+  console.log('');
+  console.log('CLAIMS RE-MEASURED (wrong of claims, per arm)');
+  for (const w of (H.claims.weekly || [])) console.log(`  ${w.week}  ${arm('gated', w.arms.gated)}  |  ${arm('plain', w.arms.plain)}`);
+  if (!(H.claims.weekly || []).length) console.log('  weekly re-run: n/a (not run yet)');
+  if (H.claims.audit) console.log(`  one-off audit ${H.claims.audit.date} (${H.claims.audit.arm}): ${H.claims.audit.mismatches} of ${H.claims.audit.claims}`);
+}
 if (H.predictions) {
   const p = H.predictions;
   console.log('');
