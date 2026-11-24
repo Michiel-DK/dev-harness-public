@@ -1,0 +1,61 @@
+{
+  "experiment": "05-drift-watch",
+  "read": "2026-11-22",
+  "interim": true,
+  "note": "first block (opened 2026-11-12) is not complete: counts through night 2026-11-22; weeks start Monday",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "3471553"
+  },
+  "cases": 79,
+  "models": {
+    "hosted": "claude-haiku-5-5",
+    "local": "gemma4-e2b-ctx16k"
+  },
+  "weeks": {
+    "2026-11-09": {
+      "hosted": {
+        "nights_run": 0,
+        "nights_skipped": 0,
+        "nights_baseline": 1,
+        "compared": 0,
+        "flips_up": 0,
+        "flips_down": 0,
+        "flips_with_stamp_change": 0,
+        "stamp_changes": 0
+      },
+      "local": {
+        "nights_run": 0,
+        "nights_skipped": 0,
+        "nights_baseline": 1,
+        "compared": 0,
+        "flips_up": 0,
+        "flips_down": 0,
+        "flips_with_stamp_change": 0,
+        "stamp_changes": 0
+      }
+    },
+    "2026-11-16": {
+      "hosted": {
+        "nights_run": 6,
+        "nights_skipped": 1,
+        "nights_baseline": 0,
+        "compared": 474,
+        "flips_up": 28,
+        "flips_down": 35,
+        "flips_with_stamp_change": 0,
+        "stamp_changes": 0
+      },
+      "local": {
+        "nights_run": 7,
+        "nights_skipped": 0,
+        "nights_baseline": 0,
+        "compared": 553,
+        "flips_up": 0,
+        "flips_down": 0,
+        "flips_with_stamp_change": 0,
+        "stamp_changes": 0
+      }
+    }
+  }
+}
