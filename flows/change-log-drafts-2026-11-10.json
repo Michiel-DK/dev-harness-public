@@ -1,5 +1,5 @@
 {
-  "experiment": "14-mentall-drafts",
+  "experiment": "14-change-log-drafts",
   "date": "2026-11-10",
   "question": "On 96 fabricated change-log rows (70 scored), does a model write the change-log sentence (first draft and after one regeneration, eight deterministic checks), do 5 examples in the prompt change that, and how much does K of a 20-case held-out set move between three passes?",
   "source": {
