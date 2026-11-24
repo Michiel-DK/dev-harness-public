@@ -1,0 +1,44 @@
+{
+  "run": "2026-11-16",
+  "question": "Does the recruitment demo write the same notes inside n8n (2.47.7, official Docker image) as our replay, after a one-node fix?",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "e7d2caa",
+    "pr": 138,
+    "record": "projects/demo-recruitment-sponsored-spend/fixtures/n8n-execute-2026-11-16.txt",
+    "prediction": "experiments/predictions/14-n8n-recruitment-picks.md (commit 17022c4, before the fix)"
+  },
+  "n8n": {
+    "version": "2.47.7",
+    "image": "n8nio/n8n@sha256:b4b90747b81fcda7e76550c0d3aa7f0f64917a1e9573cff40d6834eaf2e0f8ea",
+    "network": "none"
+  },
+  "fix": "one Code node reads each input item instead of a paired-item lookup inside a run-once-for-all-items map",
+  "run_1_emptied_sinks": {
+    "status": "success",
+    "items_per_node": {
+      "Join spend to vacancies": 9,
+      "Source gap? (true/false)": [2, 7],
+      "Alert text": 2,
+      "Over the line? (true/false)": [3, 4],
+      "Both lines pass? (true/false)": [3, 0],
+      "Compose the card": 3,
+      "Consultant picks (dummy)": 3,
+      "ATS sink (dummy)": 3,
+      "Report sink (dummy)": 3
+    },
+    "distinct_vacancies_out_of_pick": 3,
+    "ats_sink": {"appended": 3, "skipped": 0, "equal_to_replay_file": true},
+    "report_sink": {"appended": 3, "skipped": 0, "equal_to_replay_file": true}
+  },
+  "run_2_committed_sinks": {
+    "status": "success",
+    "ats_sink": {"appended": 0, "skipped": 3, "equal_to_replay_file": true},
+    "report_sink": {"appended": 0, "skipped": 3, "equal_to_replay_file": true}
+  },
+  "before_fix_2026_11_15": {"distinct_vacancies_out_of_pick": 1, "appended_from_emptied_sinks": 1, "skipped": 2},
+  "replay_unchanged": "PASS 6/6",
+  "checks_unchanged": "11 of 23",
+  "demos_equal_to_replay_in_n8n": {"count": 12, "of": 12, "basis": "11 from the 15 Nov 2026 run of all 12 + this demo re-run 16 Nov 2026; the other 11 were not re-run"},
+  "prediction_held": true
+}
