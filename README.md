@@ -12,7 +12,7 @@ Every number is a count or a sum over rows the harness already writes. **No file
 private repo names appear here, by construction**; the three public repos linked above are the one deliberate exception.
 The score below is a health check of the setup, not a grade of the work.
 
-Generated 2026-11-09 · 17 weeks since the harness went live (2026-07-20) · 1,112 merges · 5.36B tokens · $4,972 priced.
+Generated 2026-11-16 · 17 weeks since the harness went live (2026-07-20) · 1,241 merges · 7.22B tokens · $6,515 priced.
 The interactive page (`index.html`) carries the same data with hover and table views. `node verify.js` re-derives every number below from `history.json`.
 
 ## What runs, and what each stage writes down
@@ -27,25 +27,48 @@ Loop 1 · one change
 
 Loop 2 · the harness measuring itself (nightly + Monday)
   transcripts + GitHub ─► 4 miners ─► run ledger ─► scorecard ─► digest line + this page
-  declared, not measured: MCP surface · not tracked yet: post-merge reverts / fix-forwards
+  declared, not measured: MCP surface · counted since 2026-10-28: post-merge reverts / fix-forward candidates
 ```
 
 ## Outcomes — last 4 complete weeks vs the 4 before
 
 | | last 4 weeks | prior 4 | all weeks since live |
 |---|---:|---:|---:|
-| credited merges (code-class + green CI at merge time) | **344** of 388 merged | 76 of 84 | 683 of 1112 |
-| CI green at merge | 98% | 100% | 95% |
+| credited merges (code-class + green CI at merge time) | **409** of 474 merged | 102 of 104 | 791 of 1241 |
+| CI green at merge | 98% | 100% | 96% |
 | merged on red CI | 9 | 0 | 53 |
-| rejected / superseded | 7 / 1 | 0 / 0 | 22 / 16 |
-| sessions abandoned (edits, no PR) | 33% of 335 | 43% of 37 | 30% of 522 |
-| refuter kill rate (verify gate) | 24% of 597 verdicts | 31% of 75 | 39% of 1415 |
-| reverted after merge (of which credited) | 0 (0) | 0 (0) | 0 (0) |
-| fix-forward candidates (weak link) | 3 | 6 | 24 |
+| rejected / superseded | 73 / 1 | 0 / 0 | 88 / 16 |
+| sessions abandoned (edits, no PR) | 25% of 412 | 57% of 107 | 30% of 667 |
+| gated lane runs (distinct runs with ≥1 refuter verdict) vs code merges | **189** runs · 417 code merges | 57 · 102 | 417 · 816 |
+| refuter kill rate (verify gate) | 23% of 890 verdicts | 20% of 244 | 34% of 1892 |
+| reverted after merge (of which credited) | 0 (0) | 0 (0) | 0 (0) (1 earlier week: n/a) |
+| fix-forward candidates (weak link) | 7 | 6 | 28 (1 earlier week: n/a) |
 
 The two windows are not the same population: the session roster grew on 2026-10-28 (two busy repos added), which is most of the jump in sessions and in the abandoned share. The all-weeks column is there so a bad early week cannot hide behind a good recent one.
 
-**Predictions on the harness itself.** Every behavioural change ships with a pre-registered prediction and a review date. **51 grades so far over 40 stubs: 17 pass · 14 partial · 6 fail · 14 ungradeable.** 10 stubs are open with a date and 24 wait on an event, out of 82 stubs in all; the groups overlap, because a graded stub can be re-armed with a new date, and closed or parked stubs are in none.
+**Predictions on the harness itself.** Every behavioural change ships with a pre-registered prediction and a review date. **58 grades so far over 47 stubs: 17 pass · 18 partial · 8 fail · 15 ungradeable.** 18 stubs are open with a date and 8 wait on an event, out of 93 stubs in all; the groups overlap, because a graded stub can be re-armed with a new date, and closed or parked stubs are in none.
+
+**Claims re-measured after merge.** Each number or test claim in the text of a merged pull request is re-run at the merge commit; one that does not reproduce counts as wrong. *Gated* = built through the lane, *plain* = not. Weekly re-run: n/a (not run yet). One-off audit 2026-11-09 (plain arm, one repo): 4 wrong of 75.
+
+## Same task, built twice: with the gate and without
+
+*Exploratory, no verdict; builds finished 2026-11-14. 8 small tasks (new automation flows from a written spec), each built from one starting commit by the same model: once in a plain session, once through the harness. Scored on 5 test cases per task that the builders never saw. At this size only a very large difference can show.*
+
+| builder | arm | builds that produced a project | hidden cases passed | wrong claims in PR text | median cost per build | median time |
+|---|---|---:|---:|---:|---:|---:|
+| Opus | plain | 8 of 8 | 40 of 40 | 3 of 101 | $3.99 | 14 min |
+| Opus | gated | 8 of 8 | 40 of 40 | 3 of 149 | $8.52 | 34 min |
+| Sonnet | plain | 8 of 8 | 40 of 40 | 1 of 82 | $0.82 | 5 min |
+| Sonnet | gated | 7 of 8 | 35 of 40 | 2 of 119 | $2.87 | 22 min |
+| Haiku | plain | 8 of 8 | 35 of 40 | 1 of 103 | $1.07 | 12 min |
+| Haiku | gated | 5 of 8 | 22 of 40 | 3 of 85 | $1.62 | 14 min |
+
+- **Pairs.** Of 24 plain/gated pairs, the gated build scored higher in 0, lower in 4 and the same in 20.
+- **Gated builds that did not finish the gate.** 3 halted at the gate's review of the task criterion with nobody there to answer, and built nothing; 1 stopped before building for another reason; 1 skipped the gate. Every run was unattended.
+- **Ceiling.** 42 of 48 builds passed every hidden case, so on these tasks the cases separate the arms only through builds that are missing or broken outright.
+- **Cost.** Median dollars per build, gated over plain: Opus 2.1× · Sonnet 3.5× · Haiku 1.5×.
+- **Findings left open.** 2 gated builds ended with a finding from the gate still standing, unfixed because nobody was there to act on it. The hidden cases test a flow's logic, not its wiring or its own tests, so they neither credit nor debit such findings.
+- **Limits.** One repo and one task type. The reviewers are the same model family as the builder. 14 of 16 Haiku sessions called a stronger advisor model, so those cells are not Haiku alone. For the Opus rows the hidden cases were written after the builds existed, by an author who did not see them.
 
 ## Harness score over time
 
@@ -59,7 +82,7 @@ Dashed marks are changes to the instrument — a drop at a mark is a correction,
 - ▲2 2026-10-20 — skill validator fixed (#82) — skillsValid 66 → 91
 - ▲3 2026-10-28 — drift measured over real consumers (S-166, #85) — 100-on-nothing becomes 0-of-7
 
-Latest 2026-11-09: **74/100 B** — skillsValid 91 (w25) · triggersRouting 98 (w25) · reposInSync 0 (w20) · selfTested 88 (w15) · proseBudget 100 (w10) · mcpSurface not measured (w15). Inactive dimensions are renormalised out and shown as "not measured", never scored full.
+Latest 2026-11-16: **82/100 B** — skillsValid 90 (w25) · triggersRouting 98 (w25) · reposInSync 50 (w20) · selfTested 87 (w15) · proseBudget 83 (w10) · mcpSurface not measured (w15). Inactive dimensions are renormalised out and shown as "not measured", never scored full.
 
 ## Cost per credited merge
 
@@ -73,16 +96,18 @@ Latest 2026-11-09: **74/100 B** — skillsValid 91 (w25) · triggersRouting 98 (
 | 2026-10-12 | $1,076 | 48 | $22 | 75 / 75 | 973.7M | 97% |
 | 2026-10-19 | $946 | 102 | $9 | 311 / 311 | 1.05B | 96% |
 | 2026-10-26 | $1,026 | 112 | $9 | 146 / 147 | 1.36B | 97% |
-| 2026-11-02 | $791 | 82 | $10 | 140 / 147 | 949.4M | 97% |
+| 2026-11-02 | $843 | 82 | $10 | 141 / 148 | 1.00B | 97% |
+| 2026-11-09 | $1,513 | 113 | $13 | 333 / 333 | 1.85B | 96% |
 
-7 complete weeks with token rows: $4,950 over 398 credited merges, **$12 each**. The priced total in the header ($4,972) also includes the current, incomplete week. Dollars come from the CLI's own cost line; sessions without one are counted but not priced.
+8 complete weeks with token rows: $6,515 over 511 credited merges, **$13 each**. The priced total in the header ($6,515) also includes the current, incomplete week. Dollars come from the CLI's own cost line; sessions without one are counted but not priced.
 
 ## Cost per scheduler queue
 
 | week of | ra | mi | site | as | rd | hr | lab | other | not a job | not looked |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | 2026-10-26 | — | — | — | — | — | — | — | — | $23 · 2 | $1,004 · 145 |
-| 2026-11-02 | $102 · 27 | $3 · 4 | $33 · 15 | $19 · 8 | $14 · 9 | $2 · 2 | $107 · 27 | $10 · 12 | $499 · 43 | — |
+| 2026-11-02 | $102 · 27 | $3 · 4 | $33 · 15 | $19 · 8 | $14 · 9 | $2 · 2 | $107 · 27 | $10 · 12 | $551 · 44 | — |
+| 2026-11-09 | $400 · 102 | — | $32 · 13 | $90 · 23 | $47 · 20 | — | $125 · 29 | $207 · 60 | $611 · 86 | — |
 
 Each cell is dollars · token sessions. A *queue* is the laptop scheduler's job-id prefix: one per project or chore stream, codes only.
 A session counts for a queue when it ran in the job's repo and started inside exactly one of that repo's job windows. *Not a job* = the join looked and found none, two overlapping jobs (ambiguous, left unassigned rather than guessed), or an interactive session. *Not looked* = mined before the join existed.
@@ -98,19 +123,19 @@ scheduled loops and waits, the verify-gate agent, other agents (reviewers, explo
 ## Definitions
 
 - **merge** — a pull request merged on GitHub in one of the repos the harness is mounted in. The build lane opens it and stops; after CI the main loop or the developer merges it, always under the developer's own account, so the page cannot tell the two apart. Most are opened by the lane, which is why a week can hold a hundred.
-- **credited merge** — a merge that is code-class (by its changed paths, branch prefix as fallback) and whose CI was green at merge time. Merges older than the path data carry no class and count as neither code nor docs: 189 of 1112 in this file.
+- **credited merge** — a merge that is code-class (by its changed paths, branch prefix as fallback) and whose CI was green at merge time. Merges older than the path data carry no class and count as neither code nor docs: 191 of 1241 in this file.
 - **merged on red CI** — merged while CI was failing. Whoever merged it, the gate was not green.
 - **gate coverage** — review and refuter rows exist only for changes built through the lane workflow. A merge from a plain session has none, so a week can show credited merges with zero verdicts; "credited" does not require a verdict. That is a gap in the definition, kept visible rather than papered over.
 - **session** — one interactive or lane session in a roster of repos, mined from the CLI's own transcripts; **token session** — any session with token usage, mined from every project directory including workflow worktrees. The second set is larger; the two are not the same population.
 - **abandoned** — a session that edited files and opened no PR. This includes sessions that committed directly without a PR (documentation goes direct in some repos), so it over-counts true abandonment.
 - **refuter verdict** — one lens of the verify gate on one change; *refuted* means it found a reason the change should not ship.
-- **reverted after merge** — a later merged PR carries GitHub's own revert stamp (`Reverts owner/repo#N`) or is titled `Revert "<title>"`; counted in the week of the revert. **Fix-forward candidate** — a later PR on a fix/ or hotfix/ branch, merged within 14 days, touching a code file the credited merge touched; a weak link, shown separately and never added to reverted. The detector first ran on 2026-10-28 over the previous 90 days of merges, so candidates appear from 2026-07-30 on; weeks before that show 0 because nothing looked, not because nothing happened.
+- **reverted after merge** — a later merged PR carries GitHub's own revert stamp (`Reverts owner/repo#N`) or is titled `Revert "<title>"`; counted in the week of the revert. **Fix-forward candidate** — a later PR on a fix/ or hotfix/ branch, merged within 14 days, touching a code file the credited merge touched; a weak link, shown separately and never added to reverted. The detector first ran on 2026-10-28 over the previous 90 days of merges, so candidates appear from 2026-07-30 on; weeks before that carry n/a (null in `history.json`), because nothing looked.
 - **reconstructed score point** — the scorecard re-run at a past commit in today's environment, plotted as the instrument scored it then, vacuous drift included; the note on each point gives the three-dimension number.
 - weeks with no rows at all are absent from the series rather than drawn as zero.
 
 ## Limits, stated
 
-- One developer, one harness, a few months of rows. No control arm: nothing here says what the numbers would be without the harness.
+- One developer, one harness, a few months of rows. One controlled comparison exists (the built-twice table above), on easy tasks only: nothing here says what the weekly numbers would be without the harness.
 - The three linked repos are public snapshots of work built through the harness; most merges counted here happened in repos that stay private.
 - Before the harness went live, the same repos had 1609 merges over 25 weeks (2026-01-19 to 2026-07-13): 93% green at merge, 110 merged on red. No build lane, no gate, partly different repos — not a control arm, shown so the cut at 2026-07-20 is visible rather than hidden.
 - The badge and the latest score point are the last published run. The number can move between runs (it did on 2026-10-28, see TRACE.md); the next Monday run publishes the new one.
@@ -121,7 +146,7 @@ scheduled loops and waits, the verify-gate agent, other agents (reviewers, explo
 
 | file | what |
 |---|---|
-| `history.json` | every number here — counts and sums per ISO week, score points per run, dated instrument changes, the prediction tally |
+| `history.json` | every number here — counts and sums per ISO week, score points per run, dated instrument changes, the prediction tally, the built-twice counts, the claim re-run counts |
 | `index.html` | the interactive page (hover, table views, dark mode) |
 | `badge.json` | shields.io endpoint with the latest grade |
 | `score.svg`, `cost.svg`, `parts.svg` | the charts above, rendered by the writer — no JS |
