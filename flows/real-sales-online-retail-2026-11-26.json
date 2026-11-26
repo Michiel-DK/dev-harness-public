@@ -1,0 +1,236 @@
+{
+  "experiment": "20-real-sales-data",
+  "date": "2026-11-26",
+  "source": {
+    "repo": "roger3000_automations (private)",
+    "sha": "6bdd80a"
+  },
+  "question": "On two years of a real small retailer's sales (UCI Online Retail II, 13 countries x 24 months, 936 sentences), how many monthly-report sentences pass the same checks as on invented fixtures, and does the spend alert, rule unchanged, fire on the country-months a written rule calls off pace?",
+  "dataset": {
+    "name": "Online Retail II",
+    "attribution": "Online Retail II, UCI Machine Learning Repository, CC BY 4.0, Daqing Chen",
+    "licence": "CC BY 4.0",
+    "url": "https://archive.ics.uci.edu/dataset/502/online+retail+ii",
+    "sha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+    "lines": 1067371
+  },
+  "derived": {
+    "rows": 312,
+    "clients": 13,
+    "months": 24,
+    "sentences_per_arm": 936
+  },
+  "monthly_report": {
+    "haiku-v2": {
+      "passes": [
+        {
+          "pass": 1,
+          "date": "2026-11-26",
+          "seven_checks_pass": 788,
+          "nine_checks_pass": 788,
+          "of": 936,
+          "fails_by_check": {
+            "numbers": 59,
+            "actor": 45,
+            "field": 4,
+            "length": 105,
+            "language": 0,
+            "reasons": 3,
+            "judgement": 0
+          },
+          "items_false_fails": 0,
+          "dates_false_fails": 0,
+          "usd": 0.1091
+        },
+        {
+          "pass": 2,
+          "date": "2026-11-26",
+          "seven_checks_pass": 778,
+          "nine_checks_pass": 778,
+          "of": 936,
+          "fails_by_check": {
+            "numbers": 58,
+            "actor": 40,
+            "field": 7,
+            "length": 115,
+            "language": 0,
+            "reasons": 6,
+            "judgement": 0
+          },
+          "items_false_fails": 0,
+          "dates_false_fails": 0,
+          "usd": 0.1097
+        },
+        {
+          "pass": 3,
+          "date": "2026-11-26",
+          "seven_checks_pass": 788,
+          "nine_checks_pass": 788,
+          "of": 936,
+          "fails_by_check": {
+            "numbers": 69,
+            "actor": 35,
+            "field": 14,
+            "length": 110,
+            "language": 1,
+            "reasons": 10,
+            "judgement": 0
+          },
+          "items_false_fails": 0,
+          "dates_false_fails": 0,
+          "usd": 0.11
+        }
+      ],
+      "model": "claude-haiku-5-5, prompt v2",
+      "invented_data": {
+        "same_flow_19": [
+          18,
+          18,
+          19
+        ],
+        "nine_flows_155": [
+          131,
+          127,
+          125
+        ]
+      }
+    },
+    "e2b": {
+      "passes": [
+        {
+          "pass": 1,
+          "date": "2026-11-26",
+          "seven_checks_pass": 14,
+          "nine_checks_pass": 14,
+          "of": 936,
+          "fails_by_check": {
+            "numbers": 0,
+            "actor": 714,
+            "field": 0,
+            "length": 820,
+            "language": 314,
+            "reasons": 0,
+            "judgement": 0
+          },
+          "items_false_fails": 0,
+          "dates_false_fails": 0,
+          "usd": 0
+        },
+        {
+          "pass": 2,
+          "date": "2026-11-26",
+          "seven_checks_pass": 14,
+          "nine_checks_pass": 14,
+          "of": 936,
+          "fails_by_check": {
+            "numbers": 0,
+            "actor": 714,
+            "field": 0,
+            "length": 820,
+            "language": 314,
+            "reasons": 0,
+            "judgement": 0
+          },
+          "items_false_fails": 0,
+          "dates_false_fails": 0,
+          "usd": 0
+        },
+        {
+          "pass": 3,
+          "date": "2026-11-26",
+          "seven_checks_pass": 14,
+          "nine_checks_pass": 14,
+          "of": 936,
+          "fails_by_check": {
+            "numbers": 0,
+            "actor": 714,
+            "field": 0,
+            "length": 820,
+            "language": 314,
+            "reasons": 0,
+            "judgement": 0
+          },
+          "items_false_fails": 0,
+          "dates_false_fails": 0,
+          "usd": 0
+        }
+      ],
+      "model": "gemma4:e2b (stock, digest 7fbdbf8f5e45), draft.md",
+      "invented_data": {
+        "same_flow_19": [
+          0,
+          0,
+          0
+        ],
+        "nine_flows_155": [
+          84,
+          84,
+          84
+        ]
+      }
+    },
+    "template": {
+      "passes": [
+        {
+          "pass": 1,
+          "date": "2026-11-26",
+          "seven_checks_pass": 936,
+          "nine_checks_pass": 936,
+          "of": 936,
+          "fails_by_check": {
+            "numbers": 0,
+            "actor": 0,
+            "field": 0,
+            "length": 0,
+            "language": 0,
+            "reasons": 0,
+            "judgement": 0
+          },
+          "items_false_fails": 0,
+          "dates_false_fails": 0,
+          "usd": 0
+        }
+      ],
+      "model": "template (fixed)",
+      "invented_data": {
+        "same_flow_19": [
+          19
+        ],
+        "nine_flows_155": [
+          147
+        ]
+      }
+    }
+  },
+  "alert": {
+    "country_months": 312,
+    "fires": 131,
+    "by_flag": {
+      "over_pace": 23,
+      "jump": 110,
+      "zero": 5,
+      "cpl": 16
+    },
+    "off_pace": {
+      "labelled": 260,
+      "positives": 65,
+      "hits": 14,
+      "misses": 51,
+      "false_alarms": 94,
+      "correct_quiet": 101,
+      "recall_pct": 21.5,
+      "precision_pct": 13
+    },
+    "above_pace": {
+      "labelled": 260,
+      "positives": 52,
+      "hits": 47,
+      "misses": 5,
+      "false_alarms": 61,
+      "correct_quiet": 147,
+      "recall_pct": 90.4,
+      "precision_pct": 43.5
+    }
+  },
+  "contamination": "The dataset is public and likely in model training data; each sentence is checked against its own row, so recall cannot raise a pass."
+}
